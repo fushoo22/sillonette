@@ -10,8 +10,8 @@ Mode d'emploi : `LISEZMOI.txt` dans le zip, ou https://fushoo.fr/sillonette/inst
 
 ## Avertissements, à lire avant d'installer
 
-- **Version bêta.** Essayée avec succès par l'auteur sous Windows avec un vrai OBS, et testée
-  automatiquement sous Linux. **Pas encore testée pendant de longs lives** (plusieurs heures).
+- **Version bêta.** La 0.1.2 a été essayée avec succès par l'auteur sous Windows avec un vrai OBS ;
+  les corrections de la 0.1.3 ont été testées sous Linux seulement. **Pas encore testée pendant de longs lives** (plusieurs heures).
   Garde une solution de secours.
 - **Le mot de passe WebSocket d'OBS donne le contrôle total d'OBS**, clé de stream comprise.
   Ne le montre jamais à l'écran, ne le donne à personne. Copie-le avec le bouton « Copier » d'OBS
