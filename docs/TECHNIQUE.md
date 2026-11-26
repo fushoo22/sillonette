@@ -37,6 +37,11 @@ thème normalisé) : n'importe quel client obs-websocket peut émettre le même 
 - **Renvoi toutes les 5 s** : une source rechargée ou un OBS lancé après se resynchronise en ≤ 5 s.
 - **Reconnexion** : 1 s, 2 s, 4 s… 15 s ; 60 s après un mot de passe refusé (pas de rafale).
 - **Fermeture d'onglet** : l'overlay est vidé aussitôt. Navigateur fermé : l'overlay se cache après 20 s.
+- **Titres longs** : la distance de défilement est mesurée à chaque nouveau morceau, puis de nouveau quand
+  un skin ou une police finit de charger et quand la source change de taille ; un titre de droite à gauche
+  (arabe, hébreu : `dir="auto"`) défile vers la droite (0.1.3).
+- **Pochette** : tant que la pochette du nouveau morceau charge, l'ancienne est masquée (classe
+  `art-loading`) ; en cas d'échec, la note ♪ la remplace (0.1.3).
 
 ## Sécurité
 
@@ -145,6 +150,10 @@ ce PC n'a besoin que de 127.0.0.1). Effet réel d'un refus dans le pare-feu de W
 
 Fait : tests unitaires et de bout en bout (Chromium, Firefox, faux OBS), essai court avec un vrai
 OBS 33 sous Linux (`test/obs-reel/essai.mjs`), essai réussi par l'auteur sous Windows avec un vrai OBS.
+Le 26/11/2026 (0.1.2, vrai OBS 33 sous Linux, configuration jetable) : 6 skins × 3 dispositions sans
+débordement à la taille conseillée, textes CJK/emoji/accents, OBS relancé, source rechargée, 15 minutes
+avec un changement de morceau toutes les 40 s (23 morceaux, connexion jamais perdue, mémoire d'OBS stable) ;
+lecture réelle de music.youtube.com sans compte dans un Chromium visible. Ce n'est pas un essai long.
 
 Avant une version stable : plusieurs heures de live sans problème (service worker) ; refus d'OBS dans le
 pare-feu de Windows vérifié ; signature Firefox ; éventuellement publication dans les boutiques

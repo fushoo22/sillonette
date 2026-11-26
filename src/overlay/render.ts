@@ -52,13 +52,22 @@ export class Overlay {
     this.els = els;
     this.theme = theme;
     this.now = now;
-    els.img.addEventListener("error", () => els.root.classList.add("no-art"));
-    els.img.addEventListener("load", () => els.root.classList.remove("no-art"));
+    els.img.addEventListener("error", () => {
+      els.root.classList.remove("art-loading");
+      els.root.classList.add("no-art");
+    });
+    els.img.addEventListener("load", () => els.root.classList.remove("no-art", "art-loading"));
   }
 
   /** The settings arrive with each event and may change. */
   setTheme(theme: Theme): void {
     this.theme = theme;
+  }
+
+  /** Measures the long-title scrolling again: call it once a skin's stylesheet or a font has loaded,
+   *  or when the source is resized (the first measure may have used a fallback font). */
+  refreshMarquee(): void {
+    if (this.last) this.scheduleMarquee();
   }
 
   get state(): string {
@@ -132,9 +141,14 @@ export class Overlay {
     e.root.classList.toggle("no-album", album === "");
     e.title.classList.remove("marquee");
     if (art) {
-      if (e.img.getAttribute("src") !== art) e.img.src = art; // the CSP img-src allow-list applies
+      if (e.img.getAttribute("src") !== art) {
+        // Until the new artwork is there, show none: never the previous track's one with the new title.
+        e.root.classList.add("art-loading");
+        e.img.src = art; // the CSP img-src allow-list applies
+      }
     } else {
       e.img.removeAttribute("src");
+      e.root.classList.remove("art-loading");
       e.root.classList.add("no-art");
     }
   }
@@ -184,14 +198,17 @@ export class Overlay {
   }
 
   private scheduleMarquee(): void {
-    if (!this.theme.mq) return;
     const { title } = this.els;
+    title.classList.remove("marquee");
+    if (!this.theme.mq) return;
     const win = title.ownerDocument.defaultView;
     if (!win) return;
     win.requestAnimationFrame(() => {
       const overflow = title.scrollWidth - title.clientWidth;
       if (overflow > 4) {
-        title.style.setProperty("--_mq-dist", -overflow + "px");
+        // Right-to-left title (dir="auto"): the hidden part is on the left, scroll to the right.
+        const rtl = win.getComputedStyle(title).direction === "rtl";
+        title.style.setProperty("--_mq-dist", (rtl ? overflow : -overflow) + "px");
         title.style.setProperty("--_mq-time", Math.max(6, overflow / 30 + 4).toFixed(1) + "s");
         title.classList.add("marquee");
       }

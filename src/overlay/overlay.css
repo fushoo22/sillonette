@@ -149,6 +149,8 @@ body {
 }
 .art img { display: block; width: 100%; height: 100%; object-fit: cover; }
 .sillonette.no-art .art img { display: none; }
+/* the new track's artwork is loading: hide the previous one (render.ts) */
+.sillonette.art-loading .art img { visibility: hidden; }
 .sillonette.no-art .art::after {
   content: "♪";
   position: absolute;

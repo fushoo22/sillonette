@@ -5,7 +5,8 @@ import { FONTS, rgba, skinInfo, type Theme } from "../shared/config.ts";
 const SHADOWS = ["none", "0 0.25rem 0.9rem rgba(32, 56, 86, 0.18)", "0 0.45rem 1.6rem rgba(32, 56, 86, 0.34)"];
 const LOAD_TIMEOUT_MS = 2500;
 
-export function applyTheme(doc: Document, root: HTMLElement, th: Theme): void {
+/** Resolves once the skin's stylesheet and fonts are there (at once when the skin did not change). */
+export function applyTheme(doc: Document, root: HTMLElement, th: Theme): Promise<void> {
   const skin = skinInfo(th.sk);
   const s = doc.documentElement.style;
   s.setProperty("--o-scale", String(th.sc / 100));
@@ -47,6 +48,7 @@ export function applyTheme(doc: Document, root: HTMLElement, th: Theme): void {
       ? css.then(() => Promise.all([FONTS[th.ft]!, FONTS[skin.body]!].map((f) => doc.fonts.load("1em " + f).catch(() => [])))).then(() => undefined)
       : css;
     const timeout = new Promise<void>((resolve) => setTimeout(resolve, LOAD_TIMEOUT_MS));
-    void Promise.race([fonts, timeout]).then(() => root.classList.remove("o-loading"));
+    return Promise.race([fonts, timeout]).then(() => root.classList.remove("o-loading"));
   }
+  return Promise.resolve();
 }

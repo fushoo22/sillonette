@@ -19,13 +19,20 @@ function boot(): void {
   let theme: Theme = frag.theme;
   let themeKey = JSON.stringify(theme);
   let badge: ErrorBadge;
-  const setTheme = (t: Theme) => {
-    applyTheme(document, els.root, t);
+  const setTheme = (t: Theme): Promise<void> => {
+    const loaded = applyTheme(document, els.root, t);
     if (badgeEls) badgeEls.root.dataset.align = t.al;
     badge = new ErrorBadge(badgeEls, t.lg, frag.er);
+    return loaded;
   };
-  setTheme(theme);
+  const firstLoad = setTheme(theme);
   const overlay = new Overlay(els, theme, Date.now);
+  // The long-title scrolling is measured with the fonts present at that moment: measure again when a
+  // skin or a font finishes loading, or when the source is resized.
+  const remeasure = () => overlay.refreshMarquee();
+  void firstLoad.then(remeasure);
+  document.fonts?.addEventListener?.("loadingdone", remeasure);
+  window.addEventListener("resize", remeasure);
   if (frag.demo) {
     startDemo((ev) => overlay.handle(ev));
     badge!.setFixed(frag.err);
@@ -44,8 +51,8 @@ function boot(): void {
     if (key !== themeKey) {
       theme = ev.theme;
       themeKey = key;
-      setTheme(theme);
       overlay.setTheme(theme);
+      void setTheme(theme).then(remeasure);
     }
     overlay.handle(ev.np);
     badge.set(ev.err);

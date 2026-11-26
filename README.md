@@ -18,6 +18,8 @@ d'emploi). Ne le télécharge pas ailleurs.
 Mode d'emploi pas à pas : [LISEZMOI.txt](LISEZMOI.txt) (aussi dans le zip), ou la page
 [fushoo.fr/sillonette/installation/](https://fushoo.fr/sillonette/installation/).
 
+Ce qui change d'une version à l'autre (corrections, nouveautés) : [CHANGELOG.md](CHANGELOG.md).
+
 ## Comment ça marche
 
 ```
