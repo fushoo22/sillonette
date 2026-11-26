@@ -1,0 +1,9 @@
+{
+  "name": "sillonette-tool-web-ext",
+  "private": true,
+  "description": "Isolated install of Mozilla's web-ext, only used to lint the Firefox build (npm run lint:firefox).",
+  "license": "MIT",
+  "devDependencies": {
+    "web-ext": "10.8.0"
+  }
+}

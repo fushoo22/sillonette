@@ -1,0 +1,54 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<title>Sillonette</title>
+<link rel="stylesheet" href="popup.css">
+<script src="popup.js" defer></script>
+</head>
+<body>
+<main>
+  <header>
+    <span class="logo" aria-hidden="true"></span>
+    <h1>Sillonette</h1>
+    <span id="dot" class="dot idle" role="img" aria-label=""></span>
+  </header>
+  <p id="status" class="status" aria-live="polite"></p>
+  <p id="conflict" class="conflict" hidden role="alert">E10 : un autre onglet YouTube Music joue déjà, celui-ci attend son tour.</p>
+
+  <form id="obs">
+    <section>
+      <label for="port">Port WebSocket d'OBS</label>
+      <input id="port" type="number" min="1" max="65535" step="1" inputmode="numeric" required>
+    </section>
+    <section>
+      <label for="password">Mot de passe WebSocket d'OBS</label>
+      <input id="password" type="password" spellcheck="false" autocomplete="off">
+      <p class="hint" id="pwHint"></p>
+      <label class="check"><input id="remember" type="checkbox" checked> Le garder après la fermeture du navigateur</label>
+      <p class="hint">Décoché : il reste en mémoire seulement, à recoller à chaque ouverture du navigateur.</p>
+    </section>
+    <section class="actions">
+      <button id="save" class="primary" type="submit">Enregistrer et connecter</button>
+      <button id="forget" class="danger" type="button">Oublier le mot de passe</button>
+    </section>
+    <p class="hint warn-box">Ce mot de passe ouvre <strong>tout</strong> OBS, clé de stream comprise. Sillonette ne s'en sert que pour envoyer le morceau, mais OBS ne permet pas de limiter ce qu'il autorise. Ne le montre jamais à l'écran.</p>
+  </form>
+
+  <section>
+    <label for="skin">Skin</label>
+    <select id="skin"></select>
+  </section>
+  <section>
+    <label for="layout">Disposition</label>
+    <select id="layout">
+      <option value="h">Horizontale</option>
+      <option value="c">Compacte</option>
+      <option value="v">Carte verticale</option>
+    </select>
+    <p class="hint" id="size"></p>
+  </section>
+  <footer>En développement. Connexion uniquement à OBS sur ce PC (127.0.0.1). Le mot de passe reste dans ce navigateur, non chiffré (comme dans OBS lui-même).</footer>
+</main>
+</body>
+</html>

@@ -1,0 +1,58 @@
+/* Skin "Rétro": 80s synthwave. Sunset gradient, perspective grid (static SVG),
+   chrome title (gradient clipped to the text), "VHS" progress bar. Nothing animated
+   besides the common entrance and track change. */
+.sillonette {
+  --_track: rgba(255, 240, 250, 0.14);
+  --_art-bg: linear-gradient(180deg, #ff4fa3 0%, #ffb347 100%);
+  overflow: hidden;
+  isolation: isolate; /* the grid (z-index -1) stays above the card background, below the content */
+  background-image:
+    radial-gradient(ellipse 60% 85% at 88% 118%, rgba(255, 179, 71, 0.5) 0%, rgba(255, 79, 163, 0.28) 45%, rgba(255, 79, 163, 0) 72%),
+    linear-gradient(180deg, rgba(43, 16, 85, 0) 30%, rgba(255, 79, 163, 0.2) 100%);
+  border-top: 2px solid rgba(255, 179, 71, 0.85);
+  border-bottom: 2px solid rgba(255, 79, 216, 0.85);
+}
+/* the grid floor, behind the content */
+.sillonette::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 46%;
+  background: url(retro-grid.svg) center bottom / 100% 100% no-repeat;
+  z-index: -1;
+  opacity: 0.32;
+  pointer-events: none;
+}
+.sillonette .art { box-shadow: 0 0 0 2px #fff0fa, 0.2rem 0.2rem 0 0 #ff4fd8; }
+
+.sillonette .title { font-weight: 700; font-style: italic; letter-spacing: 0; }
+.sillonette .title > span {
+  background-image: linear-gradient(180deg, #ffffff 8%, var(--o-text) 46%, #ff9ad8 64%, #ffd27a 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: var(--o-text);
+}
+.sillonette .artist { font-weight: 700; color: var(--o-accent); }
+.sillonette .status {
+  padding: 0 0.4rem;
+  background: #ff4fd8;
+  color: #2b1055;
+  font-weight: 800;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+/* VHS bar: scanlines on the track, offset colour fringes on the fill */
+.sillonette .bar {
+  height: 0.42rem;
+  border-radius: 0;
+  background: repeating-linear-gradient(90deg, rgba(255, 255, 255, 0.2) 0, rgba(255, 255, 255, 0.2) 2px, rgba(255, 255, 255, 0.05) 2px, rgba(255, 255, 255, 0.05) 4px);
+}
+.sillonette .fill {
+  background: linear-gradient(90deg, #ff4fd8 0%, var(--o-accent) 100%);
+  box-shadow: 0 -1px 0 rgba(0, 255, 255, 0.7), 0 1px 0 rgba(255, 0, 80, 0.7);
+}
+.sillonette .time { font-variant-numeric: tabular-nums; letter-spacing: 0.04em; }

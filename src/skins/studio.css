@@ -1,0 +1,20 @@
+/* Skin "Studio" (default): light pastel card in the house colours.
+   Peach / butter / white / sky wash, navy text (#203856), raspberry accent (#a3216b),
+   Mochiy Pop One titles, Nunito text. Only variables and light decoration here. */
+.sillonette {
+  --_wash: linear-gradient(115deg, rgba(255, 214, 190, 0.55) 0%, rgba(255, 240, 196, 0.45) 38%, rgba(255, 255, 255, 0.25) 62%, rgba(196, 228, 250, 0.55) 100%);
+  --_art-bg: linear-gradient(135deg, #ffd9c4 0%, #fff0c4 50%, #cfe8fb 100%);
+  --_track: rgba(32, 56, 86, 0.12);
+  background-image: var(--_wash);
+  border: 1px solid rgba(255, 255, 255, 0.75);
+}
+.sillonette .art { box-shadow: 0 0 0 2px rgba(255, 255, 255, 0.85); }
+/* no letter-spacing on titles: it breaks joined scripts (Arabic...) */
+.sillonette .artist { font-weight: 800; }
+.sillonette .status {
+  padding: 0.05rem 0.5rem;
+  border-radius: 1rem;
+  color: var(--o-accent);
+  background: rgba(163, 33, 107, 0.1);
+}
+.sillonette .fill { border-radius: 1rem; }

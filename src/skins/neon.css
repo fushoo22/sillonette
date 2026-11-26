@@ -1,0 +1,36 @@
+/* Skin "Néon": night and gaming. Dark card, glowing outline (box-shadow), cyan title
+   and magenta artist (text-shadow: 2 layers at most), short flicker on each track change.
+   Only box-shadow, opacity and transform: nothing is blurred in real time. */
+.sillonette {
+  --_track: rgba(255, 255, 255, 0.14);
+  --_art-bg: linear-gradient(135deg, #1b1546 0%, #2c0f3f 100%);
+  border: 1px solid var(--o-accent);
+  box-shadow: 0 0 0.6rem -0.1rem var(--o-accent), inset 0 0 0.9rem -0.4rem var(--o-accent), var(--o-shadow);
+  font-weight: 500;
+}
+.sillonette[data-sd="0"] { box-shadow: 0 0 0.35rem -0.15rem var(--o-accent); }
+.sillonette .art { box-shadow: 0 0 0 1px var(--o-text), 0 0 0.6rem -0.1rem var(--o-text); }
+.sillonette .title { font-weight: 700; text-shadow: 0 0 0.3rem var(--o-text), 0 0 1rem rgba(0, 0, 0, 0.6); }
+.sillonette .artist { font-weight: 600; color: var(--o-accent); text-shadow: 0 0 0.35rem var(--o-accent); }
+.sillonette .status {
+  padding: 0 0.45rem;
+  border: 1px solid var(--o-accent);
+  border-radius: 1rem;
+  color: var(--o-accent);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+}
+.sillonette .bar { height: 0.2rem; overflow: visible; }
+.sillonette .fill { border-radius: 1rem; box-shadow: 0 0 0.45rem var(--o-accent); }
+.sillonette.no-art .art::after { text-shadow: 0 0 0.5rem var(--o-accent); }
+
+/* flicker of a neon tube at each track change (opacity only) */
+.sillonette.swap .title, .sillonette.swap .artist { animation: neon-flicker 0.7s linear both; }
+@keyframes neon-flicker {
+  0% { opacity: 0.2; }
+  12% { opacity: 1; }
+  20% { opacity: 0.35; }
+  32% { opacity: 1; }
+  44% { opacity: 0.6; }
+  56%, 100% { opacity: 1; }
+}

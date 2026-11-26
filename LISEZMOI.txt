@@ -1,0 +1,136 @@
+Sillonette - EN DEVELOPPEMENT
+=============================
+
+Sillonette affiche dans OBS le morceau joue sur YouTube Music, SANS aucun serveur :
+
+  onglet YouTube Music -> extension -> OBS sur ce PC (serveur WebSocket d'OBS, 127.0.0.1)
+  -> evenement JavaScript -> overlay (fichier local) dans une source Navigateur d'OBS.
+
+Rien ne sort du PC, sauf les pochettes d'album, que l'overlay charge chez Google
+(comme sur YouTube Music).
+
+Il faut : Windows 10/11, OBS Studio 28 ou plus recent (WebSocket et Navigateur sont inclus),
+Chrome, Edge ou Opera.
+
+ATTENTION : version en developpement. Jamais testee sous Windows (seulement sous Linux) ni sur de
+longues durees (plusieurs heures de live). Garde une solution de secours pour tes lives.
+
+Sillonette est un projet independant et gratuit, non affilie a YouTube, a Google ni a l'OBS Project.
+
+Contenu du zip
+--------------
+  extension-chrome\   l'extension (Chrome, Edge, Opera)
+  overlay\            l'overlay a charger dans OBS (sillonette-overlay.html)
+  LISEZMOI.txt        ce fichier
+
+
+1. Extraire le zip
+------------------
+Clic droit sur le zip -> "Extraire tout..." -> choisis un dossier que tu GARDERAS,
+par exemple  C:\Sillonette\
+(Ne le laisse pas dans Telechargements : si le dossier est supprime, l'extension et l'overlay disparaissent.)
+
+
+2. Activer le serveur WebSocket d'OBS
+-------------------------------------
+a. Ouvre OBS.
+b. Menu Outils -> Parametres du serveur WebSocket.
+c. Coche "Activer le serveur WebSocket". Laisse le port 4455.
+d. Laisse "Utiliser l'authentification" coche, et GARDE le mot de passe genere par OBS
+   (16 caracteres). N'en mets pas un court : OBS ne limite pas le nombre d'essais.
+e. Clique "Afficher les informations de connexion" et COPIE le mot de passe du serveur.
+   (Ne fais pas ca pendant un live : la fenetre affiche le mot de passe en clair.)
+f. Clique OK.
+   Si Windows demande d'autoriser OBS dans le pare-feu : refuse (Annuler).
+   Sillonette n'a besoin que de ce PC lui-meme. (Non teste sous Windows.)
+
+
+A SAVOIR AVANT D'ALLER PLUS LOIN (honnetement)
+----------------------------------------------
+Ce mot de passe donne le controle TOTAL d'OBS : scenes, demarrer/arreter le stream et
+l'enregistrement, LIRE ou CHANGER LA CLE DE STREAM... OBS ne permet pas de donner un mot de passe
+"limite" : c'est tout ou rien. Ne le montre jamais a l'ecran, ne le donne a personne.
+
+Ce que fait Sillonette pour limiter les risques :
+- il ne se connecte qu'a OBS sur CE PC (127.0.0.1), jamais ailleurs ;
+- il n'envoie qu'une seule sorte de message a OBS (le morceau en cours) et ne lit rien d'autre ;
+- le mot de passe ne passe jamais tel quel sur la connexion (seulement une preuve calculee) ;
+- l'onglet YouTube Music ne peut pas lire le mot de passe (Chrome, Edge) ;
+- bouton "Oublier le mot de passe" ; option pour ne pas le garder apres fermeture du navigateur.
+
+Ce qu'il NE PEUT PAS corriger (ca vient d'OBS) :
+- le serveur WebSocket d'OBS ecoute aussi sur ton reseau local (box, autres PC, telephones), sans
+  chiffrement : seul le mot de passe le protege. D'ou le refus dans le pare-feu de Windows (etape 2f) ;
+- une page web ouverte dans un navigateur peut aussi essayer de s'y connecter : meme protection ;
+- le mot de passe est stocke NON CHIFFRE : par OBS lui-meme dans ses reglages, et par l'extension
+  dans le profil du navigateur (si tu coches "Le garder apres la fermeture du navigateur") ;
+- quelqu'un qui controle deja ton PC (virus) peut le lire. Aucune extension ne peut empecher ca.
+
+
+3. Installer l'extension
+------------------------
+a. Ouvre la page des extensions :
+     Chrome : chrome://extensions     Edge : edge://extensions     Opera : opera://extensions
+b. Active le "Mode developpeur" (interrupteur en haut a droite, ou a gauche dans Edge).
+c. Clique "Charger l'extension non empaquetee" et choisis le dossier  extension-chrome
+   (celui qui contient manifest.json).
+d. Epingle l'extension "Sillonette" (icone puzzle -> epingle).
+   Si tu as deja d'autres extensions du meme genre, Sillonette s'ajoute a cote : elle ne les remplace pas.
+
+
+4. Relier l'extension a OBS
+---------------------------
+a. Clique sur l'icone Sillonette (un petit disque).
+b. Port WebSocket d'OBS : 4455 (sauf si tu l'as change dans OBS).
+c. Mot de passe : colle le mot de passe copie a l'etape 2e.
+   Laisse cochee "Le garder apres la fermeture du navigateur" si tu veux que ca marche tout seul
+   au prochain demarrage du PC. Decochee : il faudra le recoller a chaque ouverture du navigateur.
+d. Clique "Enregistrer et connecter". La pastille devient verte : "Connecte a OBS."
+   - "OBS introuvable" : OBS est ferme ou le serveur WebSocket n'est pas active (etape 2).
+   - "Mot de passe refuse" : recopie le mot de passe (etape 2e).
+   - "OBS demande son mot de passe" : aucun mot de passe enregistre, colle-le.
+   - Pastille ORANGE "OBS n'exige AUCUN mot de passe" : ca marche, mais n'importe quel appareil de
+     ton reseau peut piloter OBS. Dans OBS, coche "Utiliser l'authentification" (etape 2d).
+   - "OBS a ferme la connexion" : quelqu'un a clique "Expulser" dans OBS. Nouvel essai dans 1 minute.
+e. Choisis le skin et la disposition. La popup indique la taille conseillee de la source.
+
+
+5. Ajouter l'overlay dans OBS
+-----------------------------
+a. Dans OBS, cree une NOUVELLE source : Sources -> + -> "Navigateur web" -> nomme-la "Sillonette".
+   (Ne modifie pas une source existante d'un autre overlay : garde-la telle quelle.)
+b. Coche "Fichier local", clique Parcourir et choisis  overlay\sillonette-overlay.html
+c. Largeur 800, Hauteur 200 (ou la taille conseillee par la popup).
+d. Laisse le reste par defaut, puis OK.
+
+
+6. Essayer
+----------
+Ouvre https://music.youtube.com (recharge l'onglet s'il etait deja ouvert) et lance un morceau :
+il apparait dans OBS en une seconde environ.
+
+- Un seul onglet YouTube Music s'affiche a la fois. Si un second onglet joue, l'overlay affiche
+  "E10" et garde le premier ; quand le premier est mis en pause ou ferme, le second prend la main.
+- Fermer l'onglet vide l'overlay aussitot.
+- Si OBS est ouvert apres le navigateur, ou si tu recharges la source, l'overlay se remet a jour
+  en 5 secondes environ.
+- Si le navigateur est ferme, l'overlay se cache tout seul apres 20 secondes.
+
+
+Desinstaller
+------------
+Popup Sillonette -> "Oublier le mot de passe", puis page des extensions -> Sillonette -> Supprimer.
+Dans OBS, supprime la source Sillonette. Desactive le serveur WebSocket d'OBS si rien d'autre ne s'en
+sert. Si tu crois que le mot de passe a fuite : dans OBS, "Generer un mot de passe" puis OK.
+
+
+Limites actuelles
+-----------------
+- YouTube Music uniquement. Reglages : skin et disposition seulement (pas l'editeur complet).
+- Le mot de passe d'OBS est garde non chiffre (voir "A savoir" plus haut).
+- OBS envoie l'evenement a TOUTES ses sources Navigateur : une autre source (alertes, chat...)
+  pourrait lire le titre en cours. Rien d'autre n'y est.
+- Firefox : possible (build separe) mais extension temporaire, non fournie dans ce zip.
+
+Licences : MIT pour Sillonette (overlay\licences\LICENSE-Sillonette.txt) ; polices sous SIL Open
+Font License 1.1 (overlay\licences\OFL-*.txt). YouTube est une marque de Google LLC.

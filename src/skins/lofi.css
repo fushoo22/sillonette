@@ -1,0 +1,56 @@
+/* Skin "Lofi": soft and cosy, in the house colours (peach, butter, sky, navy, raspberry).
+   Very round corners, lightly textured paper (static gradients), Nunito, and the round
+   mascot with headphones that nods gently while music plays (part "mascot", can be hidden). */
+.sillonette {
+  --_track: rgba(32, 56, 86, 0.1);
+  --_art-bg: linear-gradient(135deg, #ffd9c4 0%, #fff0c4 55%, #cfe8fb 100%);
+  background-image:
+    radial-gradient(rgba(32, 56, 86, 0.05) 0.06rem, transparent 0.08rem),
+    radial-gradient(rgba(163, 33, 107, 0.04) 0.05rem, transparent 0.07rem),
+    linear-gradient(160deg, rgba(255, 217, 196, 0.55) 0%, rgba(255, 240, 196, 0.35) 50%, rgba(207, 232, 251, 0.5) 100%);
+  background-size: 0.55rem 0.55rem, 0.8rem 0.8rem, 100% 100%;
+  background-position: 0 0, 0.3rem 0.4rem, 0 0;
+  border: 2px solid rgba(255, 255, 255, 0.9);
+}
+.sillonette .art { box-shadow: 0 0 0 3px #ffffff, 0 0.2rem 0.6rem rgba(32, 56, 86, 0.15); }
+.sillonette .title { font-weight: 900; }
+.sillonette .artist { font-weight: 800; color: var(--o-accent); }
+.sillonette .status {
+  padding: 0.05rem 0.55rem;
+  border-radius: 1rem;
+  background: #cfe8fb;
+  color: var(--o-text);
+}
+.sillonette .bar { height: 0.4rem; background: var(--_track); }
+.sillonette .fill { border-radius: 1rem; background: var(--o-accent); }
+
+/* mascot: a static SVG, only its transform is animated, and only while playing */
+.sillonette.show-mascot::after {
+  content: "";
+  position: absolute;
+  top: calc(50% - 1.45rem);
+  right: 0.7rem;
+  width: 2.9rem;
+  height: 2.9rem;
+  background: url(lofi-mascot.svg) center / contain no-repeat;
+  transform-origin: 50% 90%;
+  animation: lofi-nod 2.2s ease-in-out infinite alternate;
+  animation-play-state: paused;
+}
+.sillonette.is-visible[data-state="playing"].show-mascot::after { animation-play-state: running; }
+@keyframes lofi-nod {
+  from { transform: rotate(-7deg); }
+  to { transform: rotate(7deg); }
+}
+.sillonette.show-mascot { padding-right: 4rem; }
+.sillonette[data-align="r"].show-mascot { padding-right: 0.7rem; padding-left: 4rem; }
+.sillonette[data-align="r"].show-mascot::after { right: auto; left: 0.7rem; }
+.sillonette[data-layout="c"].show-mascot { padding-right: 2.6rem; }
+.sillonette[data-layout="c"].show-mascot::after { top: calc(50% - 0.95rem); right: 0.4rem; width: 1.9rem; height: 1.9rem; }
+.sillonette[data-layout="c"][data-align="r"].show-mascot { padding-right: 0.9rem; padding-left: 2.6rem; }
+.sillonette[data-layout="c"][data-align="r"].show-mascot::after { right: auto; left: 0.4rem; }
+.sillonette[data-layout="v"].show-mascot { padding-right: 0.7rem; padding-left: 0.7rem; }
+.sillonette[data-layout="v"].show-mascot::after { top: auto; bottom: 0.4rem; right: 0.4rem; left: auto; width: 2.4rem; height: 2.4rem; }
+.sillonette[data-layout="v"].show-mascot .meta { padding-bottom: 1.9rem; }
+.sillonette[data-state="waiting"].show-mascot::after { display: none; }
+.sillonette[data-state="waiting"].show-mascot { padding-right: 1rem; padding-left: 1rem; }

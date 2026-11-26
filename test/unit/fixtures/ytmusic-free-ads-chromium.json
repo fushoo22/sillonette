@@ -1,0 +1,22 @@
+{
+ "description": "Vrai YouTube Music sans compte (publicités), Chromium 159 headless, 25/11/2026 : séquence réduite, titres anonymisés. Au clic sur « suivant » pendant une publicité, l'élément est vidé (emptied, readyState 0, duration NaN) alors que mediaSession décrit encore la publicité et que la classe ad-showing a disparu : l'extension 0.1.0 a réellement envoyé au relais le titre de la publicité, en pause, dur 0 (corps du POST enregistré). Le drapeau ad=false de l'instantané 4 est déduit de ce POST ; les autres valeurs sont relevées (bar.max du titre 2 : lu sur l'affichage « 5:02 » de la barre, l'attribut n'était pas enregistré dans cette session).",
+ "recorded": "2026-11-25",
+ "snapshots": [
+  { "t": 0, "meta": { "title": "Titre 1", "artist": "Artiste 1", "album": "", "artwork": [{ "src": "https://i.ytimg.com/vi/art1_xxxxxxx/sddefault.jpg?sqp=xxxx&rs=xxxx", "sizes": "320x180" }] },
+    "media": { "duration": 213.061, "currentTime": 14.544, "paused": false, "ended": false, "readyState": 4, "seeking": false, "playbackRate": 1 }, "bar": null, "ad": false },
+  { "t": 15500, "ev": "emptied", "meta": { "title": "Publicite 1", "artist": "Annonceur 1", "album": "", "artwork": [{ "src": "https://i.ytimg.com/vi/ad1_xxxxxxxx/mqdefault.jpg", "sizes": "320x180" }] },
+    "media": { "duration": null, "currentTime": 0, "paused": false, "ended": false, "readyState": 0, "seeking": false, "playbackRate": 1 }, "bar": null, "ad": true },
+  { "t": 15600, "ev": "playing", "meta": { "title": "Publicite 1", "artist": "Annonceur 1", "album": "", "artwork": [{ "src": "https://i.ytimg.com/vi/ad1_xxxxxxxx/mqdefault.jpg", "sizes": "320x180" }] },
+    "media": { "duration": 15.021, "currentTime": 0, "paused": false, "ended": false, "readyState": 4, "seeking": false, "playbackRate": 1 }, "bar": null, "ad": true },
+  { "t": 25400, "ev": "emptied", "meta": { "title": "Publicite 1", "artist": "Annonceur 1", "album": "", "artwork": [{ "src": "https://i.ytimg.com/vi/ad1_xxxxxxxx/mqdefault.jpg", "sizes": "320x180" }] },
+    "media": { "duration": null, "currentTime": 0, "paused": true, "ended": false, "readyState": 0, "seeking": false, "playbackRate": 1 }, "bar": null, "ad": false },
+  { "t": 26900, "meta": { "title": "Publicite 1", "artist": "Annonceur 1", "album": "", "artwork": [{ "src": "https://i.ytimg.com/vi/ad1_xxxxxxxx/mqdefault.jpg", "sizes": "320x180" }] },
+    "media": { "duration": null, "currentTime": 0, "paused": true, "ended": false, "readyState": 0, "seeking": false, "playbackRate": 1 }, "bar": null, "ad": false },
+  { "t": 27800, "ev": "playing", "meta": { "title": "Publicite 2", "artist": "Annonceur 2", "album": "", "artwork": [{ "src": "https://i.ytimg.com/vi/ad2_xxxxxxxx/mqdefault.jpg", "sizes": "320x180" }] },
+    "media": { "duration": 15.041, "currentTime": 0, "paused": false, "ended": false, "readyState": 4, "seeking": false, "playbackRate": 1 }, "bar": null, "ad": true },
+  { "t": 43000, "ev": "playing", "meta": { "title": "Titre 2", "artist": "Artiste 2", "album": "Album 2", "artwork": [{ "src": "https://yt3.googleusercontent.com/art2_xxxxxxxxxxxxxxxxxxxxxxxxxxxx=w60-h60-l90-rj", "sizes": "60x60" }, { "src": "https://yt3.googleusercontent.com/art2_xxxxxxxxxxxxxxxxxxxxxxxxxxxx=w544-h544-l90-rj", "sizes": "544x544" }] },
+    "media": { "duration": 301, "currentTime": 0.05, "paused": false, "ended": false, "readyState": 4, "seeking": false, "playbackRate": 1 }, "bar": { "value": "0", "max": "302" }, "ad": false },
+  { "t": 46000, "meta": { "title": "Titre 2", "artist": "Artiste 2", "album": "Album 2", "artwork": [{ "src": "https://yt3.googleusercontent.com/art2_xxxxxxxxxxxxxxxxxxxxxxxxxxxx=w60-h60-l90-rj", "sizes": "60x60" }, { "src": "https://yt3.googleusercontent.com/art2_xxxxxxxxxxxxxxxxxxxxxxxxxxxx=w544-h544-l90-rj", "sizes": "544x544" }] },
+    "media": { "duration": 301, "currentTime": 3.05, "paused": false, "ended": false, "readyState": 4, "seeking": false, "playbackRate": 1 }, "bar": { "value": "3", "max": "302" }, "ad": false }
+ ]
+}

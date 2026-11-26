@@ -1,0 +1,42 @@
+/* Skin "Arcade": pixels and 8 bits. Pixel font, bright blocks, segmented bar,
+   stepped "pop" (steps()), notched pixel border (box-shadows, square corners). */
+.sillonette {
+  --_edge: #0b1033;
+  --_track: rgba(0, 0, 0, 0.35);
+  --_art-bg: #ff5a5f;
+  border-radius: 0;
+  box-shadow: 0 -0.25rem 0 0 var(--_edge), 0 0.25rem 0 0 var(--_edge), -0.25rem 0 0 0 var(--_edge), 0.25rem 0 0 0 var(--_edge);
+  transition: opacity 0.32s steps(4, end), transform 0.32s steps(4, end);
+  font-weight: 700;
+}
+.sillonette[data-sd="1"] { box-shadow: 0 -0.25rem 0 0 var(--_edge), 0 0.25rem 0 0 var(--_edge), -0.25rem 0 0 0 var(--_edge), 0.25rem 0 0 0 var(--_edge), 0.5rem 0.5rem 0 0 rgba(0, 0, 0, 0.3); }
+.sillonette[data-sd="2"] { box-shadow: 0 -0.25rem 0 0 var(--_edge), 0 0.25rem 0 0 var(--_edge), -0.25rem 0 0 0 var(--_edge), 0.25rem 0 0 0 var(--_edge), 0.5rem 0.5rem 0 0.25rem rgba(0, 0, 0, 0.45); }
+.sillonette[data-anim="pop"] { transform: scale(0.8); }
+
+.sillonette .art { border-radius: 0; box-shadow: 0 0 0 0.2rem var(--o-accent), 0.35rem 0.35rem 0 0.2rem var(--_edge); }
+.sillonette[data-layout="c"] .art { box-shadow: 0 0 0 0.15rem var(--o-accent); }
+.sillonette .title { font-weight: 600; font-size: 1.1rem; line-height: 1.4; text-shadow: 0.12rem 0.12rem 0 var(--_edge); }
+.sillonette[data-layout="c"] .title { font-size: 0.95rem; }
+.sillonette .line2 { font-size: 0.8rem; margin-top: 0.2rem; }
+.sillonette .artist { color: var(--o-accent); text-transform: uppercase; letter-spacing: 0.02em; }
+.sillonette .status {
+  padding: 0 0.35rem;
+  background: #ff5a5f;
+  color: #ffffff;
+  box-shadow: 0.12rem 0.12rem 0 var(--_edge);
+  text-transform: uppercase;
+}
+.sillonette.no-art .art::after { color: #ffffff; }
+
+/* segmented bar: a mask cuts both the track and the fill into blocks */
+.sillonette .bar {
+  height: 0.55rem;
+  border-radius: 0;
+  -webkit-mask-image: repeating-linear-gradient(90deg, #000 0, #000 0.5rem, transparent 0.5rem, transparent 0.65rem);
+  mask-image: repeating-linear-gradient(90deg, #000 0, #000 0.5rem, transparent 0.5rem, transparent 0.65rem);
+}
+.sillonette .fill { background: var(--o-accent); }
+.sillonette[data-layout="c"] .bar { height: 0.3rem; }
+
+/* stepped track change */
+.sillonette.swap .meta, .sillonette.swap .art { animation-timing-function: steps(3, end); }

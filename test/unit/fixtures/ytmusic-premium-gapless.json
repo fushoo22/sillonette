@@ -1,0 +1,3406 @@
+{
+ "description": "Vrai YouTube Music, compte Premium, Firefox 160 : lecture déjà enchaînée sans coupure (le <video> cumule : duration 615-632 s, currentTime 604 s pour une barre 1:49 / 2:02), puis 2 x suivant (bouton), puis un enchaînement naturel SANS emptied (le même <video> continue, currentTime 100 s au début du morceau suivant). Premier enregistrement (script de la session) : seeking déduit des événements seeking/seeked, ended et playbackRate non relevés (false, 1).",
+ "recorded": "2026-11-25",
+ "snapshots": [
+  {
+   "t": 159,
+   "kind": "chg",
+   "meta": {
+    "title": "Titre 1",
+    "artist": "Artiste 2",
+    "album": "Titre 1",
+    "artwork": [
+     {
+      "src": "https://yt3.googleusercontent.com/art1_xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx=w60-h60-l90-rj",
+      "sizes": "60x60"
+     },
+     {
+      "src": "https://yt3.googleusercontent.com/art1_xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx=w120-h120-l90-rj",
+      "sizes": "120x120"
+     },
+     {
+      "src": "https://yt3.googleusercontent.com/art1_xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx=w226-h226-l90-rj",
+      "sizes": "226x226"
+     },
+     {
+      "src": "https://yt3.googleusercontent.com/art1_xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx=w544-h544-l90-rj",
+      "sizes": "544x544"
+     }
+    ]
+   },
+   "mediaCount": 1,
+   "media": {
+    "duration": 615.913378,
+    "currentTime": 604.067,
+    "paused": false,
+    "ended": false,
+    "readyState": 4,
+    "seeking": false,
+    "playbackRate": 1
+   },
+   "bar": {
+    "value": "109",
+    "max": "122"
+   },
+   "timeInfo": "1:49 / 2:02",
+   "barTitle": "(Titre 1)",
+   "ad": false
+  },
+  {
+   "t": 211,
+   "kind": "tu",
+   "meta": {
+    "title": "Titre 1",
+    "artist": "Artiste 2",
+    "album": "Titre 1",
+    "artwork": [
+     {
+      "src": "https://yt3.googleusercontent.com/art1_xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx=w60-h60-l90-rj",
+      "sizes": "60x60"
+     },
+     {
+      "src": "https://yt3.googleusercontent.com/art1_xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx=w120-h120-l90-rj",
+      "sizes": "120x120"
+     },
+     {
+      "src": "https://yt3.googleusercontent.com/art1_xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx=w226-h226-l90-rj",
+      "sizes": "226x226"
+     },
+     {
+      "src": "https://yt3.googleusercontent.com/art1_xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx=w544-h544-l90-rj",
+      "sizes": "544x544"
+     }
+    ]
+   },
+   "mediaCount": 1,
+   "media": {
+    "duration": 615.913378,
+    "currentTime": 604.147,
+    "paused": false,
+    "ended": false,
+    "readyState": 4,
+    "seeking": false,
+    "playbackRate": 1
+   },
+   "bar": {
+    "value": "109",
+    "max": "122"
+   },
+   "timeInfo": "1:49 / 2:02",
+   "barTitle": "(Titre 1)",
+   "ad": false
+  },
+  {
+   "t": 2188,
+   "kind": "ev",
+   "ev": "durationchange",
+   "meta": {
+    "title": "Titre 1",
+    "artist": "Artiste 2",
+    "album": "Titre 1",
+    "artwork": [
+     {
+      "src": "https://yt3.googleusercontent.com/art1_xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx=w60-h60-l90-rj",
+      "sizes": "60x60"
+     },
+     {
+      "src": "https://yt3.googleusercontent.com/art1_xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx=w120-h120-l90-rj",
+      "sizes": "120x120"
+     },
+     {
+      "src": "https://yt3.googleusercontent.com/art1_xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx=w226-h226-l90-rj",
+      "sizes": "226x226"
+     },
+     {
+      "src": "https://yt3.googleusercontent.com/art1_xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx=w544-h544-l90-rj",
+      "sizes": "544x544"
+     }
+    ]
+   },
+   "mediaCount": 1,
+   "media": {
+    "duration": 617.850793,
+    "currentTime": 606.126,
+    "paused": false,
+    "ended": false,
+    "readyState": 4,
+    "seeking": false,
+    "playbackRate": 1
+   },
+   "bar": {
+    "value": "111",
+    "max": "122"
+   },
+   "timeInfo": "1:51 / 2:02",
+   "barTitle": "(Titre 1)",
+   "ad": false
+  },
+  {
+   "t": 2236,
+   "kind": "chg",
+   "meta": {
+    "title": "Titre 1",
+    "artist": "Artiste 2",
+    "album": "Titre 1",
+    "artwork": [
+     {
+      "src": "https://yt3.googleusercontent.com/art1_xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx=w60-h60-l90-rj",
+      "sizes": "60x60"
+     },
+     {
+      "src": "https://yt3.googleusercontent.com/art1_xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx=w120-h120-l90-rj",
+      "sizes": "120x120"
+     },
+     {
+      "src": "https://yt3.googleusercontent.com/art1_xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx=w226-h226-l90-rj",
+      "sizes": "226x226"
+     },
+     {
+      "src": "https://yt3.googleusercontent.com/art1_xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx=w544-h544-l90-rj",
+      "sizes": "544x544"
+     }
+    ]
+   },
+   "mediaCount": 1,
+   "media": {
+    "duration": 617.850793,
+    "currentTime": 606.166,
+    "paused": false,
+    "ended": false,
+    "readyState": 4,
+    "seeking": false,
+    "playbackRate": 1
+   },
+   "bar": {
+    "value": "111",
+    "max": "122"
+   },
+   "timeInfo": "1:51 / 2:02",
+   "barTitle": "(Titre 1)",
+   "ad": false
+  },
+  {
+   "t": 2241,
+   "kind": "ev",
+   "ev": "durationchange",
+   "meta": {
+    "title": "Titre 1",
+    "artist": "Artiste 2",
+    "album": "Titre 1",
+    "artwork": [
+     {
+      "src": "https://yt3.googleusercontent.com/art1_xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx=w60-h60-l90-rj",
+      "sizes": "60x60"
+     },
+     {
+      "src": "https://yt3.googleusercontent.com/art1_xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx=w120-h120-l90-rj",
+      "sizes": "120x120"
+     },
+     {
+      "src": "https://yt3.googleusercontent.com/art1_xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx=w226-h226-l90-rj",
+      "sizes": "226x226"
+     },
+     {
+      "src": "https://yt3.googleusercontent.com/art1_xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx=w544-h544-l90-rj",
+      "sizes": "544x544"
+     }
+    ]
+   },
+   "mediaCount": 1,
+   "media": {
+    "duration": 618.315192,
+    "currentTime": 606.166,
+    "paused": false,
+    "ended": false,
+    "readyState": 4,
+    "seeking": false,
+    "playbackRate": 1
+   },
+   "bar": {
+    "value": "111",
+    "max": "122"
+   },
+   "timeInfo": "1:51 / 2:02",
+   "barTitle": "(Titre 1)",
+   "ad": false
+  },
+  {
+   "t": 2253,
+   "kind": "ev",
+   "ev": "durationchange",
+   "meta": {
+    "title": "Titre 1",
+    "artist": "Artiste 2",
+    "album": "Titre 1",
+    "artwork": [
+     {
+      "src": "https://yt3.googleusercontent.com/art1_xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx=w60-h60-l90-rj",
+      "sizes": "60x60"
+     },
+     {
+      "src": "https://yt3.googleusercontent.com/art1_xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx=w120-h120-l90-rj",
+      "sizes": "120x120"
+     },
+     {
+      "src": "https://yt3.googleusercontent.com/art1_xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx=w226-h226-l90-rj",
+      "sizes": "226x226"
+     },
+     {
+      "src": "https://yt3.googleusercontent.com/art1_xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx=w544-h544-l90-rj",
+      "sizes": "544x544"
+     }
+    ]
+   },
+   "mediaCount": 1,
+   "media": {
+    "duration": 618.454512,
+    "currentTime": 606.166,
+    "paused": false,
+    "ended": false,
+    "readyState": 4,
+    "seeking": false,
+    "playbackRate": 1
+   },
+   "bar": {
+    "value": "111",
+    "max": "122"
+   },
+   "timeInfo": "1:51 / 2:02",
+   "barTitle": "(Titre 1)",
+   "ad": false
+  },
+  {
+   "t": 2262,
+   "kind": "ev",
+   "ev": "durationchange",
+   "meta": {
+    "title": "Titre 1",
+    "artist": "Artiste 2",
+    "album": "Titre 1",
+    "artwork": [
+     {
+      "src": "https://yt3.googleusercontent.com/art1_xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx=w60-h60-l90-rj",
+      "sizes": "60x60"
+     },
+     {
+      "src": "https://yt3.googleusercontent.com/art1_xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx=w120-h120-l90-rj",
+      "sizes": "120x120"
+     },
+     {
+      "src": "https://yt3.googleusercontent.com/art1_xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx=w226-h226-l90-rj",
+      "sizes": "226x226"
+     },
+     {
+      "src": "https://yt3.googleusercontent.com/art1_xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx=w544-h544-l90-rj",
+      "sizes": "544x544"
+     }
+    ]
+   },
+   "mediaCount": 1,
+   "media": {
+    "duration": 619.081451,
+    "currentTime": 606.166,
+    "paused": false,
+    "ended": false,
+    "readyState": 4,
+    "seeking": false,
+    "playbackRate": 1
+   },
+   "bar": {
+    "value": "111",
+    "max": "122"
+   },
+   "timeInfo": "1:51 / 2:02",
+   "barTitle": "(Titre 1)",
+   "ad": false
+  },
+  {
+   "t": 2289,
+   "kind": "chg",
+   "meta": {
+    "title": "Titre 1",
+    "artist": "Artiste 2",
+    "album": "Titre 1",
+    "artwork": [
+     {
+      "src": "https://yt3.googleusercontent.com/art1_xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx=w60-h60-l90-rj",
+      "sizes": "60x60"
+     },
+     {
+      "src": "https://yt3.googleusercontent.com/art1_xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx=w120-h120-l90-rj",
+      "sizes": "120x120"
+     },
+     {
+      "src": "https://yt3.googleusercontent.com/art1_xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx=w226-h226-l90-rj",
+      "sizes": "226x226"
+     },
+     {
+      "src": "https://yt3.googleusercontent.com/art1_xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx=w544-h544-l90-rj",
+      "sizes": "544x544"
+     }
+    ]
+   },
+   "mediaCount": 1,
+   "media": {
+    "duration": 619.081451,
+    "currentTime": 606.176,
+    "paused": false,
+    "ended": false,
+    "readyState": 4,
+    "seeking": false,
+    "playbackRate": 1
+   },
+   "bar": {
+    "value": "111",
+    "max": "122"
+   },
+   "timeInfo": "1:51 / 2:02",
+   "barTitle": "(Titre 1)",
+   "ad": false
+  },
+  {
+   "t": 2426,
+   "kind": "tu",
+   "meta": {
+    "title": "Titre 1",
+    "artist": "Artiste 2",
+    "album": "Titre 1",
+    "artwork": [
+     {
+      "src": "https://yt3.googleusercontent.com/art1_xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx=w60-h60-l90-rj",
+      "sizes": "60x60"
+     },
+     {
+      "src": "https://yt3.googleusercontent.com/art1_xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx=w120-h120-l90-rj",
+      "sizes": "120x120"
+     },
+     {
+      "src": "https://yt3.googleusercontent.com/art1_xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx=w226-h226-l90-rj",
+      "sizes": "226x226"
+     },
+     {
+      "src": "https://yt3.googleusercontent.com/art1_xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx=w544-h544-l90-rj",
+      "sizes": "544x544"
+     }
+    ]
+   },
+   "mediaCount": 1,
+   "media": {
+    "duration": 619.081451,
+    "currentTime": 606.327,
+    "paused": false,
+    "ended": false,
+    "readyState": 4,
+    "seeking": false,
+    "playbackRate": 1
+   },
+   "bar": {
+    "value": "111",
+    "max": "122"
+   },
+   "timeInfo": "1:51 / 2:02",
+   "barTitle": "(Titre 1)",
+   "ad": false
+  },
+  {
+   "t": 2553,
+   "kind": "ev",
+   "ev": "durationchange",
+   "meta": {
+    "title": "Titre 1",
+    "artist": "Artiste 2",
+    "album": "Titre 1",
+    "artwork": [
+     {
+      "src": "https://yt3.googleusercontent.com/art1_xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx=w60-h60-l90-rj",
+      "sizes": "60x60"
+     },
+     {
+      "src": "https://yt3.googleusercontent.com/art1_xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx=w120-h120-l90-rj",
+      "sizes": "120x120"
+     },
+     {
+      "src": "https://yt3.googleusercontent.com/art1_xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx=w226-h226-l90-rj",
+      "sizes": "226x226"
+     },
+     {
+      "src": "https://yt3.googleusercontent.com/art1_xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx=w544-h544-l90-rj",
+      "sizes": "544x544"
+     }
+    ]
+   },
+   "mediaCount": 1,
+   "media": {
+    "duration": 620.590748,
+    "currentTime": 606.448,
+    "paused": false,
+    "ended": false,
+    "readyState": 4,
+    "seeking": false,
+    "playbackRate": 1
+   },
+   "bar": {
+    "value": "111",
+    "max": "122"
+   },
+   "timeInfo": "1:51 / 2:02",
+   "barTitle": "(Titre 1)",
+   "ad": false
+  },
+  {
+   "t": 2599,
+   "kind": "chg",
+   "meta": {
+    "title": "Titre 1",
+    "artist": "Artiste 2",
+    "album": "Titre 1",
+    "artwork": [
+     {
+      "src": "https://yt3.googleusercontent.com/art1_xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx=w60-h60-l90-rj",
+      "sizes": "60x60"
+     },
+     {
+      "src": "https://yt3.googleusercontent.com/art1_xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx=w120-h120-l90-rj",
+      "sizes": "120x120"
+     },
+     {
+      "src": "https://yt3.googleusercontent.com/art1_xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx=w226-h226-l90-rj",
+      "sizes": "226x226"
+     },
+     {
+      "src": "https://yt3.googleusercontent.com/art1_xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx=w544-h544-l90-rj",
+      "sizes": "544x544"
+     }
+    ]
+   },
+   "mediaCount": 1,
+   "media": {
+    "duration": 620.590748,
+    "currentTime": 606.448,
+    "paused": false,
+    "ended": false,
+    "readyState": 4,
+    "seeking": false,
+    "playbackRate": 1
+   },
+   "bar": {
+    "value": "111",
+    "max": "122"
+   },
+   "timeInfo": "1:51 / 2:02",
+   "barTitle": "(Titre 1)",
+   "ad": false
+  },
+  {
+   "t": 2606,
+   "kind": "ev",
+   "ev": "durationchange",
+   "meta": {
+    "title": "Titre 1",
+    "artist": "Artiste 2",
+    "album": "Titre 1",
+    "artwork": [
+     {
+      "src": "https://yt3.googleusercontent.com/art1_xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx=w60-h60-l90-rj",
+      "sizes": "60x60"
+     },
+     {
+      "src": "https://yt3.googleusercontent.com/art1_xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx=w120-h120-l90-rj",
+      "sizes": "120x120"
+     },
+     {
+      "src": "https://yt3.googleusercontent.com/art1_xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx=w226-h226-l90-rj",
+      "sizes": "226x226"
+     },
+     {
+      "src": "https://yt3.googleusercontent.com/art1_xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx=w544-h544-l90-rj",
+      "sizes": "544x544"
+     }
+    ]
+   },
+   "mediaCount": 1,
+   "media": {
+    "duration": 624.050521,
+    "currentTime": 606.488,
+    "paused": false,
+    "ended": false,
+    "readyState": 4,
+    "seeking": false,
+    "playbackRate": 1
+   },
+   "bar": {
+    "value": "111",
+    "max": "122"
+   },
+   "timeInfo": "1:51 / 2:02",
+   "barTitle": "(Titre 1)",
+   "ad": false
+  },
+  {
+   "t": 2653,
+   "kind": "chg",
+   "meta": {
+    "title": "Titre 1",
+    "artist": "Artiste 2",
+    "album": "Titre 1",
+    "artwork": [
+     {
+      "src": "https://yt3.googleusercontent.com/art1_xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx=w60-h60-l90-rj",
+      "sizes": "60x60"
+     },
+     {
+      "src": "https://yt3.googleusercontent.com/art1_xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx=w120-h120-l90-rj",
+      "sizes": "120x120"
+     },
+     {
+      "src": "https://yt3.googleusercontent.com/art1_xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx=w226-h226-l90-rj",
+      "sizes": "226x226"
+     },
+     {
+      "src": "https://yt3.googleusercontent.com/art1_xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx=w544-h544-l90-rj",
+      "sizes": "544x544"
+     }
+    ]
+   },
+   "mediaCount": 1,
+   "media": {
+    "duration": 624.050521,
+    "currentTime": 606.52,
+    "paused": false,
+    "ended": false,
+    "readyState": 4,
+    "seeking": false,
+    "playbackRate": 1
+   },
+   "bar": {
+    "value": "111",
+    "max": "122"
+   },
+   "timeInfo": "1:51 / 2:02",
+   "barTitle": "(Titre 1)",
+   "ad": false
+  },
+  {
+   "t": 2672,
+   "kind": "ev",
+   "ev": "durationchange",
+   "meta": {
+    "title": "Titre 1",
+    "artist": "Artiste 2",
+    "album": "Titre 1",
+    "artwork": [
+     {
+      "src": "https://yt3.googleusercontent.com/art1_xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx=w60-h60-l90-rj",
+      "sizes": "60x60"
+     },
+     {
+      "src": "https://yt3.googleusercontent.com/art1_xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx=w120-h120-l90-rj",
+      "sizes": "120x120"
+     },
+     {
+      "src": "https://yt3.googleusercontent.com/art1_xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx=w226-h226-l90-rj",
+      "sizes": "226x226"
+     },
+     {
+      "src": "https://yt3.googleusercontent.com/art1_xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx=w544-h544-l90-rj",
+      "sizes": "544x544"
+     }
+    ]
+   },
+   "mediaCount": 1,
+   "media": {
+    "duration": 625.861678,
+    "currentTime": 606.578,
+    "paused": false,
+    "ended": false,
+    "readyState": 4,
+    "seeking": false,
+    "playbackRate": 1
+   },
+   "bar": {
+    "value": "111",
+    "max": "122"
+   },
+   "timeInfo": "1:51 / 2:02",
+   "barTitle": "(Titre 1)",
+   "ad": false
+  },
+  {
+   "t": 2690,
+   "kind": "ev",
+   "ev": "durationchange",
+   "meta": {
+    "title": "Titre 1",
+    "artist": "Artiste 2",
+    "album": "Titre 1",
+    "artwork": [
+     {
+      "src": "https://yt3.googleusercontent.com/art1_xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx=w60-h60-l90-rj",
+      "sizes": "60x60"
+     },
+     {
+      "src": "https://yt3.googleusercontent.com/art1_xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx=w120-h120-l90-rj",
+      "sizes": "120x120"
+     },
+     {
+      "src": "https://yt3.googleusercontent.com/art1_xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx=w226-h226-l90-rj",
+      "sizes": "226x226"
+     },
+     {
+      "src": "https://yt3.googleusercontent.com/art1_xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx=w544-h544-l90-rj",
+      "sizes": "544x544"
+     }
+    ]
+   },
+   "mediaCount": 1,
+   "media": {
+    "duration": 632.316825,
+    "currentTime": 606.578,
+    "paused": false,
+    "ended": false,
+    "readyState": 4,
+    "seeking": false,
+    "playbackRate": 1
+   },
+   "bar": {
+    "value": "111",
+    "max": "122"
+   },
+   "timeInfo": "1:51 / 2:02",
+   "barTitle": "(Titre 1)",
+   "ad": false
+  },
+  {
+   "t": 2706,
+   "kind": "chg",
+   "meta": {
+    "title": "Titre 1",
+    "artist": "Artiste 2",
+    "album": "Titre 1",
+    "artwork": [
+     {
+      "src": "https://yt3.googleusercontent.com/art1_xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx=w60-h60-l90-rj",
+      "sizes": "60x60"
+     },
+     {
+      "src": "https://yt3.googleusercontent.com/art1_xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx=w120-h120-l90-rj",
+      "sizes": "120x120"
+     },
+     {
+      "src": "https://yt3.googleusercontent.com/art1_xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx=w226-h226-l90-rj",
+      "sizes": "226x226"
+     },
+     {
+      "src": "https://yt3.googleusercontent.com/art1_xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx=w544-h544-l90-rj",
+      "sizes": "544x544"
+     }
+    ]
+   },
+   "mediaCount": 1,
+   "media": {
+    "duration": 632.316825,
+    "currentTime": 606.578,
+    "paused": false,
+    "ended": false,
+    "readyState": 4,
+    "seeking": false,
+    "playbackRate": 1
+   },
+   "bar": {
+    "value": "111",
+    "max": "122"
+   },
+   "timeInfo": "1:51 / 2:02",
+   "barTitle": "(Titre 1)",
+   "ad": false
+  },
+  {
+   "t": 4659,
+   "kind": "tu",
+   "meta": {
+    "title": "Titre 1",
+    "artist": "Artiste 2",
+    "album": "Titre 1",
+    "artwork": [
+     {
+      "src": "https://yt3.googleusercontent.com/art1_xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx=w60-h60-l90-rj",
+      "sizes": "60x60"
+     },
+     {
+      "src": "https://yt3.googleusercontent.com/art1_xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx=w120-h120-l90-rj",
+      "sizes": "120x120"
+     },
+     {
+      "src": "https://yt3.googleusercontent.com/art1_xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx=w226-h226-l90-rj",
+      "sizes": "226x226"
+     },
+     {
+      "src": "https://yt3.googleusercontent.com/art1_xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx=w544-h544-l90-rj",
+      "sizes": "544x544"
+     }
+    ]
+   },
+   "mediaCount": 1,
+   "media": {
+    "duration": 632.316825,
+    "currentTime": 608.536,
+    "paused": false,
+    "ended": false,
+    "readyState": 4,
+    "seeking": false,
+    "playbackRate": 1
+   },
+   "bar": {
+    "value": "113",
+    "max": "122"
+   },
+   "timeInfo": "1:53 / 2:02",
+   "barTitle": "(Titre 1)",
+   "ad": false
+  },
+  {
+   "t": 6102,
+   "action": "next"
+  },
+  {
+   "t": 6657,
+   "kind": "ev",
+   "ev": "emptied",
+   "meta": {
+    "title": "Titre 1",
+    "artist": "Artiste 2",
+    "album": "Titre 1",
+    "artwork": [
+     {
+      "src": "https://yt3.googleusercontent.com/art1_xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx=w60-h60-l90-rj",
+      "sizes": "60x60"
+     },
+     {
+      "src": "https://yt3.googleusercontent.com/art1_xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx=w120-h120-l90-rj",
+      "sizes": "120x120"
+     },
+     {
+      "src": "https://yt3.googleusercontent.com/art1_xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx=w226-h226-l90-rj",
+      "sizes": "226x226"
+     },
+     {
+      "src": "https://yt3.googleusercontent.com/art1_xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx=w544-h544-l90-rj",
+      "sizes": "544x544"
+     }
+    ]
+   },
+   "mediaCount": 1,
+   "media": {
+    "duration": null,
+    "currentTime": 0,
+    "paused": true,
+    "ended": false,
+    "readyState": 0,
+    "seeking": false,
+    "playbackRate": 1
+   },
+   "bar": {
+    "value": "0",
+    "max": "122"
+   },
+   "timeInfo": "0:00 / 2:02",
+   "barTitle": "(Titre 3)",
+   "ad": false
+  },
+  {
+   "t": 6675,
+   "kind": "chg",
+   "meta": {
+    "title": "Titre 1",
+    "artist": "Artiste 2",
+    "album": "Titre 1",
+    "artwork": [
+     {
+      "src": "https://yt3.googleusercontent.com/art1_xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx=w60-h60-l90-rj",
+      "sizes": "60x60"
+     },
+     {
+      "src": "https://yt3.googleusercontent.com/art1_xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx=w120-h120-l90-rj",
+      "sizes": "120x120"
+     },
+     {
+      "src": "https://yt3.googleusercontent.com/art1_xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx=w226-h226-l90-rj",
+      "sizes": "226x226"
+     },
+     {
+      "src": "https://yt3.googleusercontent.com/art1_xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx=w544-h544-l90-rj",
+      "sizes": "544x544"
+     }
+    ]
+   },
+   "mediaCount": 1,
+   "media": {
+    "duration": null,
+    "currentTime": 0,
+    "paused": true,
+    "ended": false,
+    "readyState": 0,
+    "seeking": false,
+    "playbackRate": 1
+   },
+   "bar": {
+    "value": "0",
+    "max": "122"
+   },
+   "timeInfo": "0:00 / 2:02",
+   "barTitle": "(Titre 3)",
+   "ad": false
+  },
+  {
+   "t": 6737,
+   "kind": "ev",
+   "ev": "emptied",
+   "meta": {
+    "title": "Titre 3",
+    "artist": "Artiste 4",
+    "album": "",
+    "artwork": [
+     {
+      "src": "https://yt3.googleusercontent.com/art2_xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx=w544-h544-l90-rj",
+      "sizes": "320x180"
+     }
+    ]
+   },
+   "mediaCount": 1,
+   "media": {
+    "duration": null,
+    "currentTime": 0,
+    "paused": false,
+    "ended": false,
+    "readyState": 0,
+    "seeking": false,
+    "playbackRate": 1
+   },
+   "bar": {
+    "value": "0",
+    "max": "0"
+   },
+   "timeInfo": "0:00 / 0:00",
+   "barTitle": "(Titre 3)",
+   "ad": false
+  },
+  {
+   "t": 6740,
+   "kind": "ev",
+   "ev": "play",
+   "meta": {
+    "title": "Titre 3",
+    "artist": "Artiste 4",
+    "album": "",
+    "artwork": [
+     {
+      "src": "https://yt3.googleusercontent.com/art2_xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx=w544-h544-l90-rj",
+      "sizes": "320x180"
+     }
+    ]
+   },
+   "mediaCount": 1,
+   "media": {
+    "duration": null,
+    "currentTime": 0,
+    "paused": false,
+    "ended": false,
+    "readyState": 0,
+    "seeking": false,
+    "playbackRate": 1
+   },
+   "bar": {
+    "value": "0",
+    "max": "0"
+   },
+   "timeInfo": "0:00 / 0:00",
+   "barTitle": "(Titre 3)",
+   "ad": false
+  },
+  {
+   "t": 6744,
+   "kind": "ev",
+   "ev": "waiting",
+   "meta": {
+    "title": "Titre 3",
+    "artist": "Artiste 4",
+    "album": "",
+    "artwork": [
+     {
+      "src": "https://yt3.googleusercontent.com/art2_xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx=w544-h544-l90-rj",
+      "sizes": "320x180"
+     }
+    ]
+   },
+   "mediaCount": 1,
+   "media": {
+    "duration": null,
+    "currentTime": 0,
+    "paused": false,
+    "ended": false,
+    "readyState": 0,
+    "seeking": false,
+    "playbackRate": 1
+   },
+   "bar": {
+    "value": "0",
+    "max": "0"
+   },
+   "timeInfo": "0:00 / 0:00",
+   "barTitle": "(Titre 3)",
+   "ad": false
+  },
+  {
+   "t": 6749,
+   "kind": "ev",
+   "ev": "loadstart",
+   "meta": {
+    "title": "Titre 3",
+    "artist": "Artiste 4",
+    "album": "",
+    "artwork": [
+     {
+      "src": "https://yt3.googleusercontent.com/art2_xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx=w544-h544-l90-rj",
+      "sizes": "320x180"
+     }
+    ]
+   },
+   "mediaCount": 1,
+   "media": {
+    "duration": null,
+    "currentTime": 0,
+    "paused": false,
+    "ended": false,
+    "readyState": 0,
+    "seeking": false,
+    "playbackRate": 1
+   },
+   "bar": {
+    "value": "0",
+    "max": "0"
+   },
+   "timeInfo": "0:00 / 0:00",
+   "barTitle": "(Titre 3)",
+   "ad": false
+  },
+  {
+   "t": 6798,
+   "kind": "ev",
+   "ev": "durationchange",
+   "meta": {
+    "title": "Titre 3",
+    "artist": "Artiste 4",
+    "album": "",
+    "artwork": [
+     {
+      "src": "https://yt3.googleusercontent.com/art2_xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx=w544-h544-l90-rj",
+      "sizes": "320x180"
+     }
+    ]
+   },
+   "mediaCount": 1,
+   "media": {
+    "duration": 73,
+    "currentTime": 0,
+    "paused": false,
+    "ended": false,
+    "readyState": 2,
+    "seeking": false,
+    "playbackRate": 1
+   },
+   "bar": {
+    "value": "0",
+    "max": "74"
+   },
+   "timeInfo": "0:00 / 1:14",
+   "barTitle": "(Titre 3)",
+   "ad": false
+  },
+  {
+   "t": 6802,
+   "kind": "ev",
+   "ev": "loadedmetadata",
+   "meta": {
+    "title": "Titre 3",
+    "artist": "Artiste 4",
+    "album": "",
+    "artwork": [
+     {
+      "src": "https://yt3.googleusercontent.com/art2_xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx=w544-h544-l90-rj",
+      "sizes": "320x180"
+     }
+    ]
+   },
+   "mediaCount": 1,
+   "media": {
+    "duration": 73,
+    "currentTime": 0,
+    "paused": false,
+    "ended": false,
+    "readyState": 2,
+    "seeking": false,
+    "playbackRate": 1
+   },
+   "bar": {
+    "value": "0",
+    "max": "74"
+   },
+   "timeInfo": "0:00 / 1:14",
+   "barTitle": "(Titre 3)",
+   "ad": false
+  },
+  {
+   "t": 6823,
+   "kind": "ev",
+   "ev": "playing",
+   "meta": {
+    "title": "Titre 3",
+    "artist": "Artiste 4",
+    "album": "",
+    "artwork": [
+     {
+      "src": "https://yt3.googleusercontent.com/art2_xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx=w544-h544-l90-rj",
+      "sizes": "320x180"
+     }
+    ]
+   },
+   "mediaCount": 1,
+   "media": {
+    "duration": 73,
+    "currentTime": 0,
+    "paused": false,
+    "ended": false,
+    "readyState": 4,
+    "seeking": false,
+    "playbackRate": 1
+   },
+   "bar": {
+    "value": "0",
+    "max": "74"
+   },
+   "timeInfo": "0:00 / 1:14",
+   "barTitle": "(Titre 3)",
+   "ad": false
+  },
+  {
+   "t": 6876,
+   "kind": "chg",
+   "meta": {
+    "title": "Titre 3",
+    "artist": "Artiste 4",
+    "album": "",
+    "artwork": [
+     {
+      "src": "https://yt3.googleusercontent.com/art2_xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx=w544-h544-l90-rj",
+      "sizes": "320x180"
+     }
+    ]
+   },
+   "mediaCount": 1,
+   "media": {
+    "duration": 73,
+    "currentTime": 0,
+    "paused": false,
+    "ended": false,
+    "readyState": 4,
+    "seeking": false,
+    "playbackRate": 1
+   },
+   "bar": {
+    "value": "0",
+    "max": "74"
+   },
+   "timeInfo": "0:00 / 1:14",
+   "barTitle": "(Titre 3)",
+   "ad": false
+  },
+  {
+   "t": 6887,
+   "kind": "tu",
+   "meta": {
+    "title": "Titre 3",
+    "artist": "Artiste 4",
+    "album": "",
+    "artwork": [
+     {
+      "src": "https://yt3.googleusercontent.com/art2_xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx=w544-h544-l90-rj",
+      "sizes": "320x180"
+     }
+    ]
+   },
+   "mediaCount": 1,
+   "media": {
+    "duration": 73,
+    "currentTime": 0.039,
+    "paused": false,
+    "ended": false,
+    "readyState": 4,
+    "seeking": false,
+    "playbackRate": 1
+   },
+   "bar": {
+    "value": "0",
+    "max": "74"
+   },
+   "timeInfo": "0:00 / 1:14",
+   "barTitle": "(Titre 3)",
+   "ad": false
+  },
+  {
+   "t": 6970,
+   "kind": "chg",
+   "meta": {
+    "title": "Titre 3",
+    "artist": "Artiste 4",
+    "album": "Titre 3",
+    "artwork": [
+     {
+      "src": "https://yt3.googleusercontent.com/art2_xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx=w60-h60-l90-rj",
+      "sizes": "60x60"
+     },
+     {
+      "src": "https://yt3.googleusercontent.com/art2_xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx=w120-h120-l90-rj",
+      "sizes": "120x120"
+     },
+     {
+      "src": "https://yt3.googleusercontent.com/art2_xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx=w226-h226-l90-rj",
+      "sizes": "226x226"
+     },
+     {
+      "src": "https://yt3.googleusercontent.com/art2_xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx=w544-h544-l90-rj",
+      "sizes": "544x544"
+     }
+    ]
+   },
+   "mediaCount": 1,
+   "media": {
+    "duration": 73,
+    "currentTime": 0.039,
+    "paused": false,
+    "ended": false,
+    "readyState": 4,
+    "seeking": false,
+    "playbackRate": 1
+   },
+   "bar": {
+    "value": "0",
+    "max": "74"
+   },
+   "timeInfo": "0:00 / 1:14",
+   "barTitle": "(Titre 3)",
+   "ad": false
+  },
+  {
+   "t": 9141,
+   "kind": "tu",
+   "meta": {
+    "title": "Titre 3",
+    "artist": "Artiste 4",
+    "album": "Titre 3",
+    "artwork": [
+     {
+      "src": "https://yt3.googleusercontent.com/art2_xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx=w60-h60-l90-rj",
+      "sizes": "60x60"
+     },
+     {
+      "src": "https://yt3.googleusercontent.com/art2_xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx=w120-h120-l90-rj",
+      "sizes": "120x120"
+     },
+     {
+      "src": "https://yt3.googleusercontent.com/art2_xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx=w226-h226-l90-rj",
+      "sizes": "226x226"
+     },
+     {
+      "src": "https://yt3.googleusercontent.com/art2_xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx=w544-h544-l90-rj",
+      "sizes": "544x544"
+     }
+    ]
+   },
+   "mediaCount": 1,
+   "media": {
+    "duration": 73,
+    "currentTime": 2.294,
+    "paused": false,
+    "ended": false,
+    "readyState": 4,
+    "seeking": false,
+    "playbackRate": 1
+   },
+   "bar": {
+    "value": "2",
+    "max": "74"
+   },
+   "timeInfo": "0:02 / 1:14",
+   "barTitle": "(Titre 3)",
+   "ad": false
+  },
+  {
+   "t": 11366,
+   "kind": "tu",
+   "meta": {
+    "title": "Titre 3",
+    "artist": "Artiste 4",
+    "album": "Titre 3",
+    "artwork": [
+     {
+      "src": "https://yt3.googleusercontent.com/art2_xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx=w60-h60-l90-rj",
+      "sizes": "60x60"
+     },
+     {
+      "src": "https://yt3.googleusercontent.com/art2_xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx=w120-h120-l90-rj",
+      "sizes": "120x120"
+     },
+     {
+      "src": "https://yt3.googleusercontent.com/art2_xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx=w226-h226-l90-rj",
+      "sizes": "226x226"
+     },
+     {
+      "src": "https://yt3.googleusercontent.com/art2_xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx=w544-h544-l90-rj",
+      "sizes": "544x544"
+     }
+    ]
+   },
+   "mediaCount": 1,
+   "media": {
+    "duration": 73,
+    "currentTime": 4.501,
+    "paused": false,
+    "ended": false,
+    "readyState": 4,
+    "seeking": false,
+    "playbackRate": 1
+   },
+   "bar": {
+    "value": "4",
+    "max": "74"
+   },
+   "timeInfo": "0:04 / 1:14",
+   "barTitle": "(Titre 3)",
+   "ad": false
+  },
+  {
+   "t": 13619,
+   "kind": "tu",
+   "meta": {
+    "title": "Titre 3",
+    "artist": "Artiste 4",
+    "album": "Titre 3",
+    "artwork": [
+     {
+      "src": "https://yt3.googleusercontent.com/art2_xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx=w60-h60-l90-rj",
+      "sizes": "60x60"
+     },
+     {
+      "src": "https://yt3.googleusercontent.com/art2_xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx=w120-h120-l90-rj",
+      "sizes": "120x120"
+     },
+     {
+      "src": "https://yt3.googleusercontent.com/art2_xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx=w226-h226-l90-rj",
+      "sizes": "226x226"
+     },
+     {
+      "src": "https://yt3.googleusercontent.com/art2_xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx=w544-h544-l90-rj",
+      "sizes": "544x544"
+     }
+    ]
+   },
+   "mediaCount": 1,
+   "media": {
+    "duration": 73,
+    "currentTime": 6.76,
+    "paused": false,
+    "ended": false,
+    "readyState": 4,
+    "seeking": false,
+    "playbackRate": 1
+   },
+   "bar": {
+    "value": "6",
+    "max": "74"
+   },
+   "timeInfo": "0:06 / 1:14",
+   "barTitle": "(Titre 3)",
+   "ad": false
+  },
+  {
+   "t": 15883,
+   "kind": "tu",
+   "meta": {
+    "title": "Titre 3",
+    "artist": "Artiste 4",
+    "album": "Titre 3",
+    "artwork": [
+     {
+      "src": "https://yt3.googleusercontent.com/art2_xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx=w60-h60-l90-rj",
+      "sizes": "60x60"
+     },
+     {
+      "src": "https://yt3.googleusercontent.com/art2_xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx=w120-h120-l90-rj",
+      "sizes": "120x120"
+     },
+     {
+      "src": "https://yt3.googleusercontent.com/art2_xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx=w226-h226-l90-rj",
+      "sizes": "226x226"
+     },
+     {
+      "src": "https://yt3.googleusercontent.com/art2_xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx=w544-h544-l90-rj",
+      "sizes": "544x544"
+     }
+    ]
+   },
+   "mediaCount": 1,
+   "media": {
+    "duration": 73,
+    "currentTime": 9.02,
+    "paused": false,
+    "ended": false,
+    "readyState": 4,
+    "seeking": false,
+    "playbackRate": 1
+   },
+   "bar": {
+    "value": "8",
+    "max": "74"
+   },
+   "timeInfo": "0:08 / 1:14",
+   "barTitle": "(Titre 3)",
+   "ad": false
+  },
+  {
+   "t": 18138,
+   "kind": "tu",
+   "meta": {
+    "title": "Titre 3",
+    "artist": "Artiste 4",
+    "album": "Titre 3",
+    "artwork": [
+     {
+      "src": "https://yt3.googleusercontent.com/art2_xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx=w60-h60-l90-rj",
+      "sizes": "60x60"
+     },
+     {
+      "src": "https://yt3.googleusercontent.com/art2_xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx=w120-h120-l90-rj",
+      "sizes": "120x120"
+     },
+     {
+      "src": "https://yt3.googleusercontent.com/art2_xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx=w226-h226-l90-rj",
+      "sizes": "226x226"
+     },
+     {
+      "src": "https://yt3.googleusercontent.com/art2_xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx=w544-h544-l90-rj",
+      "sizes": "544x544"
+     }
+    ]
+   },
+   "mediaCount": 1,
+   "media": {
+    "duration": 73,
+    "currentTime": 11.278,
+    "paused": false,
+    "ended": false,
+    "readyState": 4,
+    "seeking": false,
+    "playbackRate": 1
+   },
+   "bar": {
+    "value": "10",
+    "max": "74"
+   },
+   "timeInfo": "0:10 / 1:14",
+   "barTitle": "(Titre 3)",
+   "ad": false
+  },
+  {
+   "t": 18664,
+   "action": "next"
+  },
+  {
+   "t": 19240,
+   "kind": "ev",
+   "ev": "emptied",
+   "meta": {
+    "title": "Titre 5",
+    "artist": "Artiste 6",
+    "album": "",
+    "artwork": [
+     {
+      "src": "https://yt3.googleusercontent.com/art3_xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx=w544-h544-l90-rj",
+      "sizes": "320x180"
+     }
+    ]
+   },
+   "mediaCount": 1,
+   "media": {
+    "duration": null,
+    "currentTime": 0,
+    "paused": false,
+    "ended": false,
+    "readyState": 0,
+    "seeking": false,
+    "playbackRate": 1
+   },
+   "bar": {
+    "value": "0",
+    "max": "101"
+   },
+   "timeInfo": "0:00 / 1:41",
+   "barTitle": "(Titre 5)",
+   "ad": false
+  },
+  {
+   "t": 19251,
+   "kind": "ev",
+   "ev": "play",
+   "meta": {
+    "title": "Titre 5",
+    "artist": "Artiste 6",
+    "album": "",
+    "artwork": [
+     {
+      "src": "https://yt3.googleusercontent.com/art3_xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx=w544-h544-l90-rj",
+      "sizes": "320x180"
+     }
+    ]
+   },
+   "mediaCount": 1,
+   "media": {
+    "duration": null,
+    "currentTime": 0,
+    "paused": false,
+    "ended": false,
+    "readyState": 0,
+    "seeking": false,
+    "playbackRate": 1
+   },
+   "bar": {
+    "value": "0",
+    "max": "101"
+   },
+   "timeInfo": "0:00 / 1:41",
+   "barTitle": "(Titre 5)",
+   "ad": false
+  },
+  {
+   "t": 19254,
+   "kind": "ev",
+   "ev": "waiting",
+   "meta": {
+    "title": "Titre 5",
+    "artist": "Artiste 6",
+    "album": "",
+    "artwork": [
+     {
+      "src": "https://yt3.googleusercontent.com/art3_xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx=w544-h544-l90-rj",
+      "sizes": "320x180"
+     }
+    ]
+   },
+   "mediaCount": 1,
+   "media": {
+    "duration": null,
+    "currentTime": 0,
+    "paused": false,
+    "ended": false,
+    "readyState": 0,
+    "seeking": false,
+    "playbackRate": 1
+   },
+   "bar": {
+    "value": "0",
+    "max": "101"
+   },
+   "timeInfo": "0:00 / 1:41",
+   "barTitle": "(Titre 5)",
+   "ad": false
+  },
+  {
+   "t": 19259,
+   "kind": "ev",
+   "ev": "loadstart",
+   "meta": {
+    "title": "Titre 5",
+    "artist": "Artiste 6",
+    "album": "",
+    "artwork": [
+     {
+      "src": "https://yt3.googleusercontent.com/art3_xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx=w544-h544-l90-rj",
+      "sizes": "320x180"
+     }
+    ]
+   },
+   "mediaCount": 1,
+   "media": {
+    "duration": null,
+    "currentTime": 0,
+    "paused": false,
+    "ended": false,
+    "readyState": 0,
+    "seeking": false,
+    "playbackRate": 1
+   },
+   "bar": {
+    "value": "0",
+    "max": "101"
+   },
+   "timeInfo": "0:00 / 1:41",
+   "barTitle": "(Titre 5)",
+   "ad": false
+  },
+  {
+   "t": 19273,
+   "kind": "chg",
+   "meta": {
+    "title": "Titre 5",
+    "artist": "Artiste 6",
+    "album": "",
+    "artwork": [
+     {
+      "src": "https://yt3.googleusercontent.com/art3_xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx=w544-h544-l90-rj",
+      "sizes": "320x180"
+     }
+    ]
+   },
+   "mediaCount": 1,
+   "media": {
+    "duration": 100,
+    "currentTime": 0,
+    "paused": false,
+    "ended": false,
+    "readyState": 0,
+    "seeking": false,
+    "playbackRate": 1
+   },
+   "bar": {
+    "value": "0",
+    "max": "101"
+   },
+   "timeInfo": "0:00 / 1:41",
+   "barTitle": "(Titre 5)",
+   "ad": false
+  },
+  {
+   "t": 19308,
+   "kind": "ev",
+   "ev": "durationchange",
+   "meta": {
+    "title": "Titre 5",
+    "artist": "Artiste 6",
+    "album": "",
+    "artwork": [
+     {
+      "src": "https://yt3.googleusercontent.com/art3_xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx=w544-h544-l90-rj",
+      "sizes": "320x180"
+     }
+    ]
+   },
+   "mediaCount": 1,
+   "media": {
+    "duration": 100,
+    "currentTime": 0,
+    "paused": false,
+    "ended": false,
+    "readyState": 2,
+    "seeking": false,
+    "playbackRate": 1
+   },
+   "bar": {
+    "value": "0",
+    "max": "101"
+   },
+   "timeInfo": "0:00 / 1:41",
+   "barTitle": "(Titre 5)",
+   "ad": false
+  },
+  {
+   "t": 19313,
+   "kind": "ev",
+   "ev": "loadedmetadata",
+   "meta": {
+    "title": "Titre 5",
+    "artist": "Artiste 6",
+    "album": "",
+    "artwork": [
+     {
+      "src": "https://yt3.googleusercontent.com/art3_xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx=w544-h544-l90-rj",
+      "sizes": "320x180"
+     }
+    ]
+   },
+   "mediaCount": 1,
+   "media": {
+    "duration": 100,
+    "currentTime": 0,
+    "paused": false,
+    "ended": false,
+    "readyState": 2,
+    "seeking": false,
+    "playbackRate": 1
+   },
+   "bar": {
+    "value": "0",
+    "max": "101"
+   },
+   "timeInfo": "0:00 / 1:41",
+   "barTitle": "(Titre 5)",
+   "ad": false
+  },
+  {
+   "t": 19359,
+   "kind": "ev",
+   "ev": "playing",
+   "meta": {
+    "title": "Titre 5",
+    "artist": "Artiste 6",
+    "album": "",
+    "artwork": [
+     {
+      "src": "https://yt3.googleusercontent.com/art3_xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx=w544-h544-l90-rj",
+      "sizes": "320x180"
+     }
+    ]
+   },
+   "mediaCount": 1,
+   "media": {
+    "duration": 100,
+    "currentTime": 0,
+    "paused": false,
+    "ended": false,
+    "readyState": 4,
+    "seeking": false,
+    "playbackRate": 1
+   },
+   "bar": {
+    "value": "0",
+    "max": "101"
+   },
+   "timeInfo": "0:00 / 1:41",
+   "barTitle": "(Titre 5)",
+   "ad": false
+  },
+  {
+   "t": 19408,
+   "kind": "chg",
+   "meta": {
+    "title": "Titre 5",
+    "artist": "Artiste 6",
+    "album": "",
+    "artwork": [
+     {
+      "src": "https://yt3.googleusercontent.com/art3_xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx=w544-h544-l90-rj",
+      "sizes": "320x180"
+     }
+    ]
+   },
+   "mediaCount": 1,
+   "media": {
+    "duration": 100,
+    "currentTime": 0.04,
+    "paused": false,
+    "ended": false,
+    "readyState": 4,
+    "seeking": false,
+    "playbackRate": 1
+   },
+   "bar": {
+    "value": "0",
+    "max": "101"
+   },
+   "timeInfo": "0:00 / 1:41",
+   "barTitle": "(Titre 5)",
+   "ad": false
+  },
+  {
+   "t": 19745,
+   "kind": "chg",
+   "meta": {
+    "title": "Titre 5",
+    "artist": "Artiste 6",
+    "album": "Titre 5",
+    "artwork": [
+     {
+      "src": "https://yt3.googleusercontent.com/art3_xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx=w60-h60-l90-rj",
+      "sizes": "60x60"
+     },
+     {
+      "src": "https://yt3.googleusercontent.com/art3_xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx=w120-h120-l90-rj",
+      "sizes": "120x120"
+     },
+     {
+      "src": "https://yt3.googleusercontent.com/art3_xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx=w226-h226-l90-rj",
+      "sizes": "226x226"
+     },
+     {
+      "src": "https://yt3.googleusercontent.com/art3_xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx=w544-h544-l90-rj",
+      "sizes": "544x544"
+     }
+    ]
+   },
+   "mediaCount": 1,
+   "media": {
+    "duration": 100,
+    "currentTime": 0.322,
+    "paused": false,
+    "ended": false,
+    "readyState": 4,
+    "seeking": false,
+    "playbackRate": 1
+   },
+   "bar": {
+    "value": "0",
+    "max": "101"
+   },
+   "timeInfo": "0:00 / 1:41",
+   "barTitle": "(Titre 5)",
+   "ad": false
+  },
+  {
+   "t": 20198,
+   "kind": "tu",
+   "meta": {
+    "title": "Titre 5",
+    "artist": "Artiste 6",
+    "album": "Titre 5",
+    "artwork": [
+     {
+      "src": "https://yt3.googleusercontent.com/art3_xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx=w60-h60-l90-rj",
+      "sizes": "60x60"
+     },
+     {
+      "src": "https://yt3.googleusercontent.com/art3_xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx=w120-h120-l90-rj",
+      "sizes": "120x120"
+     },
+     {
+      "src": "https://yt3.googleusercontent.com/art3_xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx=w226-h226-l90-rj",
+      "sizes": "226x226"
+     },
+     {
+      "src": "https://yt3.googleusercontent.com/art3_xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx=w544-h544-l90-rj",
+      "sizes": "544x544"
+     }
+    ]
+   },
+   "mediaCount": 1,
+   "media": {
+    "duration": 100,
+    "currentTime": 0.845,
+    "paused": false,
+    "ended": false,
+    "readyState": 4,
+    "seeking": false,
+    "playbackRate": 1
+   },
+   "bar": {
+    "value": "0",
+    "max": "101"
+   },
+   "timeInfo": "0:00 / 1:41",
+   "barTitle": "(Titre 5)",
+   "ad": false
+  },
+  {
+   "t": 22475,
+   "kind": "tu",
+   "meta": {
+    "title": "Titre 5",
+    "artist": "Artiste 6",
+    "album": "Titre 5",
+    "artwork": [
+     {
+      "src": "https://yt3.googleusercontent.com/art3_xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx=w60-h60-l90-rj",
+      "sizes": "60x60"
+     },
+     {
+      "src": "https://yt3.googleusercontent.com/art3_xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx=w120-h120-l90-rj",
+      "sizes": "120x120"
+     },
+     {
+      "src": "https://yt3.googleusercontent.com/art3_xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx=w226-h226-l90-rj",
+      "sizes": "226x226"
+     },
+     {
+      "src": "https://yt3.googleusercontent.com/art3_xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx=w544-h544-l90-rj",
+      "sizes": "544x544"
+     }
+    ]
+   },
+   "mediaCount": 1,
+   "media": {
+    "duration": 100,
+    "currentTime": 3.105,
+    "paused": false,
+    "ended": false,
+    "readyState": 4,
+    "seeking": false,
+    "playbackRate": 1
+   },
+   "bar": {
+    "value": "2",
+    "max": "101"
+   },
+   "timeInfo": "0:02 / 1:41",
+   "barTitle": "(Titre 5)",
+   "ad": false
+  },
+  {
+   "t": 24717,
+   "kind": "tu",
+   "meta": {
+    "title": "Titre 5",
+    "artist": "Artiste 6",
+    "album": "Titre 5",
+    "artwork": [
+     {
+      "src": "https://yt3.googleusercontent.com/art3_xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx=w60-h60-l90-rj",
+      "sizes": "60x60"
+     },
+     {
+      "src": "https://yt3.googleusercontent.com/art3_xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx=w120-h120-l90-rj",
+      "sizes": "120x120"
+     },
+     {
+      "src": "https://yt3.googleusercontent.com/art3_xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx=w226-h226-l90-rj",
+      "sizes": "226x226"
+     },
+     {
+      "src": "https://yt3.googleusercontent.com/art3_xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx=w544-h544-l90-rj",
+      "sizes": "544x544"
+     }
+    ]
+   },
+   "mediaCount": 1,
+   "media": {
+    "duration": 100,
+    "currentTime": 5.346,
+    "paused": false,
+    "ended": false,
+    "readyState": 4,
+    "seeking": false,
+    "playbackRate": 1
+   },
+   "bar": {
+    "value": "5",
+    "max": "101"
+   },
+   "timeInfo": "0:05 / 1:41",
+   "barTitle": "(Titre 5)",
+   "ad": false
+  },
+  {
+   "t": 26979,
+   "kind": "tu",
+   "meta": {
+    "title": "Titre 5",
+    "artist": "Artiste 6",
+    "album": "Titre 5",
+    "artwork": [
+     {
+      "src": "https://yt3.googleusercontent.com/art3_xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx=w60-h60-l90-rj",
+      "sizes": "60x60"
+     },
+     {
+      "src": "https://yt3.googleusercontent.com/art3_xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx=w120-h120-l90-rj",
+      "sizes": "120x120"
+     },
+     {
+      "src": "https://yt3.googleusercontent.com/art3_xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx=w226-h226-l90-rj",
+      "sizes": "226x226"
+     },
+     {
+      "src": "https://yt3.googleusercontent.com/art3_xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx=w544-h544-l90-rj",
+      "sizes": "544x544"
+     }
+    ]
+   },
+   "mediaCount": 1,
+   "media": {
+    "duration": 100,
+    "currentTime": 7.607,
+    "paused": false,
+    "ended": false,
+    "readyState": 4,
+    "seeking": false,
+    "playbackRate": 1
+   },
+   "bar": {
+    "value": "7",
+    "max": "101"
+   },
+   "timeInfo": "0:07 / 1:41",
+   "barTitle": "(Titre 5)",
+   "ad": false
+  },
+  {
+   "t": 29198,
+   "kind": "tu",
+   "meta": {
+    "title": "Titre 5",
+    "artist": "Artiste 6",
+    "album": "Titre 5",
+    "artwork": [
+     {
+      "src": "https://yt3.googleusercontent.com/art3_xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx=w60-h60-l90-rj",
+      "sizes": "60x60"
+     },
+     {
+      "src": "https://yt3.googleusercontent.com/art3_xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx=w120-h120-l90-rj",
+      "sizes": "120x120"
+     },
+     {
+      "src": "https://yt3.googleusercontent.com/art3_xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx=w226-h226-l90-rj",
+      "sizes": "226x226"
+     },
+     {
+      "src": "https://yt3.googleusercontent.com/art3_xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx=w544-h544-l90-rj",
+      "sizes": "544x544"
+     }
+    ]
+   },
+   "mediaCount": 1,
+   "media": {
+    "duration": 100,
+    "currentTime": 9.827,
+    "paused": false,
+    "ended": false,
+    "readyState": 4,
+    "seeking": false,
+    "playbackRate": 1
+   },
+   "bar": {
+    "value": "9",
+    "max": "101"
+   },
+   "timeInfo": "0:09 / 1:41",
+   "barTitle": "(Titre 5)",
+   "ad": false
+  },
+  {
+   "t": 31259,
+   "action": "seekend"
+  },
+  {
+   "t": 31320,
+   "kind": "ev",
+   "ev": "seeking",
+   "meta": {
+    "title": "Titre 5",
+    "artist": "Artiste 6",
+    "album": "Titre 5",
+    "artwork": [
+     {
+      "src": "https://yt3.googleusercontent.com/art3_xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx=w60-h60-l90-rj",
+      "sizes": "60x60"
+     },
+     {
+      "src": "https://yt3.googleusercontent.com/art3_xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx=w120-h120-l90-rj",
+      "sizes": "120x120"
+     },
+     {
+      "src": "https://yt3.googleusercontent.com/art3_xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx=w226-h226-l90-rj",
+      "sizes": "226x226"
+     },
+     {
+      "src": "https://yt3.googleusercontent.com/art3_xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx=w544-h544-l90-rj",
+      "sizes": "544x544"
+     }
+    ]
+   },
+   "mediaCount": 1,
+   "media": {
+    "duration": 100,
+    "currentTime": 92,
+    "paused": false,
+    "ended": false,
+    "readyState": 1,
+    "seeking": true,
+    "playbackRate": 1
+   },
+   "bar": {
+    "value": "11",
+    "max": "101"
+   },
+   "timeInfo": "0:11 / 1:41",
+   "barTitle": "(Titre 5)",
+   "ad": false
+  },
+  {
+   "t": 31333,
+   "kind": "ev",
+   "ev": "waiting",
+   "meta": {
+    "title": "Titre 5",
+    "artist": "Artiste 6",
+    "album": "Titre 5",
+    "artwork": [
+     {
+      "src": "https://yt3.googleusercontent.com/art3_xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx=w60-h60-l90-rj",
+      "sizes": "60x60"
+     },
+     {
+      "src": "https://yt3.googleusercontent.com/art3_xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx=w120-h120-l90-rj",
+      "sizes": "120x120"
+     },
+     {
+      "src": "https://yt3.googleusercontent.com/art3_xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx=w226-h226-l90-rj",
+      "sizes": "226x226"
+     },
+     {
+      "src": "https://yt3.googleusercontent.com/art3_xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx=w544-h544-l90-rj",
+      "sizes": "544x544"
+     }
+    ]
+   },
+   "mediaCount": 1,
+   "media": {
+    "duration": 100,
+    "currentTime": 92,
+    "paused": false,
+    "ended": false,
+    "readyState": 1,
+    "seeking": true,
+    "playbackRate": 1
+   },
+   "bar": {
+    "value": "11",
+    "max": "101"
+   },
+   "timeInfo": "0:11 / 1:41",
+   "barTitle": "(Titre 5)",
+   "ad": false
+  },
+  {
+   "t": 31340,
+   "kind": "chg",
+   "meta": {
+    "title": "Titre 5",
+    "artist": "Artiste 6",
+    "album": "Titre 5",
+    "artwork": [
+     {
+      "src": "https://yt3.googleusercontent.com/art3_xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx=w60-h60-l90-rj",
+      "sizes": "60x60"
+     },
+     {
+      "src": "https://yt3.googleusercontent.com/art3_xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx=w120-h120-l90-rj",
+      "sizes": "120x120"
+     },
+     {
+      "src": "https://yt3.googleusercontent.com/art3_xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx=w226-h226-l90-rj",
+      "sizes": "226x226"
+     },
+     {
+      "src": "https://yt3.googleusercontent.com/art3_xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx=w544-h544-l90-rj",
+      "sizes": "544x544"
+     }
+    ]
+   },
+   "mediaCount": 1,
+   "media": {
+    "duration": 100,
+    "currentTime": 92,
+    "paused": false,
+    "ended": false,
+    "readyState": 1,
+    "seeking": true,
+    "playbackRate": 1
+   },
+   "bar": {
+    "value": "11",
+    "max": "101"
+   },
+   "timeInfo": "0:11 / 1:41",
+   "barTitle": "(Titre 5)",
+   "ad": false
+  },
+  {
+   "t": 31857,
+   "kind": "tu",
+   "meta": {
+    "title": "Titre 5",
+    "artist": "Artiste 6",
+    "album": "Titre 5",
+    "artwork": [
+     {
+      "src": "https://yt3.googleusercontent.com/art3_xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx=w60-h60-l90-rj",
+      "sizes": "60x60"
+     },
+     {
+      "src": "https://yt3.googleusercontent.com/art3_xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx=w120-h120-l90-rj",
+      "sizes": "120x120"
+     },
+     {
+      "src": "https://yt3.googleusercontent.com/art3_xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx=w226-h226-l90-rj",
+      "sizes": "226x226"
+     },
+     {
+      "src": "https://yt3.googleusercontent.com/art3_xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx=w544-h544-l90-rj",
+      "sizes": "544x544"
+     }
+    ]
+   },
+   "mediaCount": 1,
+   "media": {
+    "duration": 100,
+    "currentTime": 92,
+    "paused": false,
+    "ended": false,
+    "readyState": 3,
+    "seeking": true,
+    "playbackRate": 1
+   },
+   "bar": {
+    "value": "11",
+    "max": "101"
+   },
+   "timeInfo": "0:11 / 1:41",
+   "barTitle": "(Titre 5)",
+   "ad": false
+  },
+  {
+   "t": 31862,
+   "kind": "ev",
+   "ev": "seeked",
+   "meta": {
+    "title": "Titre 5",
+    "artist": "Artiste 6",
+    "album": "Titre 5",
+    "artwork": [
+     {
+      "src": "https://yt3.googleusercontent.com/art3_xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx=w60-h60-l90-rj",
+      "sizes": "60x60"
+     },
+     {
+      "src": "https://yt3.googleusercontent.com/art3_xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx=w120-h120-l90-rj",
+      "sizes": "120x120"
+     },
+     {
+      "src": "https://yt3.googleusercontent.com/art3_xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx=w226-h226-l90-rj",
+      "sizes": "226x226"
+     },
+     {
+      "src": "https://yt3.googleusercontent.com/art3_xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx=w544-h544-l90-rj",
+      "sizes": "544x544"
+     }
+    ]
+   },
+   "mediaCount": 1,
+   "media": {
+    "duration": 100,
+    "currentTime": 92,
+    "paused": false,
+    "ended": false,
+    "readyState": 3,
+    "seeking": false,
+    "playbackRate": 1
+   },
+   "bar": {
+    "value": "11",
+    "max": "101"
+   },
+   "timeInfo": "0:11 / 1:41",
+   "barTitle": "(Titre 5)",
+   "ad": false
+  },
+  {
+   "t": 31870,
+   "kind": "ev",
+   "ev": "playing",
+   "meta": {
+    "title": "Titre 5",
+    "artist": "Artiste 6",
+    "album": "Titre 5",
+    "artwork": [
+     {
+      "src": "https://yt3.googleusercontent.com/art3_xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx=w60-h60-l90-rj",
+      "sizes": "60x60"
+     },
+     {
+      "src": "https://yt3.googleusercontent.com/art3_xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx=w120-h120-l90-rj",
+      "sizes": "120x120"
+     },
+     {
+      "src": "https://yt3.googleusercontent.com/art3_xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx=w226-h226-l90-rj",
+      "sizes": "226x226"
+     },
+     {
+      "src": "https://yt3.googleusercontent.com/art3_xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx=w544-h544-l90-rj",
+      "sizes": "544x544"
+     }
+    ]
+   },
+   "mediaCount": 1,
+   "media": {
+    "duration": 100,
+    "currentTime": 92,
+    "paused": false,
+    "ended": false,
+    "readyState": 3,
+    "seeking": false,
+    "playbackRate": 1
+   },
+   "bar": {
+    "value": "11",
+    "max": "101"
+   },
+   "timeInfo": "0:11 / 1:41",
+   "barTitle": "(Titre 5)",
+   "ad": false
+  },
+  {
+   "t": 31899,
+   "kind": "chg",
+   "meta": {
+    "title": "Titre 5",
+    "artist": "Artiste 6",
+    "album": "Titre 5",
+    "artwork": [
+     {
+      "src": "https://yt3.googleusercontent.com/art3_xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx=w60-h60-l90-rj",
+      "sizes": "60x60"
+     },
+     {
+      "src": "https://yt3.googleusercontent.com/art3_xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx=w120-h120-l90-rj",
+      "sizes": "120x120"
+     },
+     {
+      "src": "https://yt3.googleusercontent.com/art3_xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx=w226-h226-l90-rj",
+      "sizes": "226x226"
+     },
+     {
+      "src": "https://yt3.googleusercontent.com/art3_xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx=w544-h544-l90-rj",
+      "sizes": "544x544"
+     }
+    ]
+   },
+   "mediaCount": 1,
+   "media": {
+    "duration": 155,
+    "currentTime": 92,
+    "paused": false,
+    "ended": false,
+    "readyState": 3,
+    "seeking": false,
+    "playbackRate": 1
+   },
+   "bar": {
+    "value": "92",
+    "max": "101"
+   },
+   "timeInfo": "1:32 / 1:41",
+   "barTitle": "(Titre 5)",
+   "ad": false
+  },
+  {
+   "t": 31899,
+   "kind": "ev",
+   "ev": "durationchange",
+   "meta": {
+    "title": "Titre 5",
+    "artist": "Artiste 6",
+    "album": "Titre 5",
+    "artwork": [
+     {
+      "src": "https://yt3.googleusercontent.com/art3_xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx=w60-h60-l90-rj",
+      "sizes": "60x60"
+     },
+     {
+      "src": "https://yt3.googleusercontent.com/art3_xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx=w120-h120-l90-rj",
+      "sizes": "120x120"
+     },
+     {
+      "src": "https://yt3.googleusercontent.com/art3_xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx=w226-h226-l90-rj",
+      "sizes": "226x226"
+     },
+     {
+      "src": "https://yt3.googleusercontent.com/art3_xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx=w544-h544-l90-rj",
+      "sizes": "544x544"
+     }
+    ]
+   },
+   "mediaCount": 1,
+   "media": {
+    "duration": 155,
+    "currentTime": 92,
+    "paused": false,
+    "ended": false,
+    "readyState": 3,
+    "seeking": false,
+    "playbackRate": 1
+   },
+   "bar": {
+    "value": "92",
+    "max": "101"
+   },
+   "timeInfo": "1:32 / 1:41",
+   "barTitle": "(Titre 5)",
+   "ad": false
+  },
+  {
+   "t": 32002,
+   "kind": "chg",
+   "meta": {
+    "title": "Titre 5",
+    "artist": "Artiste 6",
+    "album": "Titre 5",
+    "artwork": [
+     {
+      "src": "https://yt3.googleusercontent.com/art3_xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx=w60-h60-l90-rj",
+      "sizes": "60x60"
+     },
+     {
+      "src": "https://yt3.googleusercontent.com/art3_xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx=w120-h120-l90-rj",
+      "sizes": "120x120"
+     },
+     {
+      "src": "https://yt3.googleusercontent.com/art3_xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx=w226-h226-l90-rj",
+      "sizes": "226x226"
+     },
+     {
+      "src": "https://yt3.googleusercontent.com/art3_xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx=w544-h544-l90-rj",
+      "sizes": "544x544"
+     }
+    ]
+   },
+   "mediaCount": 1,
+   "media": {
+    "duration": 155,
+    "currentTime": 92.094,
+    "paused": false,
+    "ended": false,
+    "readyState": 4,
+    "seeking": false,
+    "playbackRate": 1
+   },
+   "bar": {
+    "value": "92",
+    "max": "101"
+   },
+   "timeInfo": "1:32 / 1:41",
+   "barTitle": "(Titre 5)",
+   "ad": false
+  },
+  {
+   "t": 34115,
+   "kind": "tu",
+   "meta": {
+    "title": "Titre 5",
+    "artist": "Artiste 6",
+    "album": "Titre 5",
+    "artwork": [
+     {
+      "src": "https://yt3.googleusercontent.com/art3_xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx=w60-h60-l90-rj",
+      "sizes": "60x60"
+     },
+     {
+      "src": "https://yt3.googleusercontent.com/art3_xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx=w120-h120-l90-rj",
+      "sizes": "120x120"
+     },
+     {
+      "src": "https://yt3.googleusercontent.com/art3_xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx=w226-h226-l90-rj",
+      "sizes": "226x226"
+     },
+     {
+      "src": "https://yt3.googleusercontent.com/art3_xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx=w544-h544-l90-rj",
+      "sizes": "544x544"
+     }
+    ]
+   },
+   "mediaCount": 1,
+   "media": {
+    "duration": 155,
+    "currentTime": 94.231,
+    "paused": false,
+    "ended": false,
+    "readyState": 4,
+    "seeking": false,
+    "playbackRate": 1
+   },
+   "bar": {
+    "value": "93",
+    "max": "101"
+   },
+   "timeInfo": "1:33 / 1:41",
+   "barTitle": "(Titre 5)",
+   "ad": false
+  },
+  {
+   "t": 36375,
+   "kind": "tu",
+   "meta": {
+    "title": "Titre 5",
+    "artist": "Artiste 6",
+    "album": "Titre 5",
+    "artwork": [
+     {
+      "src": "https://yt3.googleusercontent.com/art3_xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx=w60-h60-l90-rj",
+      "sizes": "60x60"
+     },
+     {
+      "src": "https://yt3.googleusercontent.com/art3_xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx=w120-h120-l90-rj",
+      "sizes": "120x120"
+     },
+     {
+      "src": "https://yt3.googleusercontent.com/art3_xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx=w226-h226-l90-rj",
+      "sizes": "226x226"
+     },
+     {
+      "src": "https://yt3.googleusercontent.com/art3_xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx=w544-h544-l90-rj",
+      "sizes": "544x544"
+     }
+    ]
+   },
+   "mediaCount": 1,
+   "media": {
+    "duration": 155,
+    "currentTime": 96.491,
+    "paused": false,
+    "ended": false,
+    "readyState": 4,
+    "seeking": false,
+    "playbackRate": 1
+   },
+   "bar": {
+    "value": "96",
+    "max": "101"
+   },
+   "timeInfo": "1:36 / 1:41",
+   "barTitle": "(Titre 5)",
+   "ad": false
+  },
+  {
+   "t": 38635,
+   "kind": "tu",
+   "meta": {
+    "title": "Titre 5",
+    "artist": "Artiste 6",
+    "album": "Titre 5",
+    "artwork": [
+     {
+      "src": "https://yt3.googleusercontent.com/art3_xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx=w60-h60-l90-rj",
+      "sizes": "60x60"
+     },
+     {
+      "src": "https://yt3.googleusercontent.com/art3_xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx=w120-h120-l90-rj",
+      "sizes": "120x120"
+     },
+     {
+      "src": "https://yt3.googleusercontent.com/art3_xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx=w226-h226-l90-rj",
+      "sizes": "226x226"
+     },
+     {
+      "src": "https://yt3.googleusercontent.com/art3_xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx=w544-h544-l90-rj",
+      "sizes": "544x544"
+     }
+    ]
+   },
+   "mediaCount": 1,
+   "media": {
+    "duration": 155,
+    "currentTime": 98.751,
+    "paused": false,
+    "ended": false,
+    "readyState": 4,
+    "seeking": false,
+    "playbackRate": 1
+   },
+   "bar": {
+    "value": "98",
+    "max": "101"
+   },
+   "timeInfo": "1:38 / 1:41",
+   "barTitle": "(Titre 5)",
+   "ad": false
+  },
+  {
+   "t": 40265,
+   "kind": "chg",
+   "meta": {
+    "title": "Titre 7",
+    "artist": "Artiste 8",
+    "album": "",
+    "artwork": [
+     {
+      "src": "https://yt3.googleusercontent.com/art4_xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx=w544-h544-l90-rj",
+      "sizes": "320x180"
+     }
+    ]
+   },
+   "mediaCount": 1,
+   "media": {
+    "duration": 155,
+    "currentTime": 100.354,
+    "paused": false,
+    "ended": false,
+    "readyState": 4,
+    "seeking": false,
+    "playbackRate": 1
+   },
+   "bar": {
+    "value": "99",
+    "max": "155"
+   },
+   "timeInfo": "1:39 / 2:35",
+   "barTitle": "(Titre 7)",
+   "ad": false
+  },
+  {
+   "t": 40443,
+   "kind": "chg",
+   "meta": {
+    "title": "Titre 7",
+    "artist": "Artiste 8",
+    "album": "Titre 7",
+    "artwork": [
+     {
+      "src": "https://yt3.googleusercontent.com/art4_xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx=w60-h60-l90-rj",
+      "sizes": "60x60"
+     },
+     {
+      "src": "https://yt3.googleusercontent.com/art4_xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx=w120-h120-l90-rj",
+      "sizes": "120x120"
+     },
+     {
+      "src": "https://yt3.googleusercontent.com/art4_xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx=w226-h226-l90-rj",
+      "sizes": "226x226"
+     },
+     {
+      "src": "https://yt3.googleusercontent.com/art4_xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx=w544-h544-l90-rj",
+      "sizes": "544x544"
+     }
+    ]
+   },
+   "mediaCount": 1,
+   "media": {
+    "duration": 155,
+    "currentTime": 100.475,
+    "paused": false,
+    "ended": false,
+    "readyState": 4,
+    "seeking": false,
+    "playbackRate": 1
+   },
+   "bar": {
+    "value": "0",
+    "max": "155"
+   },
+   "timeInfo": "0:00 / 2:35",
+   "barTitle": "(Titre 7)",
+   "ad": false
+  },
+  {
+   "t": 40772,
+   "kind": "tu",
+   "meta": {
+    "title": "Titre 7",
+    "artist": "Artiste 8",
+    "album": "Titre 7",
+    "artwork": [
+     {
+      "src": "https://yt3.googleusercontent.com/art4_xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx=w60-h60-l90-rj",
+      "sizes": "60x60"
+     },
+     {
+      "src": "https://yt3.googleusercontent.com/art4_xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx=w120-h120-l90-rj",
+      "sizes": "120x120"
+     },
+     {
+      "src": "https://yt3.googleusercontent.com/art4_xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx=w226-h226-l90-rj",
+      "sizes": "226x226"
+     },
+     {
+      "src": "https://yt3.googleusercontent.com/art4_xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx=w544-h544-l90-rj",
+      "sizes": "544x544"
+     }
+    ]
+   },
+   "mediaCount": 1,
+   "media": {
+    "duration": 155,
+    "currentTime": 100.877,
+    "paused": false,
+    "ended": false,
+    "readyState": 4,
+    "seeking": false,
+    "playbackRate": 1
+   },
+   "bar": {
+    "value": "0",
+    "max": "155"
+   },
+   "timeInfo": "0:00 / 2:35",
+   "barTitle": "(Titre 7)",
+   "ad": false
+  },
+  {
+   "t": 43033,
+   "kind": "tu",
+   "meta": {
+    "title": "Titre 7",
+    "artist": "Artiste 8",
+    "album": "Titre 7",
+    "artwork": [
+     {
+      "src": "https://yt3.googleusercontent.com/art4_xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx=w60-h60-l90-rj",
+      "sizes": "60x60"
+     },
+     {
+      "src": "https://yt3.googleusercontent.com/art4_xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx=w120-h120-l90-rj",
+      "sizes": "120x120"
+     },
+     {
+      "src": "https://yt3.googleusercontent.com/art4_xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx=w226-h226-l90-rj",
+      "sizes": "226x226"
+     },
+     {
+      "src": "https://yt3.googleusercontent.com/art4_xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx=w544-h544-l90-rj",
+      "sizes": "544x544"
+     }
+    ]
+   },
+   "mediaCount": 1,
+   "media": {
+    "duration": 155,
+    "currentTime": 103.137,
+    "paused": false,
+    "ended": false,
+    "readyState": 4,
+    "seeking": false,
+    "playbackRate": 1
+   },
+   "bar": {
+    "value": "2",
+    "max": "155"
+   },
+   "timeInfo": "0:02 / 2:35",
+   "barTitle": "(Titre 7)",
+   "ad": false
+  },
+  {
+   "t": 45292,
+   "kind": "tu",
+   "meta": {
+    "title": "Titre 7",
+    "artist": "Artiste 8",
+    "album": "Titre 7",
+    "artwork": [
+     {
+      "src": "https://yt3.googleusercontent.com/art4_xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx=w60-h60-l90-rj",
+      "sizes": "60x60"
+     },
+     {
+      "src": "https://yt3.googleusercontent.com/art4_xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx=w120-h120-l90-rj",
+      "sizes": "120x120"
+     },
+     {
+      "src": "https://yt3.googleusercontent.com/art4_xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx=w226-h226-l90-rj",
+      "sizes": "226x226"
+     },
+     {
+      "src": "https://yt3.googleusercontent.com/art4_xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx=w544-h544-l90-rj",
+      "sizes": "544x544"
+     }
+    ]
+   },
+   "mediaCount": 1,
+   "media": {
+    "duration": 155,
+    "currentTime": 105.396,
+    "paused": false,
+    "ended": false,
+    "readyState": 4,
+    "seeking": false,
+    "playbackRate": 1
+   },
+   "bar": {
+    "value": "5",
+    "max": "155"
+   },
+   "timeInfo": "0:05 / 2:35",
+   "barTitle": "(Titre 7)",
+   "ad": false
+  },
+  {
+   "t": 47552,
+   "kind": "tu",
+   "meta": {
+    "title": "Titre 7",
+    "artist": "Artiste 8",
+    "album": "Titre 7",
+    "artwork": [
+     {
+      "src": "https://yt3.googleusercontent.com/art4_xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx=w60-h60-l90-rj",
+      "sizes": "60x60"
+     },
+     {
+      "src": "https://yt3.googleusercontent.com/art4_xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx=w120-h120-l90-rj",
+      "sizes": "120x120"
+     },
+     {
+      "src": "https://yt3.googleusercontent.com/art4_xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx=w226-h226-l90-rj",
+      "sizes": "226x226"
+     },
+     {
+      "src": "https://yt3.googleusercontent.com/art4_xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx=w544-h544-l90-rj",
+      "sizes": "544x544"
+     }
+    ]
+   },
+   "mediaCount": 1,
+   "media": {
+    "duration": 155,
+    "currentTime": 107.657,
+    "paused": false,
+    "ended": false,
+    "readyState": 4,
+    "seeking": false,
+    "playbackRate": 1
+   },
+   "bar": {
+    "value": "7",
+    "max": "155"
+   },
+   "timeInfo": "0:07 / 2:35",
+   "barTitle": "(Titre 7)",
+   "ad": false
+  },
+  {
+   "t": 49812,
+   "kind": "tu",
+   "meta": {
+    "title": "Titre 7",
+    "artist": "Artiste 8",
+    "album": "Titre 7",
+    "artwork": [
+     {
+      "src": "https://yt3.googleusercontent.com/art4_xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx=w60-h60-l90-rj",
+      "sizes": "60x60"
+     },
+     {
+      "src": "https://yt3.googleusercontent.com/art4_xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx=w120-h120-l90-rj",
+      "sizes": "120x120"
+     },
+     {
+      "src": "https://yt3.googleusercontent.com/art4_xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx=w226-h226-l90-rj",
+      "sizes": "226x226"
+     },
+     {
+      "src": "https://yt3.googleusercontent.com/art4_xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx=w544-h544-l90-rj",
+      "sizes": "544x544"
+     }
+    ]
+   },
+   "mediaCount": 1,
+   "media": {
+    "duration": 155,
+    "currentTime": 109.916,
+    "paused": false,
+    "ended": false,
+    "readyState": 4,
+    "seeking": false,
+    "playbackRate": 1
+   },
+   "bar": {
+    "value": "9",
+    "max": "155"
+   },
+   "timeInfo": "0:09 / 2:35",
+   "barTitle": "(Titre 7)",
+   "ad": false
+  },
+  {
+   "t": 51322,
+   "action": "next"
+  },
+  {
+   "t": 51758,
+   "kind": "ev",
+   "ev": "emptied",
+   "meta": {
+    "title": "Titre 7",
+    "artist": "Artiste 8",
+    "album": "Titre 7",
+    "artwork": [
+     {
+      "src": "https://yt3.googleusercontent.com/art4_xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx=w60-h60-l90-rj",
+      "sizes": "60x60"
+     },
+     {
+      "src": "https://yt3.googleusercontent.com/art4_xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx=w120-h120-l90-rj",
+      "sizes": "120x120"
+     },
+     {
+      "src": "https://yt3.googleusercontent.com/art4_xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx=w226-h226-l90-rj",
+      "sizes": "226x226"
+     },
+     {
+      "src": "https://yt3.googleusercontent.com/art4_xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx=w544-h544-l90-rj",
+      "sizes": "544x544"
+     }
+    ]
+   },
+   "mediaCount": 1,
+   "media": {
+    "duration": null,
+    "currentTime": 0,
+    "paused": true,
+    "ended": false,
+    "readyState": 0,
+    "seeking": false,
+    "playbackRate": 1
+   },
+   "bar": {
+    "value": "0",
+    "max": "155"
+   },
+   "timeInfo": "0:00 / 2:35",
+   "barTitle": "(Titre 9)",
+   "ad": false
+  },
+  {
+   "t": 51825,
+   "kind": "chg",
+   "meta": {
+    "title": "Titre 10",
+    "artist": "Artiste 11",
+    "album": "",
+    "artwork": [
+     {
+      "src": "https://yt3.googleusercontent.com/art5_xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx=w544-h544-l90-rj",
+      "sizes": "320x180"
+     }
+    ]
+   },
+   "mediaCount": 1,
+   "media": {
+    "duration": null,
+    "currentTime": 0,
+    "paused": false,
+    "ended": false,
+    "readyState": 0,
+    "seeking": false,
+    "playbackRate": 1
+   },
+   "bar": {
+    "value": "0",
+    "max": "0"
+   },
+   "timeInfo": "0:00 / 0:00",
+   "barTitle": "(Titre 9)",
+   "ad": false
+  },
+  {
+   "t": 51827,
+   "kind": "ev",
+   "ev": "emptied",
+   "meta": {
+    "title": "Titre 10",
+    "artist": "Artiste 11",
+    "album": "",
+    "artwork": [
+     {
+      "src": "https://yt3.googleusercontent.com/art5_xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx=w544-h544-l90-rj",
+      "sizes": "320x180"
+     }
+    ]
+   },
+   "mediaCount": 1,
+   "media": {
+    "duration": null,
+    "currentTime": 0,
+    "paused": false,
+    "ended": false,
+    "readyState": 0,
+    "seeking": false,
+    "playbackRate": 1
+   },
+   "bar": {
+    "value": "0",
+    "max": "0"
+   },
+   "timeInfo": "0:00 / 0:00",
+   "barTitle": "(Titre 9)",
+   "ad": false
+  },
+  {
+   "t": 51834,
+   "kind": "ev",
+   "ev": "play",
+   "meta": {
+    "title": "Titre 10",
+    "artist": "Artiste 11",
+    "album": "",
+    "artwork": [
+     {
+      "src": "https://yt3.googleusercontent.com/art5_xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx=w544-h544-l90-rj",
+      "sizes": "320x180"
+     }
+    ]
+   },
+   "mediaCount": 1,
+   "media": {
+    "duration": null,
+    "currentTime": 0,
+    "paused": false,
+    "ended": false,
+    "readyState": 0,
+    "seeking": false,
+    "playbackRate": 1
+   },
+   "bar": {
+    "value": "0",
+    "max": "0"
+   },
+   "timeInfo": "0:00 / 0:00",
+   "barTitle": "(Titre 9)",
+   "ad": false
+  },
+  {
+   "t": 51837,
+   "kind": "ev",
+   "ev": "waiting",
+   "meta": {
+    "title": "Titre 10",
+    "artist": "Artiste 11",
+    "album": "",
+    "artwork": [
+     {
+      "src": "https://yt3.googleusercontent.com/art5_xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx=w544-h544-l90-rj",
+      "sizes": "320x180"
+     }
+    ]
+   },
+   "mediaCount": 1,
+   "media": {
+    "duration": null,
+    "currentTime": 0,
+    "paused": false,
+    "ended": false,
+    "readyState": 0,
+    "seeking": false,
+    "playbackRate": 1
+   },
+   "bar": {
+    "value": "0",
+    "max": "0"
+   },
+   "timeInfo": "0:00 / 0:00",
+   "barTitle": "(Titre 9)",
+   "ad": false
+  },
+  {
+   "t": 51841,
+   "kind": "ev",
+   "ev": "loadstart",
+   "meta": {
+    "title": "Titre 10",
+    "artist": "Artiste 11",
+    "album": "",
+    "artwork": [
+     {
+      "src": "https://yt3.googleusercontent.com/art5_xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx=w544-h544-l90-rj",
+      "sizes": "320x180"
+     }
+    ]
+   },
+   "mediaCount": 1,
+   "media": {
+    "duration": null,
+    "currentTime": 0,
+    "paused": false,
+    "ended": false,
+    "readyState": 0,
+    "seeking": false,
+    "playbackRate": 1
+   },
+   "bar": {
+    "value": "0",
+    "max": "0"
+   },
+   "timeInfo": "0:00 / 0:00",
+   "barTitle": "(Titre 9)",
+   "ad": false
+  },
+  {
+   "t": 51882,
+   "kind": "ev",
+   "ev": "durationchange",
+   "meta": {
+    "title": "Titre 10",
+    "artist": "Artiste 11",
+    "album": "",
+    "artwork": [
+     {
+      "src": "https://yt3.googleusercontent.com/art5_xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx=w544-h544-l90-rj",
+      "sizes": "320x180"
+     }
+    ]
+   },
+   "mediaCount": 1,
+   "media": {
+    "duration": 103,
+    "currentTime": 0,
+    "paused": false,
+    "ended": false,
+    "readyState": 2,
+    "seeking": false,
+    "playbackRate": 1
+   },
+   "bar": {
+    "value": "0",
+    "max": "103"
+   },
+   "timeInfo": "0:00 / 1:43",
+   "barTitle": "(Titre 9)",
+   "ad": false
+  },
+  {
+   "t": 51893,
+   "kind": "ev",
+   "ev": "loadedmetadata",
+   "meta": {
+    "title": "Titre 10",
+    "artist": "Artiste 11",
+    "album": "",
+    "artwork": [
+     {
+      "src": "https://yt3.googleusercontent.com/art5_xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx=w544-h544-l90-rj",
+      "sizes": "320x180"
+     }
+    ]
+   },
+   "mediaCount": 1,
+   "media": {
+    "duration": 103,
+    "currentTime": 0,
+    "paused": false,
+    "ended": false,
+    "readyState": 2,
+    "seeking": false,
+    "playbackRate": 1
+   },
+   "bar": {
+    "value": "0",
+    "max": "103"
+   },
+   "timeInfo": "0:00 / 1:43",
+   "barTitle": "(Titre 9)",
+   "ad": false
+  },
+  {
+   "t": 51924,
+   "kind": "ev",
+   "ev": "playing",
+   "meta": {
+    "title": "Titre 10",
+    "artist": "Artiste 11",
+    "album": "",
+    "artwork": [
+     {
+      "src": "https://yt3.googleusercontent.com/art5_xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx=w544-h544-l90-rj",
+      "sizes": "320x180"
+     }
+    ]
+   },
+   "mediaCount": 1,
+   "media": {
+    "duration": 103,
+    "currentTime": 0,
+    "paused": false,
+    "ended": false,
+    "readyState": 4,
+    "seeking": false,
+    "playbackRate": 1
+   },
+   "bar": {
+    "value": "0",
+    "max": "103"
+   },
+   "timeInfo": "0:00 / 1:43",
+   "barTitle": "(Titre 9)",
+   "ad": false
+  },
+  {
+   "t": 51959,
+   "kind": "tu",
+   "meta": {
+    "title": "Titre 10",
+    "artist": "Artiste 11",
+    "album": "",
+    "artwork": [
+     {
+      "src": "https://yt3.googleusercontent.com/art5_xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx=w544-h544-l90-rj",
+      "sizes": "320x180"
+     }
+    ]
+   },
+   "mediaCount": 1,
+   "media": {
+    "duration": 103,
+    "currentTime": 0,
+    "paused": false,
+    "ended": false,
+    "readyState": 4,
+    "seeking": false,
+    "playbackRate": 1
+   },
+   "bar": {
+    "value": "0",
+    "max": "103"
+   },
+   "timeInfo": "0:00 / 1:43",
+   "barTitle": "(Titre 9)",
+   "ad": false
+  },
+  {
+   "t": 51969,
+   "kind": "chg",
+   "meta": {
+    "title": "Titre 10",
+    "artist": "Artiste 11",
+    "album": "",
+    "artwork": [
+     {
+      "src": "https://yt3.googleusercontent.com/art5_xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx=w544-h544-l90-rj",
+      "sizes": "320x180"
+     }
+    ]
+   },
+   "mediaCount": 1,
+   "media": {
+    "duration": 103,
+    "currentTime": 0,
+    "paused": false,
+    "ended": false,
+    "readyState": 4,
+    "seeking": false,
+    "playbackRate": 1
+   },
+   "bar": {
+    "value": "0",
+    "max": "103"
+   },
+   "timeInfo": "0:00 / 1:43",
+   "barTitle": "(Titre 9)",
+   "ad": false
+  },
+  {
+   "t": 52067,
+   "kind": "chg",
+   "meta": {
+    "title": "Titre 10",
+    "artist": "Artiste 11",
+    "album": "Titre 9",
+    "artwork": [
+     {
+      "src": "https://yt3.googleusercontent.com/art5_xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx=w60-h60-l90-rj",
+      "sizes": "60x60"
+     },
+     {
+      "src": "https://yt3.googleusercontent.com/art5_xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx=w120-h120-l90-rj",
+      "sizes": "120x120"
+     },
+     {
+      "src": "https://yt3.googleusercontent.com/art5_xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx=w226-h226-l90-rj",
+      "sizes": "226x226"
+     },
+     {
+      "src": "https://yt3.googleusercontent.com/art5_xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx=w544-h544-l90-rj",
+      "sizes": "544x544"
+     }
+    ]
+   },
+   "mediaCount": 1,
+   "media": {
+    "duration": 103,
+    "currentTime": 0.12,
+    "paused": false,
+    "ended": false,
+    "readyState": 4,
+    "seeking": false,
+    "playbackRate": 1
+   },
+   "bar": {
+    "value": "0",
+    "max": "103"
+   },
+   "timeInfo": "0:00 / 1:43",
+   "barTitle": "(Titre 9)",
+   "ad": false
+  },
+  {
+   "t": 54143,
+   "kind": "tu",
+   "meta": {
+    "title": "Titre 10",
+    "artist": "Artiste 11",
+    "album": "Titre 9",
+    "artwork": [
+     {
+      "src": "https://yt3.googleusercontent.com/art5_xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx=w60-h60-l90-rj",
+      "sizes": "60x60"
+     },
+     {
+      "src": "https://yt3.googleusercontent.com/art5_xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx=w120-h120-l90-rj",
+      "sizes": "120x120"
+     },
+     {
+      "src": "https://yt3.googleusercontent.com/art5_xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx=w226-h226-l90-rj",
+      "sizes": "226x226"
+     },
+     {
+      "src": "https://yt3.googleusercontent.com/art5_xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx=w544-h544-l90-rj",
+      "sizes": "544x544"
+     }
+    ]
+   },
+   "mediaCount": 1,
+   "media": {
+    "duration": 103,
+    "currentTime": 2.22,
+    "paused": false,
+    "ended": false,
+    "readyState": 4,
+    "seeking": false,
+    "playbackRate": 1
+   },
+   "bar": {
+    "value": "1",
+    "max": "103"
+   },
+   "timeInfo": "0:01 / 1:43",
+   "barTitle": "(Titre 9)",
+   "ad": false
+  },
+  {
+   "t": 56370,
+   "kind": "tu",
+   "meta": {
+    "title": "Titre 10",
+    "artist": "Artiste 11",
+    "album": "Titre 9",
+    "artwork": [
+     {
+      "src": "https://yt3.googleusercontent.com/art5_xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx=w60-h60-l90-rj",
+      "sizes": "60x60"
+     },
+     {
+      "src": "https://yt3.googleusercontent.com/art5_xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx=w120-h120-l90-rj",
+      "sizes": "120x120"
+     },
+     {
+      "src": "https://yt3.googleusercontent.com/art5_xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx=w226-h226-l90-rj",
+      "sizes": "226x226"
+     },
+     {
+      "src": "https://yt3.googleusercontent.com/art5_xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx=w544-h544-l90-rj",
+      "sizes": "544x544"
+     }
+    ]
+   },
+   "mediaCount": 1,
+   "media": {
+    "duration": 103,
+    "currentTime": 4.426,
+    "paused": false,
+    "ended": false,
+    "readyState": 4,
+    "seeking": false,
+    "playbackRate": 1
+   },
+   "bar": {
+    "value": "4",
+    "max": "103"
+   },
+   "timeInfo": "0:04 / 1:43",
+   "barTitle": "(Titre 9)",
+   "ad": false
+  },
+  {
+   "t": 58622,
+   "kind": "tu",
+   "meta": {
+    "title": "Titre 10",
+    "artist": "Artiste 11",
+    "album": "Titre 9",
+    "artwork": [
+     {
+      "src": "https://yt3.googleusercontent.com/art5_xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx=w60-h60-l90-rj",
+      "sizes": "60x60"
+     },
+     {
+      "src": "https://yt3.googleusercontent.com/art5_xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx=w120-h120-l90-rj",
+      "sizes": "120x120"
+     },
+     {
+      "src": "https://yt3.googleusercontent.com/art5_xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx=w226-h226-l90-rj",
+      "sizes": "226x226"
+     },
+     {
+      "src": "https://yt3.googleusercontent.com/art5_xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx=w544-h544-l90-rj",
+      "sizes": "544x544"
+     }
+    ]
+   },
+   "mediaCount": 1,
+   "media": {
+    "duration": 103,
+    "currentTime": 6.685,
+    "paused": false,
+    "ended": false,
+    "readyState": 4,
+    "seeking": false,
+    "playbackRate": 1
+   },
+   "bar": {
+    "value": "6",
+    "max": "103"
+   },
+   "timeInfo": "0:06 / 1:43",
+   "barTitle": "(Titre 9)",
+   "ad": false
+  },
+  {
+   "t": 60840,
+   "kind": "tu",
+   "meta": {
+    "title": "Titre 10",
+    "artist": "Artiste 11",
+    "album": "Titre 9",
+    "artwork": [
+     {
+      "src": "https://yt3.googleusercontent.com/art5_xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx=w60-h60-l90-rj",
+      "sizes": "60x60"
+     },
+     {
+      "src": "https://yt3.googleusercontent.com/art5_xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx=w120-h120-l90-rj",
+      "sizes": "120x120"
+     },
+     {
+      "src": "https://yt3.googleusercontent.com/art5_xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx=w226-h226-l90-rj",
+      "sizes": "226x226"
+     },
+     {
+      "src": "https://yt3.googleusercontent.com/art5_xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx=w544-h544-l90-rj",
+      "sizes": "544x544"
+     }
+    ]
+   },
+   "mediaCount": 1,
+   "media": {
+    "duration": 103,
+    "currentTime": 8.904,
+    "paused": false,
+    "ended": false,
+    "readyState": 4,
+    "seeking": false,
+    "playbackRate": 1
+   },
+   "bar": {
+    "value": "8",
+    "max": "103"
+   },
+   "timeInfo": "0:08 / 1:43",
+   "barTitle": "(Titre 9)",
+   "ad": false
+  }
+ ]
+}

@@ -1,0 +1,15 @@
+# dependencies
+node_modules/
+# build outputs
+dist/
+dist-zip/
+*.zip
+# test outputs
+test/e2e/out/
+coverage*
+# local secrets
+.env
+.env.*
+*.local
+*.pem
+*.key

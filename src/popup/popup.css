@@ -1,0 +1,43 @@
+/* Popup of the extension. */
+:root {
+  --navy: #203856;
+  --raspberry: #a3216b;
+  --peach: #ffd9c4;
+  --butter: #fff0c4;
+  --sky: #cfe8fb;
+  --paper: #fffaf3;
+  color-scheme: light;
+}
+* { box-sizing: border-box; }
+body { margin: 0; width: 360px; font: 14px/1.4 system-ui, sans-serif; color: var(--navy); background: var(--paper); }
+main { padding: 14px 16px 12px; background: linear-gradient(160deg, rgba(255, 217, 196, 0.6), rgba(255, 240, 196, 0.4) 45%, rgba(207, 232, 251, 0.6)); }
+header { display: flex; align-items: center; gap: 8px; }
+h1 { margin: 0; font-size: 20px; font-weight: 800; letter-spacing: 0.04em; }
+.logo { width: 22px; height: 22px; border-radius: 50%; background: radial-gradient(circle, var(--paper) 0 9%, var(--raspberry) 10% 40%, var(--navy) 41%); }
+.dot { margin-left: auto; width: 12px; height: 12px; border-radius: 50%; background: #9aa5b4; box-shadow: 0 0 0 3px rgba(255, 255, 255, 0.8); }
+.dot.ok { background: #2e9e5b; }
+.dot.warn { background: #e08a1e; }
+.dot.error { background: #c8323c; }
+.status { margin: 6px 0 12px; min-height: 1.4em; }
+section { margin: 10px 0; }
+label { display: block; font-weight: 700; margin-bottom: 4px; }
+input { flex: 1; min-width: 0; padding: 7px 8px; border: 1px solid rgba(32, 56, 86, 0.3); border-radius: 8px; background: #fff; color: var(--navy); font: 12px ui-monospace, monospace; }
+button { padding: 7px 12px; border: 1px solid rgba(32, 56, 86, 0.3); border-radius: 8px; background: #fff; color: var(--navy); font: 600 13px system-ui, sans-serif; cursor: pointer; }
+button.primary { background: var(--raspberry); border-color: var(--raspberry); color: #fff; }
+button.danger { border-color: #c8323c; color: #c8323c; }
+button:focus-visible, input:focus-visible { outline: 3px solid rgba(163, 33, 107, 0.45); outline-offset: 1px; }
+.actions { display: flex; gap: 8px; }
+.actions button { flex: 1; }
+button:disabled { opacity: 0.5; cursor: default; }
+.hint { margin: 6px 0; font-size: 12px; color: rgba(32, 56, 86, 0.8); }
+.warn { margin: 6px 0; font-size: 12px; font-weight: 700; color: var(--raspberry); }
+footer { margin-top: 12px; font-size: 11px; color: rgba(32, 56, 86, 0.7); }
+.conflict { margin: -6px 0 12px; padding: 6px 8px; border-radius: 8px; background: rgba(224, 138, 30, 0.16); border: 1px solid rgba(224, 138, 30, 0.6); font-size: 13px; font-weight: 600; }
+select { width: 100%; padding: 7px 8px; border: 1px solid rgba(32, 56, 86, 0.3); border-radius: 8px; background: #fff; color: var(--navy); font: 13px system-ui, sans-serif; }
+select:focus-visible { outline: 3px solid rgba(163, 33, 107, 0.45); outline-offset: 1px; }
+input[type="number"], input[type="password"] { width: 100%; font-size: 13px; }
+form section { margin: 8px 0; }
+label.check { display: flex; gap: 6px; align-items: center; margin-top: 8px; font-weight: 400; }
+label.check input { width: auto; margin: 0; padding: 0; flex: none; }
+.warn-box { padding: 6px 8px; border-left: 3px solid #e08a1e; background: rgba(224, 138, 30, 0.1); }
+.hint.warn { color: #9a5a0c; font-weight: 600; }

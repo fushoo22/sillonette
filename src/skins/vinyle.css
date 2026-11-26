@@ -1,0 +1,64 @@
+/* Skin "Vinyle": elegant, jazz and soul. The artwork is the label of a record that turns
+   while the music plays (stopped otherwise), grooves drawn by a static radial gradient,
+   serif type, black / burgundy / brass tones. Only the disc's transform is animated. */
+.sillonette {
+  --_track: rgba(246, 236, 216, 0.16);
+  --_burgundy: #6e1d2c;
+  background-image: linear-gradient(120deg, rgba(110, 29, 44, 0.45) 0%, rgba(110, 29, 44, 0) 55%);
+  border: 1px solid rgba(212, 174, 102, 0.55);
+}
+.sillonette .title { font-weight: 600; font-variation-settings: "opsz" 72; }
+.sillonette .artist { font-weight: 500; font-style: normal; color: var(--o-accent); }
+.sillonette .album { font-style: italic; }
+.sillonette .status {
+  padding: 0 0.5rem;
+  border-top: 1px solid var(--o-accent);
+  border-bottom: 1px solid var(--o-accent);
+  color: var(--o-accent);
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+.sillonette .bar { height: 0.18rem; }
+.sillonette .fill { background: linear-gradient(90deg, var(--_burgundy), var(--o-accent)); }
+
+/* the record: always round, whatever the artwork shape setting */
+.sillonette .art {
+  border-radius: 50%;
+  background:
+    radial-gradient(circle, rgba(255, 255, 255, 0) 30%, rgba(255, 255, 255, 0.07) 31%, rgba(255, 255, 255, 0) 33%),
+    repeating-radial-gradient(circle, #121011 0, #121011 0.09rem, #24201f 0.11rem, #121011 0.17rem),
+    #121011;
+  box-shadow: 0 0 0 1px rgba(212, 174, 102, 0.6), 0 0.15rem 0.5rem rgba(0, 0, 0, 0.5);
+}
+/* label */
+.sillonette .art img {
+  position: absolute;
+  top: 27%;
+  left: 27%;
+  width: 46%;
+  height: 46%;
+  border-radius: 50%;
+  box-shadow: 0 0 0 0.12rem var(--_burgundy);
+}
+/* spindle hole */
+.sillonette .art::before {
+  content: "";
+  position: absolute;
+  z-index: 1;
+  top: 47%;
+  left: 47%;
+  width: 6%;
+  height: 6%;
+  border-radius: 50%;
+  background: #0c0a0b;
+  box-shadow: 0 0 0 1px rgba(212, 174, 102, 0.7);
+}
+.sillonette.no-art .art::after { font-size: 1.4rem; color: var(--o-accent); }
+.sillonette[data-layout="c"] .art::before { display: none; }
+.sillonette[data-layout="v"] .art img { top: 30%; left: 30%; width: 40%; height: 40%; }
+
+/* the label turns (the grooves are round: they look the same at any angle) */
+.sillonette .art img { animation: vinyl-spin 5.5s linear infinite; animation-play-state: paused; }
+.sillonette.is-visible[data-state="playing"] .art img { animation-play-state: running; }
+@keyframes vinyl-spin { to { transform: rotate(360deg); } }
