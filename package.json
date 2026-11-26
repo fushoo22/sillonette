@@ -1,6 +1,6 @@
 {
   "name": "sillonette",
-  "version": "0.1.3",
+  "version": "0.2.0",
   "private": true,
   "description": "Sillonette: shows the YouTube Music track in OBS, without any server (OBS WebSocket on the same PC)",
   "license": "MIT",
@@ -18,10 +18,11 @@
     "test": "node --test \"test/unit/*.test.mjs\"",
     "e2e": "node --test --test-concurrency=1 --test-timeout=240000 --test-force-exit --test-reporter=tap \"test/e2e/*.e2e.mjs\"",
     "test:ci": "node --test --test-force-exit --test-reporter=tap \"test/unit/*.test.mjs\"",
-    "e2e:chromium": "node --test --test-concurrency=1 --test-timeout=240000 --test-force-exit --test-reporter=tap test/e2e/chromium.e2e.mjs test/e2e/overlay.e2e.mjs",
+    "e2e:chromium": "node --test --test-concurrency=1 --test-timeout=240000 --test-force-exit --test-reporter=tap test/e2e/chromium.e2e.mjs test/e2e/overlay.e2e.mjs test/e2e/options.e2e.mjs",
     "check": "npm run lint && npm test && npm run lint:firefox && npm run e2e"
   },
   "devDependencies": {
+    "axe-core": "4.14.1",
     "esbuild": "0.28.2",
     "playwright-core": "1.65.1",
     "typescript": "6.0.3"

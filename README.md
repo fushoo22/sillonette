@@ -67,8 +67,20 @@ Détails techniques et sources vérifiées : [docs/TECHNIQUE.md](docs/TECHNIQUE.
 5. OBS : **crée une nouvelle source « Navigateur web »** → « Fichier local » →
    `overlay\sillonette-overlay.html`, 800 × 200 (ou la taille conseillée par la popup).
 
-Mettre à jour : dézippe la nouvelle version **dans le même dossier** (en remplaçant les fichiers), puis
-recharge l'extension sur la page des extensions. Rien ne se met à jour tout seul.
+Mettre à jour : dézippe la nouvelle version **dans le même dossier** (en remplaçant les fichiers : les
+dossiers `extension-chrome` et `overlay`), puis recharge l'extension sur la page des extensions. Rien ne
+se met à jour tout seul.
+
+## Personnaliser
+
+Popup Sillonette → **« Personnaliser… »** : une page avec un aperçu en direct (le vrai overlay, avec de
+faux morceaux) pour régler couleurs, opacité, police, taille, éléments affichés, animations,
+comportement en pause et sans musique, alignement, langue de l'overlay et codes d'erreur. Chaque
+réglage est enregistré dans le navigateur et arrive dans OBS en quelques secondes. Le mode
+**« Quelques secondes à chaque nouveau morceau »** montre la carte au changement de morceau (10 s par
+défaut, de 3 à 60 s), puis la cache jusqu'au suivant (pas de retour à la reprise après une pause ; un
+code d'erreur reste visible). Pour aller plus loin sans rien installer : le **« CSS personnalisé »**
+de la source dans OBS (exemples dans [LISEZMOI.txt](LISEZMOI.txt), partie 7).
 
 Sillonette s'installe à côté d'autres extensions sans les remplacer (identité propre :
 `sillonette@fushoo.fr` sous Firefox, dossier distinct sous Chrome).
@@ -94,6 +106,7 @@ npm run lint:firefox  # web-ext lint (outil installé à part, dans tools/web-ex
 npm run e2e           # bout en bout : Chromium et Firefox sans tête, faux OBS
 npm run zip           # dist-zip/sillonette-<version>.zip (extension Chrome + overlay + LISEZMOI)
 node test/obs-reel/essai.mjs WORK OUT   # essai manuel avec un vrai OBS (configuration jetable)
+node test/obs-reel/perso.mjs WORK OUT   # idem, pour la personnalisation (mesures des captures d'OBS)
 ```
 
 Les tests de bout en bout utilisent le Chromium de Playwright (`npx playwright-core install chromium`,
@@ -104,7 +117,7 @@ Publication : pousser une étiquette `v<version>` (la même que `package.json`) 
 construction du zip et création de la Release avec les notes de `.github/notes-de-version.md`.
 
 Organisation : `src/content` (lecture de YouTube Music), `src/background` (partage entre onglets,
-client obs-websocket), `src/popup`, `src/overlay`, `src/skins`, `src/fonts`, `scripts` (construction,
+client obs-websocket), `src/popup`, `src/options` (page de personnalisation), `src/overlay`, `src/skins`, `src/fonts`, `scripts` (construction,
 zip, contrôles), `test`.
 
 ## Licences

@@ -102,6 +102,7 @@ d. Clique "Enregistrer et connecter". La pastille devient verte : "Connecte a OB
      ton reseau peut piloter OBS. Dans OBS, coche "Utiliser l'authentification" (etape 2d).
    - "OBS a ferme la connexion" : quelqu'un a clique "Expulser" dans OBS. Nouvel essai dans 1 minute.
 e. Choisis le skin et la disposition. La popup indique la taille conseillee de la source.
+   Pour tout le reste (couleurs, police, taille...), voir la partie 7.
 
 
 5. Ajouter l'overlay dans OBS
@@ -126,6 +127,50 @@ il apparait dans OBS en une seconde environ.
 - Si le navigateur est ferme, l'overlay se cache tout seul apres 20 secondes.
 
 
+7. Personnaliser l'overlay
+--------------------------
+a. Clique sur l'icone Sillonette, puis "Personnaliser...". Une page s'ouvre dans un onglet.
+   (Autre chemin : page des extensions -> Sillonette -> Details -> "Options de l'extension".)
+b. Regle ce que tu veux : couleurs, opacite du fond, arrondi, forme de la pochette, ombre, police du
+   titre, taille, elements affiches (pochette, artiste, album, barre, temps), animations, comportement
+   en pause et sans musique, alignement a gauche ou a droite, langue de l'overlay.
+   L'apercu en haut montre le resultat avec de faux morceaux. Chaque reglage est enregistre tout de
+   suite dans le navigateur, et l'overlay change dans OBS en quelques secondes (si Sillonette est
+   connecte a OBS).
+c. Si tu changes la taille ou la disposition, mets la source OBS a la "Taille conseillee" indiquee
+   sous l'apercu (Proprietes de la source -> Largeur et Hauteur).
+d. "Retablir les reglages du skin" remet les reglages d'origine du skin choisi.
+e. Si la page signale un "Contraste insuffisant", le texte risque d'etre difficile a lire en live :
+   change la couleur du texte ou du fond.
+
+Montrer la carte seulement quelques secondes a chaque nouveau morceau :
+   rubrique "Comportement" -> "Quand montrer la carte" -> "Quelques secondes a chaque nouveau morceau",
+   puis la duree (10 secondes par defaut, de 3 a 60). La carte apparait quand le morceau change,
+   puis se cache jusqu'au morceau suivant. Elle ne revient PAS quand tu relances apres une pause.
+   Un code d'erreur (E10) reste toujours visible, pour que tu le voies.
+
+Codes d'erreur a l'antenne : decoche "Afficher les codes d'erreur (E10) sur l'overlay" pour ne
+   jamais les montrer dans OBS (la popup continue de te prevenir).
+
+Pour aller plus loin : le "CSS personnalise" d'OBS
+   Pour un reglage qui n'existe pas dans la page (titre en majuscules, contour du texte...), OBS sait
+   ajouter du style a une source Navigateur, sans rien installer :
+   - Clic droit sur la source Sillonette -> Proprietes -> champ "CSS personnalise".
+   - GARDE la ligne deja presente (body { background-color: rgba(0, 0, 0, 0); ... }) et ajoute tes
+     regles en dessous, puis OK.
+   Exemples (les deux premiers ont ete essayes avec un vrai OBS 33) :
+     Titre en majuscules :
+       .sillonette .title { text-transform: uppercase; }
+     Contour noir autour du texte (lisible sur tous les fonds) :
+       .sillonette .title, .sillonette .line2 { text-shadow: 0 0 3px #000, 0 0 3px #000; }
+     Artiste un peu plus grand :
+       .sillonette .artist { font-size: 1.1em; }
+   Si une regle ne fait rien avec un skin, ajoute !important avant le point-virgule
+   (exemple : text-transform: uppercase !important;).
+   Ces regles restent dans OBS : Sillonette ne les voit pas et ne les envoie nulle part. Une faute de
+   frappe ne casse rien : la regle est simplement ignoree. Pour revenir en arriere, efface tes lignes.
+
+
 Mettre a jour
 -------------
 Rien ne se met a jour tout seul. Pour une nouvelle version :
@@ -134,6 +179,8 @@ b. Extrais-le DANS LE MEME DOSSIER (par exemple C:\Sillonette\) en remplacant le
 c. Page des extensions (mode developpeur active) -> bouton "Mettre a jour" en haut de la page,
    ou la fleche en rond sur la carte Sillonette. (Libelles de Chrome ; ceux d'Edge et d'Opera
    peuvent varier.)
+   Remplace bien LES DEUX dossiers (extension-chrome et overlay) : un ancien overlay ignore les
+   nouveaux reglages, sans erreur.
 d. Dans OBS, la source garde le meme fichier : clic droit sur la source -> Proprietes ->
    "Rafraichir le cache de cette page" si l'ancien affichage reste.
 Le mot de passe et les reglages restent enregistres dans le navigateur.
@@ -148,7 +195,8 @@ sert. Si tu crois que le mot de passe a fuite : dans OBS, "Generer un mot de pas
 
 Limites actuelles
 -----------------
-- YouTube Music uniquement. Reglages : skin et disposition seulement (pas l'editeur complet).
+- YouTube Music uniquement.
+- Les reglages sont les memes pour toutes tes sources Sillonette dans OBS (pas de reglages par scene).
 - Le mot de passe d'OBS est garde non chiffre (voir "A savoir" plus haut).
 - OBS envoie l'evenement a TOUTES ses sources Navigateur : une autre source (alertes, chat...)
   pourrait lire le titre en cours. Rien d'autre n'y est.

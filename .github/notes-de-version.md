@@ -1,17 +1,17 @@
-# Sillonette 0.1.3 (bêta)
+# Sillonette 0.2.0 (bêta) : personnalise ton overlay
 
 Sillonette affiche dans OBS le morceau que tu écoutes sur YouTube Music (titre, artiste, pochette,
 progression), sans aucun serveur : tout se passe sur ton PC.
 
 ## Télécharger
 
-Prends le fichier **`sillonette-0.1.3.zip`** plus bas (rubrique « Assets »). Pas besoin du code source.
+Prends le fichier **`sillonette-0.2.0.zip`** plus bas (rubrique « Assets »). Pas besoin du code source.
 Mode d'emploi : `LISEZMOI.txt` dans le zip, ou https://fushoo.fr/sillonette/installation/
 
 ## Avertissements, à lire avant d'installer
 
 - **Version bêta.** La 0.1.2 a été essayée avec succès par l'auteur sous Windows avec un vrai OBS ;
-  les corrections de la 0.1.3 ont été testées sous Linux seulement. **Pas encore testée pendant de longs lives** (plusieurs heures).
+  la 0.2.0 a été testée sous Linux seulement. **Pas encore testée pendant de longs lives** (plusieurs heures).
   Garde une solution de secours.
 - **Le mot de passe WebSocket d'OBS donne le contrôle total d'OBS**, clé de stream comprise.
   Ne le montre jamais à l'écran, ne le donne à personne. Copie-le avec le bouton « Copier » d'OBS
@@ -23,38 +23,70 @@ Mode d'emploi : `LISEZMOI.txt` dans le zip, ou https://fushoo.fr/sillonette/inst
 - Projet indépendant et gratuit, non affilié à YouTube, à Google ni à l'OBS Project.
   Licence MIT : fourni « tel quel », sans garantie.
 
-## Corrections de la 0.1.3
+## Nouveautés de la 0.2.0
 
-Toutes concernent l'overlay (ce qui s'affiche dans OBS). L'extension n'a pas changé.
+- **Une page pour personnaliser l'overlay, avec un aperçu en direct.** Dans la popup, clique sur
+  **« Personnaliser… »** (ou, sur la page des extensions : Sillonette → Détails → « Options de
+  l'extension »). Tu peux régler :
+  - l'apparence : skin, disposition, couleur d'accent, du texte et du fond, opacité du fond, arrondi
+    des coins, forme de la pochette, ombre ;
+  - le texte : police du titre, taille, défilement des titres trop longs ;
+  - ce qui s'affiche : pochette, artiste, album, barre de progression, temps, mascotte (skin Lofi) ;
+  - les animations : apparition, changement de morceau, « Réduire les mouvements » ;
+  - le comportement : en pause (afficher « En pause », griser, ou masquer après quelques secondes),
+    sans musique (masquer ou « Sillonette en attente »), alignement à gauche ou à droite, langue de
+    l'overlay (français ou anglais).
 
-- **Titres en arabe ou en hébreu trop longs** : avant, ils défilaient dans le mauvais sens et sortaient
-  de la carte (seuls les premiers mots restaient visibles). Maintenant ils défilent vers la droite et
-  la fin du titre s'affiche.
-- **Défilement des titres longs mal réglé** : avant, la longueur du défilement était mesurée une seule
-  fois, parfois avant le chargement du skin ou de la police. Après un changement de skin ou de
-  disposition, au lancement d'OBS avec un autre skin que Studio, ou si tu changes la taille de la
-  source, le titre pouvait défiler trop loin, pas assez, ou pas du tout. Maintenant la mesure est
-  refaite à chacun de ces moments.
-- **Ancienne pochette affichée avec le nouveau titre** : avant, au changement de morceau, la pochette du
-  morceau précédent restait jusqu'à ce que la nouvelle soit chargée (visible avec une connexion lente).
-  Maintenant la place reste vide pendant ce court chargement.
+  L'aperçu utilise le vrai overlay avec de faux morceaux. Chaque réglage est enregistré tout de suite
+  dans ton navigateur, et l'overlay change dans OBS en quelques secondes (si Sillonette est connecté).
+  La page prévient si le texte risque d'être difficile à lire (contraste), et le bouton
+  **« Rétablir les réglages du skin »** remet tout comme avant.
+- **Nouveau : « Quelques secondes à chaque nouveau morceau ».** La carte apparaît quand le morceau
+  change, reste le temps choisi (10 s par défaut, de 3 à 60 s), puis se cache jusqu'au morceau suivant.
+  Elle ne revient pas quand tu relances après une pause. Si un code d'erreur s'affiche (E10), il reste
+  visible.
+- **Tu peux choisir d'afficher ou non les codes d'erreur (E10) à l'antenne.** Avant, le badge
+  s'affichait toujours dans OBS.
+- **Pour aller plus loin : le « CSS personnalisé » d'OBS.** Le mode d'emploi (`LISEZMOI.txt`, partie 7)
+  explique comment mettre le titre en majuscules ou ajouter un contour au texte, sans rien installer.
 
-Autre modification : un test automatique de l'overlay en plus, et un fichier `CHANGELOG.md`
-(historique de toutes les versions).
+## Autres modifications
+
+- **La popup garde tes réglages.** Avant, choisir un skin ou une disposition dans la popup remettait
+  tout le reste à zéro. Maintenant, un autre skin apporte ses couleurs, sa police et ses formes, et le
+  reste (taille, contenu, comportement) est gardé.
+- **Délai « Masquer après N secondes » en pause** : il repartait de zéro à chaque renvoi automatique de
+  l'extension (toutes les 5 s), donc la carte ne se cachait jamais avec un délai de 5 s ou plus. Il
+  compte maintenant depuis le début de la pause. Ce réglage n'était pas accessible avant la 0.2.0 :
+  aucun utilisateur n'a pu le rencontrer.
+- Tes réglages déjà enregistrés (skin et disposition) sont gardés. Une valeur invalide reprend celle du
+  skin.
+- Rien de plus n'est envoyé à OBS (toujours le même message, avec les réglages dans le même champ), et
+  l'extension ne demande **aucune permission en plus**. Les réglages restent dans ton navigateur.
+- L'extension est un peu plus lourde (environ 0,5 Mo) : elle contient une copie de l'overlay et de ses
+  polices pour l'aperçu.
 
 ## Comment mettre à jour
 
-1. Télécharge `sillonette-0.1.3.zip` et extrais-le **dans le même dossier** que la version précédente,
-   en remplaçant les fichiers (c'est surtout le dossier `overlay` qui change).
+1. Télécharge `sillonette-0.2.0.zip` et extrais-le **dans le même dossier** que la version précédente,
+   en remplaçant les fichiers. **Les deux dossiers changent** (`extension-chrome` et `overlay`) : un
+   ancien overlay ignore les nouveaux réglages, sans erreur.
 2. Page des extensions du navigateur : « Mettre à jour » ou la flèche en rond sur la carte Sillonette.
 3. Dans OBS : clic droit sur la source → Propriétés → « Rafraîchir le cache de cette page ».
 
-Ton mot de passe et tes réglages restent enregistrés.
+Ton mot de passe, ton skin et ta disposition restent enregistrés.
 
 ## Ce qui a été testé, et ce qui ne l'a pas été
 
-- Testé : tests automatiques (Chromium et Firefox sous Linux, faux OBS), et essai avec un vrai OBS 33
-  sous Linux : titre arabe long, changement de skin puis rechargement de la source.
+- Testé sous Linux : 41 tests unitaires, 11 tests de bout en bout (Chromium et Firefox, faux OBS),
+  dont la page de réglages (aperçu, enregistrement, envoi à OBS, clavier seul, audit d'accessibilité
+  WCAG 2.1 AA, page en largeur de téléphone).
+- **Essai avec un vrai OBS 33 sous Linux** (configuration jetable, son coupé, aucun live) : réglages
+  changés sur la page et appliqués dans OBS en moins d'une seconde ; mode « 4 secondes » (affiché au
+  nouveau morceau, caché après, pas de retour à la reprise, badge E10 visible) ; source rechargée et
+  OBS redémarré (réglages revenus seuls) ; 7 combinaisons skin / disposition / taille (50 à 200 %) sans
+  débordement à la taille conseillée ; CSS personnalisé appliqué. 23 points vérifiés sur 23.
+- La page de réglages a aussi été essayée dans Firefox (module temporaire) : aperçu et envoi à OBS.
 - **Pas testé** : Windows, macOS, Edge, Opera ; longs lives (plusieurs heures).
 
 ## Un avis, un bug ?

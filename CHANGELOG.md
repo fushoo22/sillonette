@@ -5,6 +5,45 @@ Pour mettre à jour : voir « Mettre a jour » dans `LISEZMOI.txt` (extraire le 
 dossier en remplaçant les fichiers, recharger l'extension, puis dans OBS « Rafraichir le cache de cette
 page » dans les propriétés de la source).
 
+## 0.2.0 (bêta)
+
+Nouveautés : la personnalisation de l'overlay.
+
+- **Page « Personnaliser l'overlay »**, avec un **aperçu en direct** (le vrai overlay, avec de faux
+  morceaux). On l'ouvre avec le nouveau bouton **« Personnaliser… »** de la popup (ou « Options » de
+  l'extension). Tous les réglages : couleurs (accent, texte, fond), opacité du fond, arrondi des coins,
+  forme de la pochette, ombre, police du titre, taille, défilement des titres longs, éléments affichés
+  (pochette, artiste, album, barre, temps, mascotte), animations d'apparition et de changement de
+  morceau, « Réduire les mouvements », comportement en pause, sans musique, alignement, langue de
+  l'overlay. Chaque réglage est enregistré tout de suite dans le navigateur et arrive dans OBS en
+  quelques secondes.
+- **Alerte de contraste** : la page prévient si le texte risque d'être difficile à lire.
+- **Bouton « Rétablir les réglages du skin »**.
+- **Nouveau mode « Quelques secondes à chaque nouveau morceau »** (10 s par défaut, de 3 à 60 s) : la
+  carte apparaît au changement de morceau, puis se cache jusqu'au morceau suivant. Elle ne revient pas
+  quand on relance après une pause. Un code d'erreur (E10) reste toujours visible.
+- **Choix d'afficher ou non les codes d'erreur (E10) à l'antenne.** Avant, le badge s'affichait toujours
+  dans OBS.
+- Mode d'emploi du **« CSS personnalisé » d'OBS** pour les cas avancés (majuscules, contour du texte…)
+  dans `LISEZMOI.txt`.
+
+Modifications :
+
+- **La popup garde tes réglages** : changer de skin ou de disposition dans la popup ne remet plus tout à
+  zéro. Un autre skin apporte ses couleurs, sa police et ses formes ; le reste (taille, contenu,
+  comportement) est gardé.
+- Correction d'un défaut qui serait apparu avec la nouvelle page : avec « En pause : Masquer après N
+  secondes », le délai repartait de zéro à chaque renvoi de l'extension (toutes les 5 s), donc la
+  carte ne se cachait jamais pour un délai de 5 s ou plus. Le délai compte maintenant depuis le début
+  de la pause. (Ce réglage n'était pas accessible avant la 0.2.0.)
+- Les réglages déjà enregistrés (skin et disposition) sont gardés. Une valeur invalide reprend celle du
+  skin, comme avant.
+- Rien de plus n'est envoyé à OBS : toujours le même message, avec les réglages dans le même champ.
+  Aucune permission en plus.
+
+Mettre à jour : remplacer **les deux dossiers** (`extension-chrome` et `overlay`). Un ancien overlay
+ignore les nouveaux réglages (sans erreur).
+
 ## 0.1.3 (bêta)
 
 Corrections de l'overlay (fichier `overlay`, affiché dans OBS) :

@@ -29,6 +29,35 @@ Commandes : voir le [README](../README.md).
 L'overlay valide tout (tailles, textes nettoyés, nombres bornés, pochette limitée aux hôtes autorisés,
 thème normalisé) : n'importe quel client obs-websocket peut émettre le même événement.
 
+## Réglages de l'overlay (0.2.0)
+
+- **Format** (`src/shared/config.ts`) : un objet de réglages court (`sk`, `ly`, `ac`, `tx`, `bg`, `ba`,
+  `ft`, `sc`, `rd`, `sh`, `an`, `tc`, `mq`, `pa`, `pt`, `id`, `al`, `rm`, `lg`, `as`, `sd`, et depuis 0.2.0
+  `nt` et `er`). Gardé tel quel dans `storage.local` (`theme`), envoyé dans le champ `theme` de chaque
+  événement sous forme de texte (`encodeTheme` : seulement ce qui diffère du skin, base64url). Règle
+  d'or : clé inconnue ignorée, valeur invalide = valeur du skin. Un overlay plus ancien ignore les
+  nouvelles clés. Taille d'un thème maximal encodé : bien moins de 750 caractères (limite 1 500 ; test
+  unitaire).
+- `nt` : 0 = carte toujours visible ; 3 à 60 = la carte s'affiche à chaque nouveau morceau (titre,
+  artiste ou pochette différents) puis se cache après `nt` secondes, jusqu'au morceau suivant. Une
+  reprise après pause n'est pas un nouveau morceau. Les renvois toutes les 5 s ne prolongent rien. Le
+  badge d'erreur est un élément à part : il reste visible. Pendant la fenêtre, les règles de pause
+  s'appliquent.
+- `er` : 1 = badge d'erreur (E10) affiché dans OBS, 0 = jamais (comme `er=0` dans un fragment d'aperçu).
+- Délai de pause (`pa = hide`, `pt`) : compté depuis le premier événement « en pause » (avant 0.2.0, chaque
+  renvoi de 5 s le relançait ; le réglage n'était pas exposé).
+- **Page d'options** (`src/options`, `options_ui`, ouverte dans un onglet) : aucun droit en plus. Chaque
+  changement passe par `normalizeTheme`, est écrit dans `storage.local` (200 ms après la fin d'un
+  glissement de curseur), et le service d'arrière-plan l'envoie aussitôt à OBS. Changer de skin (page ou
+  popup) applique les couleurs, polices et formes du skin et garde le reste (`withSkin`). La popup ne
+  réécrit plus le thème avec le skin et la disposition seuls.
+- **Aperçu** : copie de l'overlay dans l'extension (`apercu/`, même `overlay.js`, même CSS ; les polices y
+  sont des fichiers car la CSP des pages d'extension refuse les polices `data:`). Sa propre CSP n'autorise
+  que les fichiers de l'extension (pas d'image distante, pas de réseau). Il tourne en mode démo
+  (`#demo=1&s=…`) : la page change seulement le fragment, et l'overlay en démo applique le nouveau
+  fragment sans se recharger (`hashchange`). Contrôlé par `scripts/check-manifest.mjs`.
+- Contraste : `src/shared/contrast.ts` (WCAG 2.1, pire cas sur scène noire et blanche, seuil 4,5:1).
+
 ## Comportement
 
 - **Un seul onglet à la fois** (`src/background/lease.ts`) :
@@ -124,7 +153,7 @@ ce PC n'a besoin que de 127.0.0.1). Effet réel d'un refus dans le pare-feu de W
 - **Lues** dans l'onglet YouTube Music (`src/content`) : titre, artiste, album, adresse de la pochette,
   durée, position, vitesse de lecture, publicité ou non. Rien d'autre (pas de compte, pas d'historique).
 - **Gardées dans le navigateur** (stockage de l'extension) : port, mot de passe d'OBS (`storage.local`
-  ou `storage.session`), skin et disposition ; en mémoire de session : état des onglets et de la connexion.
+  ou `storage.session`), réglages d'apparence de l'overlay (skin, disposition, couleurs… : `storage.local`) ; en mémoire de session : état des onglets et de la connexion.
 - **Envoyées** : seulement à OBS, sur `ws://127.0.0.1` (CSP de l'extension). Pas de statistiques, pas de
   compte, pas de mise à jour automatique.
 - **Réseau de l'overlay** : il charge la pochette directement chez Google (`lh3.googleusercontent.com`,
@@ -134,7 +163,10 @@ ce PC n'a besoin que de 127.0.0.1). Effet réel d'un refus dans le pare-feu de W
 
 ## Limites connues
 
-- Interface de l'extension en français uniquement (l'overlay affiche « En pause » en français ou en anglais).
+- Réglages communs à toutes les sources Sillonette d'OBS (l'événement va à toutes) : pas de réglages par
+  scène.
+
+- Interface de l'extension (popup, page de réglages) en français uniquement ; l'overlay s'affiche en français ou en anglais (réglage « Langue de l'overlay »).
 
 - Service worker Chrome : gardé en vie par le trafic WebSocket (Chrome ≥ 116) tant qu'OBS est connecté ;
   non prouvé sur de longues durées (les tests attachent DevTools, ce qui le garde en vie). Si OBS est fermé,
@@ -154,6 +186,13 @@ Le 26/11/2026 (0.1.2, vrai OBS 33 sous Linux, configuration jetable) : 6 skins �
 débordement à la taille conseillée, textes CJK/emoji/accents, OBS relancé, source rechargée, 15 minutes
 avec un changement de morceau toutes les 40 s (23 morceaux, connexion jamais perdue, mémoire d'OBS stable) ;
 lecture réelle de music.youtube.com sans compte dans un Chromium visible. Ce n'est pas un essai long.
+
+Le 26/11/2026 (0.2.0, vrai OBS 33 sous Linux, configuration jetable, `test/obs-reel/perso.mjs`) : réglage
+changé sur la page d'options appliqué dans OBS en moins d'une seconde ; mode « 4 s » (affiché au nouveau
+morceau, caché ensuite, pas de retour à la reprise, badge E10 visible carte cachée) ; source rechargée et
+OBS redémarré avec les réglages revenus seuls ; 7 combinaisons skin / disposition / taille (50 à 200 %)
+sans débordement à la taille conseillée, titre long et badge E10 compris ; CSS personnalisé d'OBS
+(majuscules, contour) appliqué sans erreur CSP : 23 points sur 23.
 
 Avant une version stable : plusieurs heures de live sans problème (service worker) ; refus d'OBS dans le
 pare-feu de Windows vérifié ; signature Firefox ; éventuellement publication dans les boutiques
