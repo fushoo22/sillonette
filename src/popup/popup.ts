@@ -81,6 +81,14 @@ $<HTMLFormElement>("obs").addEventListener("submit", async (e) => {
   port.setCustomValidity("");
   // spaces around a pasted password are a copy mistake: OBS's own "copy" button gives none
   let pw = password.value.trim();
+  // only mask characters: the hidden field was copied, not the password. Keep what is saved.
+  const masked = /^[•●∙·⬤*]+$/.test(pw);
+  $("pwError").hidden = !masked;
+  if (masked) {
+    $("pwError").textContent = "Tu as collé les points qui masquent le mot de passe, pas le mot de passe. Dans OBS, utilise le bouton « Copier ». Rien n'a été modifié.";
+    password.value = "";
+    return;
+  }
   if (pw === "") {
     // no new password typed: keep the saved one, moved if the "remember" box changed
     const l = (await api.storage.local.get("obsPassword")).obsPassword;

@@ -24,6 +24,8 @@
     <section>
       <label for="password">Mot de passe WebSocket d'OBS</label>
       <input id="password" type="password" spellcheck="false" autocomplete="off">
+      <p class="warn" id="pwError" role="alert" hidden></p>
+      <p class="hint">Dans OBS : « Afficher les informations de connexion », puis le bouton « Copier » à droite du mot de passe (pas les points affichés).</p>
       <p class="hint" id="pwHint"></p>
       <label class="check"><input id="remember" type="checkbox" checked> Le garder après la fermeture du navigateur</label>
       <p class="hint">Décoché : il reste en mémoire seulement, à recoller à chaque ouverture du navigateur.</p>

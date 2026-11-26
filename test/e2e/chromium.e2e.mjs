@@ -157,6 +157,14 @@ test("YouTube Music tab -> extension -> obs-websocket -> obs-browser event -> fi
   await yt2.close();
   await ov.waitForFunction(() => !document.querySelector(".sillonette").classList.contains("is-visible"), null, { timeout: 3000 });
 
+  // 7b. the masking dots pasted instead of the password: refused in the popup, nothing sent or saved
+  const sentBefore = obs.log.identifies.length;
+  await popup.fill("#password", "••••••••••••••••");
+  await popup.click("#save");
+  await popup.waitForFunction(() => document.getElementById("pwError").textContent.startsWith("Tu as collé les points"), null, { timeout: 3000 });
+  await sleep(500);
+  assert.equal(obs.log.identifies.length, sentBefore);
+
   // 8. wrong password: clear status, no retry storm; the right one connects again
   await popup.fill("#password", "faux");
   await popup.click("#save");

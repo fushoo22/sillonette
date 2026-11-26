@@ -38,8 +38,9 @@ b. Menu Outils -> Parametres du serveur WebSocket.
 c. Coche "Activer le serveur WebSocket". Laisse le port 4455.
 d. Laisse "Utiliser l'authentification" coche, et GARDE le mot de passe genere par OBS
    (16 caracteres). N'en mets pas un court : OBS ne limite pas le nombre d'essais.
-e. Clique "Afficher les informations de connexion" et COPIE le mot de passe du serveur.
-   (Ne fais pas ca pendant un live : la fenetre affiche le mot de passe en clair.)
+e. Clique "Afficher les informations de connexion", puis le bouton "Copier" A DROITE de
+   "Mot de passe du serveur". Ne copie pas les points affiches : ils ne font que masquer le mot de passe.
+   (Ne fais pas ca pendant un live : cette fenetre permet de recuperer le mot de passe, QR code compris.)
 f. Clique OK.
    Si Windows demande d'autoriser OBS dans le pare-feu : refuse (Annuler).
    Sillonette n'a besoin que de ce PC lui-meme. (Non teste sous Windows.)
