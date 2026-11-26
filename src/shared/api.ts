@@ -17,6 +17,7 @@ export interface ExtApi {
   runtime: {
     id: string;
     sendMessage(msg: unknown): Promise<unknown>;
+    openOptionsPage(): Promise<void>;
     onMessage: {
       addListener(fn: (msg: unknown, sender: MessageSender, sendResponse: (r: unknown) => void) => boolean | void): void;
     };

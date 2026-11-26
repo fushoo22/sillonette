@@ -3,7 +3,7 @@
 // outlive the browser); the background reacts to the change. The saved password is never put back
 // into the page (the field stays empty: typing a new one replaces it).
 import { api } from "../shared/api.ts";
-import { SKINS, normalizeTheme, sourceSize, type Layout } from "../shared/config.ts";
+import { SKINS, normalizeTheme, sourceSize, withSkin, type Layout, type Theme } from "../shared/config.ts";
 import { DEFAULT_PORT, validPort, type ObsState } from "../background/obsws.ts";
 
 const $ = <T extends HTMLElement>(id: string) => document.getElementById(id) as T;
@@ -43,8 +43,10 @@ function renderStatus(st: unknown): void {
   $("conflict").hidden = !((s.conflicts ?? 0) > 0);
 }
 
-function renderSize(): void {
-  const t = normalizeTheme({ sk: skin.value, ly: layout.value });
+/** Same fallback language as the background. */
+const uiLang = api.i18n.getUILanguage().toLowerCase().startsWith("fr") ? "fr" : "en";
+
+function renderSize(t: Theme): void {
   const { w, h } = sourceSize(t);
   $("size").textContent = `Taille conseillée de la source OBS : ${w} × ${h}`;
 }
@@ -63,10 +65,10 @@ async function load(): Promise<void> {
   if (shortWarning) hint.textContent += " Attention : mot de passe court. OBS ne limite pas les essais, un appareil du réseau peut le deviner : garde plutôt celui généré par OBS.";
   hint.classList.toggle("warn", shortWarning);
   $<HTMLButtonElement>("forget").disabled = !saved && !kept;
-  const t = normalizeTheme(s.theme);
+  const t = normalizeTheme(s.theme, uiLang);
   skin.value = t.sk;
   layout.value = t.ly;
-  renderSize();
+  renderSize(t);
   renderStatus((await (session ?? api.storage.local).get("obsStatus")).obsStatus);
 }
 
@@ -123,14 +125,19 @@ $("forget").addEventListener("click", async () => {
   await load();
 });
 
+/** Skin or layout changed here: the other settings of the options page are kept (another skin brings
+ *  its own colours, fonts and shapes, as on the options page). */
 async function saveTheme(): Promise<void> {
-  // Skin + layout only: everything else is the skin's default.
-  const theme: { sk: string; ly: Layout } = { sk: skin.value, ly: layout.value as Layout };
-  await api.storage.local.set({ theme });
-  renderSize();
+  const t = normalizeTheme((await api.storage.local.get("theme")).theme, uiLang);
+  const theme = { ...(skin.value === t.sk ? t : withSkin(t, skin.value)), ly: layout.value as Layout };
+  await api.storage.local.set({ theme: normalizeTheme(theme, uiLang) });
+  renderSize(theme);
 }
 skin.addEventListener("change", () => void saveTheme());
 layout.addEventListener("change", () => void saveTheme());
+$("customize").addEventListener("click", () => {
+  void api.runtime.openOptionsPage().then(() => window.close(), () => undefined);
+});
 
 api.storage.onChanged.addListener((changes) => {
   if (changes.obsStatus) renderStatus(changes.obsStatus.newValue);

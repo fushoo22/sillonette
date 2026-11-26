@@ -33,6 +33,8 @@ function manifest(target) {
     permissions: ["storage"],
     content_scripts: [{ matches: ["https://music.youtube.com/*", ...(e2eMatch ? [e2eMatch] : [])], js: ["content.js"], run_at: "document_idle", all_frames: false }],
     action: { default_title: "Sillonette", default_popup: "popup.html", default_icon: { 16: "icons/icon-16.png", 32: "icons/icon-32.png" } },
+    // Settings page with a live preview (needs no permission). Opened by the popup's "Personnaliser…".
+    options_ui: { page: "options.html", open_in_tab: true },
     content_security_policy: { extension_pages: CSP },
   };
   if (target === "chrome") {
@@ -54,9 +56,8 @@ for (const target of ["chrome", "firefox"]) {
   const out = join(outRoot, target);
   rmSync(out, { recursive: true, force: true });
   mkdirSync(out, { recursive: true });
-  await build({ ...common, entryPoints: { background: join(src, "background/background.ts"), content: join(src, "content/main.ts"), popup: join(src, "popup/popup.ts") }, outdir: out });
-  cpSync(join(src, "popup/popup.html"), join(out, "popup.html"));
-  cpSync(join(src, "popup/popup.css"), join(out, "popup.css"));
+  await build({ ...common, entryPoints: { background: join(src, "background/background.ts"), content: join(src, "content/main.ts"), popup: join(src, "popup/popup.ts"), options: join(src, "options/options.ts") }, outdir: out });
+  for (const f of ["popup/popup.html", "popup/popup.css", "options/options.html", "options/options.css"]) cpSync(join(src, f), join(out, f.split("/")[1]));
   cpSync(join(root, "icons"), join(out, "icons"), { recursive: true });
   cpSync(join(root, "LICENSE"), join(out, "LICENSE"));
   writeFileSync(join(out, "manifest.json"), JSON.stringify(manifest(target), null, 2) + "\n");
@@ -89,4 +90,19 @@ cpSync(join(src, "overlay/demo"), join(o, "demo"), { recursive: true });
 mkdirSync(join(o, "licences"), { recursive: true });
 for (const f of readdirSync(join(src, "fonts")).filter((f) => f.endsWith(".txt"))) cpSync(join(src, "fonts", f), join(o, "licences", f));
 cpSync(join(root, "LICENSE"), join(o, "licences", "LICENSE-Sillonette.txt"));
+// Copy of the overlay inside the extension, for the live preview of the options page (demo mode,
+// fictitious tracks, local images only). Same script and stylesheets; the fonts are plain files there
+// (the extension pages' CSP refuses data: fonts), and its own CSP allows nothing outside the extension.
+const PREVIEW_CSP = "default-src 'none'; script-src 'self'; style-src 'self'; font-src 'self'; img-src 'self'; connect-src 'none'; base-uri 'none'; form-action 'none'";
+const previewCss = (await transform(readFileSync(join(src, "overlay/overlay.css"), "utf8"), { loader: "css", minify: true, target: TARGET })).code;
+for (const target of ["chrome", "firefox"]) {
+  const a = join(outRoot, target, "apercu");
+  mkdirSync(join(a, "fonts"), { recursive: true });
+  cpSync(join(o, "overlay.js"), join(a, "overlay.js"));
+  cpSync(join(o, "skins"), join(a, "skins"), { recursive: true });
+  cpSync(join(o, "demo"), join(a, "demo"), { recursive: true });
+  for (const f of readdirSync(join(src, "fonts")).filter((f) => f.endsWith(".woff2"))) cpSync(join(src, "fonts", f), join(a, "fonts", f));
+  writeFileSync(join(a, "overlay.css"), previewCss);
+  writeFileSync(join(a, "apercu.html"), readFileSync(join(src, "overlay/index.html"), "utf8").replace("<title>", `<meta http-equiv="Content-Security-Policy" content="${PREVIEW_CSP}">\n<title>`));
+}
 console.log(`Sillonette ${version} built in ${outRoot} (chrome, firefox, overlay)${e2eMatch ? " [E2E]" : ""}`);

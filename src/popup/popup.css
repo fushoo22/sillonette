@@ -41,3 +41,4 @@ label.check { display: flex; gap: 6px; align-items: center; margin-top: 8px; fon
 label.check input { width: auto; margin: 0; padding: 0; flex: none; }
 .warn-box { padding: 6px 8px; border-left: 3px solid #e08a1e; background: rgba(224, 138, 30, 0.1); }
 .hint.warn { color: #9a5a0c; font-weight: 600; }
+button.wide { width: 100%; }

@@ -35,6 +35,8 @@ export interface Theme {
   lg: Lang;
   as: ArtShape;
   sd: 0 | 1 | 2; // shadow
+  nt: number; // show each new track for this many seconds, then hide (0 = always shown; 3-60)
+  er: 0 | 1; // show the error badge (E10) on the overlay
 }
 
 export interface SkinInfo {
@@ -42,6 +44,8 @@ export interface SkinInfo {
   tier: "free";
   /** Body text font (id in FONTS); the title font is the "ft" setting. */
   body: string;
+  /** Settings this skin does not use (the options page disables them). */
+  ignores: readonly (keyof Theme)[];
   defaults: Theme;
 }
 
@@ -60,20 +64,25 @@ export const FONTS: Record<string, string> = {
 const BASE: Theme = {
   v: 1, sk: "studio", ly: "h", ac: "#a3216b", tx: "#203856", bg: "#fffaf3", ba: 90, ft: "mochiy",
   sc: 100, rd: 18, sh: ["art", "artist", "prog"], an: "slide", tc: "auto", mq: 1, pa: "dim", pt: 10, id: "hide",
-  al: "l", rm: 0, lg: "fr", as: "rounded", sd: 1,
+  al: "l", rm: 0, lg: "fr", as: "rounded", sd: 1, nt: 0, er: 1,
 };
 
-function skin(id: string, body: string, d: Partial<Theme>): SkinInfo {
-  return { id, tier: "free", body, defaults: { ...BASE, ...d, sk: id } };
+/** Duration offered when the "a few seconds at each new track" mode is switched on. */
+export const BRIEF_DEFAULT = 10;
+export const BRIEF_MIN = 3;
+export const BRIEF_MAX = 60;
+
+function skin(id: string, body: string, d: Partial<Theme>, ignores: (keyof Theme)[] = []): SkinInfo {
+  return { id, tier: "free", body, ignores, defaults: { ...BASE, ...d, sk: id } };
 }
 
-/** Skin registry. Order = order shown in the popup. */
+/** Skin registry. Order = order shown in the popup and the options page. */
 export const SKINS: Record<string, SkinInfo> = {
   studio: skin("studio", "nunito", {}),
   neon: skin("neon", "grotesk", { ac: "#ff4fd8", tx: "#8af7ff", bg: "#0c0a24", ba: 88, ft: "grotesk", rd: 12, an: "fade", sd: 2 }),
-  vinyle: skin("vinyle", "serif", { ac: "#d4ae66", tx: "#f6ecd8", bg: "#1c1416", ba: 94, ft: "serif", rd: 14, as: "round" }),
+  vinyle: skin("vinyle", "serif", { ac: "#d4ae66", tx: "#f6ecd8", bg: "#1c1416", ba: 94, ft: "serif", rd: 14, as: "round" }, ["as"]),
   retro: skin("retro", "inter", { ac: "#ffb347", tx: "#fff0fa", bg: "#2b1055", ba: 94, ft: "grotesk", rd: 6, as: "square" }),
-  arcade: skin("arcade", "mono", { ac: "#ffd23f", tx: "#ffffff", bg: "#1b2fb5", ba: 100, ft: "pixel", rd: 0, as: "square", an: "pop", sd: 2 }),
+  arcade: skin("arcade", "mono", { ac: "#ffd23f", tx: "#ffffff", bg: "#1b2fb5", ba: 100, ft: "pixel", rd: 0, as: "square", an: "pop", sd: 2 }, ["rd"]),
   lofi: skin("lofi", "nunito", { ac: "#d9577f", tx: "#203856", bg: "#fff1e2", ba: 94, ft: "nunito", rd: 30, sh: ["art", "artist", "prog", "mascot"], an: "fade" }),
 };
 
@@ -132,7 +141,29 @@ export function normalizeTheme(input: unknown, fallbackLang: Lang = "fr"): Theme
     lg: oneOf(o.lg, ["fr", "en"] as const, d.lg),
     as: oneOf(o.as, ["square", "rounded", "round"] as const, d.as),
     sd: oneOf(o.sd, [0, 1, 2] as const, d.sd),
+    nt: o.nt === 0 ? 0 : int(o.nt, BRIEF_MIN, BRIEF_MAX, d.nt),
+    er: oneOf(o.er, [0, 1] as const, d.er),
   };
+}
+
+/** Settings that follow the skin when another skin is chosen (its own colours, fonts and shapes);
+ *  layout, size, content and behaviour are kept. */
+export const APPEARANCE: readonly (keyof Theme)[] = ["ac", "tx", "bg", "ba", "ft", "rd", "as", "sd", "an"];
+
+/** The same settings with another skin (popup and options page). */
+export function withSkin(t: Theme, skinId: string): Theme {
+  const d = skinInfo(skinId).defaults;
+  const next: Record<string, unknown> = { ...t, sk: d.sk };
+  for (const k of APPEARANCE) next[k] = d[k];
+  const sh = t.sh.filter((p) => p !== "mascot");
+  next.sh = d.sh.includes("mascot") ? [...sh, "mascot"] : sh;
+  return normalizeTheme(next, t.lg);
+}
+
+/** The skin's own settings, keeping the chosen language (button "Rétablir les réglages du skin"). */
+export function skinDefaults(skinId: string, lang: Lang): Theme {
+  const d = skinInfo(skinId).defaults;
+  return { ...d, sh: [...d.sh], lg: lang };
 }
 
 function b64urlToText(s: string): string | null {

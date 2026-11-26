@@ -5,7 +5,7 @@ import { existsSync, readFileSync } from "node:fs";
 import { join, dirname } from "node:path";
 import { fileURLToPath } from "node:url";
 import { decodeTheme, encodeTheme, FONTS, normalizeTheme, SKINS, skinInfo, sourceSize } from "../../src/shared/config.ts";
-import { MIN_CONTRAST, ratio, themeContrast } from "./contrast.ts";
+import { MIN_CONTRAST, ratio, themeContrast } from "../../src/shared/contrast.ts";
 
 const here = dirname(fileURLToPath(import.meta.url));
 const b64 = (o) => Buffer.from(JSON.stringify(o)).toString("base64url");

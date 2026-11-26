@@ -1,0 +1,118 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Sillonette · personnaliser l'overlay</title>
+<link rel="stylesheet" href="options.css">
+<script src="options.js" defer></script>
+</head>
+<body>
+<header class="top">
+  <span class="logo" aria-hidden="true"></span>
+  <p class="brand">Sillonette</p>
+  <h1>Personnaliser l'overlay</h1>
+</header>
+<p class="intro">Chaque réglage est enregistré tout de suite dans ce navigateur. Si Sillonette est connecté à OBS, l'overlay change dans OBS en quelques secondes. L'aperçu ci-dessous utilise de faux morceaux.</p>
+
+<main class="layout">
+  <section class="preview" aria-labelledby="previewTitle">
+    <h2 id="previewTitle">Aperçu</h2>
+    <fieldset class="inline">
+      <legend>Fond de l'aperçu</legend>
+      <label><input type="radio" name="scene" value="dark" checked> Sombre</label>
+      <label><input type="radio" name="scene" value="light"> Clair</label>
+    </fieldset>
+    <div id="stage" class="stage dark"><iframe id="frame" title="Aperçu de l'overlay, avec de faux morceaux" tabindex="-1"></iframe></div>
+    <p class="size">Taille conseillée de la source OBS : <strong id="size">800 × 200</strong></p>
+    <p id="contrast" class="contrast" role="status"></p>
+    <p id="saved" class="hint" role="status"></p>
+    <p class="hint">Après une mise à jour de Sillonette, remplace aussi le dossier « overlay » utilisé par OBS : un ancien overlay ignore les nouveaux réglages.</p>
+  </section>
+
+  <form id="form" class="settings" novalidate>
+    <fieldset>
+      <legend>Apparence</legend>
+      <div class="field"><label for="sk">Skin</label><select id="sk" name="sk"></select></div>
+      <fieldset class="inline">
+        <legend>Disposition</legend>
+        <label><input type="radio" name="ly" value="h"> Horizontale</label>
+        <label><input type="radio" name="ly" value="c"> Compacte (une ligne)</label>
+        <label><input type="radio" name="ly" value="v"> Carte verticale</label>
+      </fieldset>
+      <div class="colors">
+        <div class="field"><label for="ac">Couleur d'accent</label><input type="color" id="ac" name="ac"></div>
+        <div class="field"><label for="tx">Couleur du texte</label><input type="color" id="tx" name="tx"></div>
+        <div class="field"><label for="bg">Couleur du fond</label><input type="color" id="bg" name="bg"></div>
+      </div>
+      <div class="field"><label for="ba">Opacité du fond <output for="ba" id="baOut"></output></label><input type="range" id="ba" name="ba" min="0" max="100" step="1"></div>
+      <div class="field"><label for="rd">Arrondi des coins <output for="rd" id="rdOut"></output> <span class="unused" hidden>(non utilisé par ce skin)</span></label><input type="range" id="rd" name="rd" min="0" max="48" step="1"></div>
+      <div class="field"><label for="as">Forme de la pochette <span class="unused" hidden>(non utilisé par ce skin)</span></label>
+        <select id="as" name="as"><option value="square">Carrée</option><option value="rounded">Arrondie</option><option value="round">Ronde</option></select></div>
+      <div class="field"><label for="sd">Ombre</label>
+        <select id="sd" name="sd"><option value="0">Aucune</option><option value="1">Légère</option><option value="2">Forte</option></select></div>
+    </fieldset>
+
+    <fieldset>
+      <legend>Texte</legend>
+      <div class="field"><label for="ft">Police du titre</label><select id="ft" name="ft"></select></div>
+      <div class="field"><label for="sc">Taille <output for="sc" id="scOut"></output></label><input type="range" id="sc" name="sc" min="50" max="200" step="5"></div>
+      <label class="check"><input type="checkbox" id="mq" name="mq"> Faire défiler les titres trop longs</label>
+    </fieldset>
+
+    <fieldset>
+      <legend>Contenu affiché</legend>
+      <label class="check"><input type="checkbox" name="sh" value="art"> Pochette</label>
+      <label class="check"><input type="checkbox" name="sh" value="artist"> Artiste</label>
+      <label class="check"><input type="checkbox" name="sh" value="album"> Album</label>
+      <label class="check"><input type="checkbox" name="sh" value="prog"> Barre de progression</label>
+      <label class="check"><input type="checkbox" name="sh" value="time"> Temps écoulé et durée</label>
+      <label class="check" id="mascotRow"><input type="checkbox" name="sh" value="mascot"> Mascotte</label>
+    </fieldset>
+
+    <fieldset>
+      <legend>Animation</legend>
+      <div class="field"><label for="an">Apparition</label>
+        <select id="an" name="an"><option value="fade">Fondu</option><option value="slide">Glissement</option><option value="pop">Pop</option><option value="none">Aucune</option></select></div>
+      <div class="field"><label for="tc">Changement de morceau</label>
+        <select id="tc" name="tc"><option value="auto">Comme l'apparition</option><option value="fade">Fondu</option><option value="slide">Glissement</option><option value="none">Aucune</option></select></div>
+      <label class="check"><input type="checkbox" id="rm" name="rm"> Réduire les mouvements (aucune animation)</label>
+    </fieldset>
+
+    <fieldset>
+      <legend>Comportement</legend>
+      <fieldset class="inline">
+        <legend>Quand montrer la carte</legend>
+        <label><input type="radio" name="vis" value="always"> Tout le temps</label>
+        <label><input type="radio" name="vis" value="brief"> Quelques secondes à chaque nouveau morceau</label>
+      </fieldset>
+      <div class="field"><label for="nt">Durée d'affichage (secondes, de 3 à 60)</label><input type="number" id="nt" name="nt" min="3" max="60" step="1" inputmode="numeric" aria-describedby="ntHint"></div>
+      <p id="ntHint" class="hint">La carte réapparaît au morceau suivant, pas quand tu relances après une pause. Un code d'erreur reste toujours visible.</p>
+      <div class="field"><label for="pa">En pause</label>
+        <select id="pa" name="pa"><option value="show">Afficher « En pause »</option><option value="dim">Griser</option><option value="hide">Masquer</option></select></div>
+      <div class="field"><label for="pt">Masquer après (secondes)</label><input type="number" id="pt" name="pt" min="0" max="600" step="1" inputmode="numeric"></div>
+      <div class="field"><label for="id">Sans musique</label>
+        <select id="id" name="id"><option value="hide">Masquer</option><option value="wait">Afficher « Sillonette en attente »</option></select></div>
+      <fieldset class="inline">
+        <legend>Alignement</legend>
+        <label><input type="radio" name="al" value="l"> À gauche</label>
+        <label><input type="radio" name="al" value="r"> À droite</label>
+      </fieldset>
+      <div class="field"><label for="lg">Langue de l'overlay</label>
+        <select id="lg" name="lg"><option value="fr" lang="fr">Français</option><option value="en" lang="en">English</option></select></div>
+      <label class="check"><input type="checkbox" id="er" name="er"> Afficher les codes d'erreur (E10) sur l'overlay</label>
+    </fieldset>
+
+    <div class="row actions">
+      <button type="button" id="reset">Rétablir les réglages du skin</button>
+    </div>
+    <details>
+      <summary>Aller plus loin : le « CSS personnalisé » d'OBS</summary>
+      <p>Pour un réglage absent de cette page (titre en majuscules, contour du texte…), ouvre les propriétés de la source Navigateur dans OBS et écris des règles dans « CSS personnalisé ». Exemple :</p>
+      <pre><code>.sillonette .title { text-transform: uppercase; }</code></pre>
+      <p>Le mode d'emploi (LISEZMOI.txt) donne d'autres exemples. Ces règles restent dans OBS : Sillonette ne les voit pas.</p>
+    </details>
+  </form>
+</main>
+</body>
+</html>

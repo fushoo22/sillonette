@@ -1,7 +1,7 @@
-// WCAG 2.1 contrast of the overlay text (test helper: every skin default must be readable).
+// WCAG 2.1 contrast of the overlay text, used by the options page warning (and the tests).
 // The card background is the "bg" colour at "ba" % opacity over an unknown OBS scene:
 // the worst case over a black and a white scene is kept.
-import type { Theme } from "../../src/shared/config.ts";
+import type { Theme } from "./config.ts";
 
 export const MIN_CONTRAST = 4.5; // WCAG AA, normal text
 

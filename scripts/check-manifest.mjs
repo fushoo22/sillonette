@@ -36,7 +36,15 @@ for (const target of ["chrome", "firefox"]) {
     if (g?.id !== "sillonette@fushoo.fr" || !g.strict_min_version) p("firefox needs gecko.id sillonette@fushoo.fr and strict_min_version");
     if (JSON.stringify(g?.data_collection_permissions?.required) !== '["none"]') p("firefox: data_collection_permissions.required = [none] (nothing leaves the PC)");
   }
-  const files = [m.background?.service_worker, ...(m.background?.scripts ?? []), ...cs.flatMap((c) => c.js), m.action?.default_popup, ...Object.values(m.icons ?? {}), ...Object.values(m.action?.default_icon ?? {})].filter(Boolean);
+  if (JSON.stringify(m.options_ui) !== '{"page":"options.html","open_in_tab":true}') p("options_ui must be options.html, open in a tab");
+  // preview copy of the overlay (options page): demo only, nothing outside the extension
+  const ap = readFileSync(join(dir, "apercu/apercu.html"), "utf8");
+  const apCsp = /http-equiv="Content-Security-Policy" content="([^"]+)"/.exec(ap)?.[1] ?? "";
+  if (apCsp !== "default-src 'none'; script-src 'self'; style-src 'self'; font-src 'self'; img-src 'self'; connect-src 'none'; base-uri 'none'; form-action 'none'") p("apercu: strict CSP (extension files only)");
+  if (/<script(?![^>]*\bsrc=)[^>]*>/i.test(ap) || /\son\w+=/i.test(ap) || /\sstyle=/i.test(ap)) p("apercu: inline script/handler/style");
+  if (/data:font/.test(readFileSync(join(dir, "apercu/overlay.css"), "utf8"))) p("apercu: fonts must be files (the extension CSP refuses data: fonts)");
+  if (readFileSync(join(dir, "apercu/overlay.js"), "utf8") !== readFileSync(join(dist, "overlay/overlay.js"), "utf8")) p("apercu: overlay.js must be the overlay's own script");
+  const files = [m.options_ui?.page, m.background?.service_worker, ...(m.background?.scripts ?? []), ...cs.flatMap((c) => c.js), m.action?.default_popup, ...Object.values(m.icons ?? {}), ...Object.values(m.action?.default_icon ?? {})].filter(Boolean);
   for (const f of files) if (!existsSync(join(dir, f))) p(`missing file ${f}`);
   for (const f of readdirSync(dir).filter((f) => f.endsWith(".js"))) {
     const js = readFileSync(join(dir, f), "utf8");

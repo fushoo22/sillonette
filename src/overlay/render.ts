@@ -44,9 +44,15 @@ export class Overlay {
   private now: () => number;
   private offset = 0; // extension clock - overlay clock
   private last: NpEvent | null = null;
-  private pauseTimer: ReturnType<typeof setTimeout> | undefined;
   private tick: ReturnType<typeof setInterval> | undefined;
   private swapTimer: ReturnType<typeof setTimeout> | undefined;
+  /** Next moment the visibility must be decided again (end of the "a few seconds" window, or of the pause delay). */
+  private visTimer: ReturnType<typeof setTimeout> | undefined;
+  /** Overlay clock (ms) at which the current track's "a few seconds" window ends (setting nt > 0). */
+  private briefUntil = 0;
+  /** Overlay clock (ms) at which the current pause began (null: not paused). The extension resends the
+   *  state every 5 s: the pause delay counts from the first paused event, not from the latest one. */
+  private pausedAt: number | null = null;
 
   constructor(els: Els, theme: Theme, now: () => number = Date.now) {
     this.els = els;
@@ -61,7 +67,14 @@ export class Overlay {
 
   /** The settings arrive with each event and may change. */
   setTheme(theme: Theme): void {
+    const before = this.theme;
     this.theme = theme;
+    // "A few seconds" just switched on or changed: show the current track for that long, from now.
+    if (theme.nt > 0 && theme.nt !== before.nt) this.briefUntil = this.now() + theme.nt * 1000;
+    if (this.last) {
+      this.progress(this.last);
+      this.visibility();
+    }
   }
 
   /** Measures the long-title scrolling again: call it once a skin's stylesheet or a font has loaded,
@@ -76,9 +89,10 @@ export class Overlay {
 
   handle(ev: StreamEvent): void {
     this.offset = ev.now - this.now();
-    clearTimeout(this.pauseTimer);
     if (ev.state === "idle") {
+      clearTimeout(this.visTimer);
       this.last = null;
+      this.pausedAt = null;
       this.stopTick();
       if (this.theme.id === "wait") {
         this.setText("", label(this.theme.lg, "waiting"), "", "");
@@ -95,21 +109,45 @@ export class Overlay {
     if (changed) {
       this.setText(ev.art, ev.title, ev.artist, ev.album);
       if (wasVisible) this.swap();
+      // A new track opens the "a few seconds" window (only a new track: not a resume after a pause).
+      this.briefUntil = this.now() + this.theme.nt * 1000;
     }
+    if (ev.state !== "paused") this.pausedAt = null;
+    else if (changed || this.pausedAt === null) this.pausedAt = this.now();
     this.last = ev;
     this.setState(ev.state);
     this.els.status.textContent = ev.state === "paused" ? label(this.theme.lg, "paused") : "";
     this.progress(ev);
-    if (ev.state === "paused" && this.theme.pa === "hide") {
-      if (this.theme.pt === 0) this.hide("paused");
-      else {
-        this.show();
-        this.pauseTimer = setTimeout(() => this.hide("paused"), this.theme.pt * 1000);
-      }
-    } else {
-      this.show();
-    }
+    this.visibility();
     if (changed) this.scheduleMarquee();
+  }
+
+  /** Shows or hides the card for the current track, and plans the next decision. */
+  private visibility(): void {
+    clearTimeout(this.visTimer);
+    const ev = this.last;
+    if (!ev) return;
+    const now = this.now();
+    let next = Infinity;
+    if (this.theme.nt > 0) {
+      if (now >= this.briefUntil) {
+        // Window over: hidden until the next track. The state (playing / paused) stays; an error
+        // badge stays visible (it is a separate element).
+        this.conceal();
+        return;
+      }
+      next = this.briefUntil;
+    }
+    if (ev.state === "paused" && this.theme.pa === "hide") {
+      const hideAt = (this.pausedAt ?? now) + this.theme.pt * 1000;
+      if (now >= hideAt) {
+        this.hide("paused");
+        return;
+      }
+      next = Math.min(next, hideAt);
+    }
+    this.show();
+    if (next !== Infinity) this.visTimer = setTimeout(() => this.visibility(), Math.max(0, next - now));
   }
 
   private sourceNow(): number {
@@ -123,6 +161,12 @@ export class Overlay {
   private show(): void {
     this.els.root.classList.add("is-visible");
     this.els.root.removeAttribute("aria-hidden");
+  }
+
+  /** Hidden by the "a few seconds" mode: the state stays as it is. */
+  private conceal(): void {
+    this.els.root.classList.remove("is-visible");
+    this.els.root.setAttribute("aria-hidden", "true");
   }
 
   private hide(reason: string): void {

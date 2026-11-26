@@ -49,6 +49,22 @@ async function run(extDir) {
       result.onlyEmit = obs.log.requests.every((r) => r.requestType === "CallVendorRequest" && r.requestData.requestType === "emit_event");
       result.origin = obs.log.origins[0];
       // can storage.local be closed to content scripts here? (logged: documented in docs/TECHNIQUE.md)
+      // options page: the preview (overlay copy, demo mode) runs under the extension CSP, a change is saved and sent
+      const opt = await serial(() => ff.openTab(`moz-extension://${UUID}/options.html`));
+      const previewOk = `const d = document.getElementById("frame").contentDocument; const c = d && d.querySelector(".sillonette"); return !!c && c.dataset.state === "playing" && c.classList.contains("is-visible") && [...d.fonts].some((f) => f.family === "Mochiy Pop One" && f.status === "loaded")`;
+      let ok = false;
+      for (let i = 0; i < 40 && !ok; i++) {
+        await sleep(250);
+        ok = await serial(() => ff.evalIn(opt, previewOk));
+      }
+      result.optionsPreview = ok;
+      await serial(() => ff.evalIn(opt, `const r = document.querySelector('input[name="vis"][value="brief"]'); r.checked = true; r.dispatchEvent(new Event("change", { bubbles: true }))`));
+      const brief = () => obs.log.requests.some((r) => {
+        const t = r.requestData?.requestData?.event_data?.theme;
+        return typeof t === "string" && JSON.parse(Buffer.from(t, "base64url").toString()).nt === 10;
+      });
+      for (let i = 0; i < 40 && !brief(); i++) await sleep(250);
+      result.optionsSent = brief();
       result.localAccessLevel = await serial(() => ff.evalIn(popup, `const f = browser.storage.local.setAccessLevel; return f ? f({ accessLevel: "TRUSTED_CONTEXTS" }).then(() => "ok", (e) => "ERR " + e.message) : "absent"`));
     }
     return result;
@@ -64,6 +80,8 @@ test("Firefox: extension (event page) -> ws://127.0.0.1 -> fake OBS", async () =
   assert.equal(r.status, "Connecté à OBS.");
   assert.equal(r.sent, true);
   assert.equal(r.onlyEmit, true);
+  assert.equal(r.optionsPreview, true, "options page preview works in Firefox");
+  assert.equal(r.optionsSent, true, "a setting of the options page reaches OBS");
 });
 
 test("Firefox: without the CSP override, what happens to ws://127.0.0.1", async () => {
