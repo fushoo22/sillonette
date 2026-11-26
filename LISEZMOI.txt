@@ -1,5 +1,5 @@
-Sillonette - EN DEVELOPPEMENT
-=============================
+Sillonette - VERSION BETA
+=========================
 
 Sillonette affiche dans OBS le morceau joue sur YouTube Music, SANS aucun serveur :
 
@@ -12,8 +12,12 @@ Rien ne sort du PC, sauf les pochettes d'album, que l'overlay charge chez Google
 Il faut : Windows 10/11, OBS Studio 28 ou plus recent (WebSocket et Navigateur sont inclus),
 Chrome, Edge ou Opera.
 
-ATTENTION : version en developpement. Jamais testee sous Windows (seulement sous Linux) ni sur de
-longues durees (plusieurs heures de live). Garde une solution de secours pour tes lives.
+ATTENTION : version beta. Essayee avec succes par l'auteur sous Windows avec un vrai OBS, et testee
+automatiquement sous Linux. PAS ENCORE TESTEE sur de longues durees (plusieurs heures de live).
+Garde une solution de secours pour tes lives.
+
+Telechargement : uniquement depuis https://github.com/fushoo22/sillonette/releases
+Licence MIT : Sillonette est fourni "tel quel", sans garantie.
 
 Sillonette est un projet independant et gratuit, non affilie a YouTube, a Google ni a l'OBS Project.
 
@@ -42,8 +46,9 @@ e. Clique "Afficher les informations de connexion", puis le bouton "Copier" A DR
    "Mot de passe du serveur". Ne copie pas les points affiches : ils ne font que masquer le mot de passe.
    (Ne fais pas ca pendant un live : cette fenetre permet de recuperer le mot de passe, QR code compris.)
 f. Clique OK.
-   Si Windows demande d'autoriser OBS dans le pare-feu : refuse (Annuler).
-   Sillonette n'a besoin que de ce PC lui-meme. (Non teste sous Windows.)
+   Si Windows demande d'autoriser OBS dans le pare-feu : tu peux refuser (Annuler).
+   Sillonette n'a besoin que de ce PC lui-meme. (Ce refus n'a pas encore ete verifie avec
+   Sillonette. Si un autre outil pilote OBS depuis un autre appareil, il en a besoin, lui.)
 
 
 A SAVOIR AVANT D'ALLER PLUS LOIN (honnetement)
@@ -88,7 +93,10 @@ c. Mot de passe : colle le mot de passe copie a l'etape 2e.
    au prochain demarrage du PC. Decochee : il faudra le recoller a chaque ouverture du navigateur.
 d. Clique "Enregistrer et connecter". La pastille devient verte : "Connecte a OBS."
    - "OBS introuvable" : OBS est ferme ou le serveur WebSocket n'est pas active (etape 2).
-   - "Mot de passe refuse" : recopie le mot de passe (etape 2e).
+   - "Mot de passe refuse par OBS" : recopie-le avec le bouton "Copier" d'OBS (etape 2e).
+   - "Tu as colle les points qui masquent le mot de passe" : tu as copie les points, pas le mot
+     de passe. Utilise le bouton "Copier" d'OBS (etape 2e). Rien n'a ete modifie.
+   - "Serveur WebSocket d'OBS incompatible" : il faut OBS 28 ou plus recent.
    - "OBS demande son mot de passe" : aucun mot de passe enregistre, colle-le.
    - Pastille ORANGE "OBS n'exige AUCUN mot de passe" : ca marche, mais n'importe quel appareil de
      ton reseau peut piloter OBS. Dans OBS, coche "Utiliser l'authentification" (etape 2d).
@@ -118,6 +126,19 @@ il apparait dans OBS en une seconde environ.
 - Si le navigateur est ferme, l'overlay se cache tout seul apres 20 secondes.
 
 
+Mettre a jour
+-------------
+Rien ne se met a jour tout seul. Pour une nouvelle version :
+a. Telecharge le nouveau zip (meme adresse que plus haut).
+b. Extrais-le DANS LE MEME DOSSIER (par exemple C:\Sillonette\) en remplacant les fichiers.
+c. Page des extensions (mode developpeur active) -> bouton "Mettre a jour" en haut de la page,
+   ou la fleche en rond sur la carte Sillonette. (Libelles de Chrome ; ceux d'Edge et d'Opera
+   peuvent varier.)
+d. Dans OBS, la source garde le meme fichier : clic droit sur la source -> Proprietes ->
+   "Rafraichir le cache de cette page" si l'ancien affichage reste.
+Le mot de passe et les reglages restent enregistres dans le navigateur.
+
+
 Desinstaller
 ------------
 Popup Sillonette -> "Oublier le mot de passe", puis page des extensions -> Sillonette -> Supprimer.
@@ -131,7 +152,19 @@ Limites actuelles
 - Le mot de passe d'OBS est garde non chiffre (voir "A savoir" plus haut).
 - OBS envoie l'evenement a TOUTES ses sources Navigateur : une autre source (alertes, chat...)
   pourrait lire le titre en cours. Rien d'autre n'y est.
-- Firefox : possible (build separe) mais extension temporaire, non fournie dans ce zip.
+- Firefox : possible seulement en module temporaire (construit depuis le code, voir le depot),
+  il disparait a chaque fermeture de Firefox. Non fourni dans ce zip.
+
+
+Donner un avis, signaler un bug
+-------------------------------
+https://github.com/fushoo22/sillonette/issues/new/choose  (compte GitHub necessaire)
+TOUT Y EST PUBLIC : n'y mets jamais ton mot de passe WebSocket d'OBS, ta cle de stream, une capture
+ou un journal qui les montre, ni d'information personnelle.
+Une faille de securite ne se decrit pas en public : contacte fushoo en message prive
+(voir https://fushoo.fr/mentions-legales/ , rubrique Contact).
 
 Licences : MIT pour Sillonette (overlay\licences\LICENSE-Sillonette.txt) ; polices sous SIL Open
-Font License 1.1 (overlay\licences\OFL-*.txt). YouTube est une marque de Google LLC.
+Font License 1.1 (overlay\licences\OFL-*.txt). YouTube est une marque de Google LLC ; OBS Studio est
+un logiciel de l'OBS Project. Sillonette affiche le titre du morceau : il ne diffuse aucun son et ne
+donne aucun droit sur la musique. Les regles de YouTube Music et de ta plateforme s'appliquent.

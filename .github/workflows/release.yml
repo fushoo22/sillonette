@@ -1,0 +1,125 @@
+# Publier une version : pousser une étiquette v<version> (la même que package.json).
+#   git tag v0.1.2 && git push origin v0.1.2
+# 1. verifier : contrôles, tests unitaires, tests de bout en bout (Chromium), zip. Lecture seule.
+# 2. publier  : crée la Release avec le zip (seul job qui peut écrire, avec le gh du runner).
+# Actions officielles seulement (actions/*), épinglées par commit. Aucune action tierce.
+# Firefox n'est jamais lancé ici (sur Ubuntu, « firefox » est un raccourci snap qui peut bloquer) :
+# ses tests de bout en bout se lancent à la main (npm run e2e).
+name: Publier une version
+
+on:
+  push:
+    tags: ["v*"]
+
+permissions: {}
+
+concurrency:
+  group: release-${{ github.ref }}
+  cancel-in-progress: false
+
+jobs:
+  verifier:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 30
+    permissions:
+      contents: read
+    env:
+      # Les runners sont en anglais : les tests fixent eux-mêmes fr-FR (Playwright) ; on le force aussi ici.
+      LANG: fr_FR.UTF-8
+      LANGUAGE: fr
+      TZ: Europe/Paris
+      # Refus explicite : aucun test ne doit lancer le Firefox snap du runner.
+      SILLONETTE_FIREFOX: /bin/false
+      npm_config_audit: "false"
+      npm_config_fund: "false"
+    steps:
+      - name: Récupérer le code
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+
+      - name: Node.js 24
+        uses: actions/setup-node@949feb2413d6458794dcd2491c4babbbce0c15c1 # v7.1.0
+        with:
+          node-version: "24"
+
+      - name: L'étiquette correspond à package.json et aux notes de version
+        run: |
+          version="$(node -p 'require("./package.json").version')"
+          if [ "$GITHUB_REF_NAME" != "v$version" ]; then
+            echo "::error::Étiquette $GITHUB_REF_NAME, mais package.json dit $version"; exit 1
+          fi
+          if ! head -n 1 .github/notes-de-version.md | grep -qF "Sillonette $version "; then
+            echo "::error::.github/notes-de-version.md ne parle pas de la version $version"; exit 1
+          fi
+          echo "VERSION=$version" >> "$GITHUB_ENV"
+
+      - name: Dépendances
+        timeout-minutes: 5
+        run: npm ci
+
+      - name: Contrôles (types, construction, manifestes, overlay)
+        timeout-minutes: 5
+        run: npm run lint
+
+      - name: Tests unitaires
+        timeout-minutes: 5
+        run: npm run test:ci
+
+      - name: Chromium de Playwright (pas de snap)
+        timeout-minutes: 10
+        run: npx --no-install playwright-core install --with-deps chromium
+
+      - name: Tests de bout en bout (Chromium, faux OBS)
+        timeout-minutes: 10
+        run: npm run e2e:chromium
+
+      - name: Zip
+        timeout-minutes: 5
+        run: |
+          command -v bsdtar >/dev/null || sudo apt-get install -y --no-install-recommends libarchive-tools
+          npm run zip
+          zip="dist-zip/sillonette-$VERSION.zip"
+          bsdtar -tf "$zip" > contenu.txt
+          for f in LISEZMOI.txt extension-chrome/manifest.json overlay/sillonette-overlay.html overlay/licences/LICENSE-Sillonette.txt; do
+            grep -qxF "$f" contenu.txt || { echo "::error::$f manque dans le zip"; exit 1; }
+          done
+          mkdir -p sortie
+          cp "$zip" sortie/
+          {
+            cat .github/notes-de-version.md
+            echo
+            echo "SHA-256 de \`sillonette-$VERSION.zip\` : \`$(sha256sum "$zip" | cut -d' ' -f1)\`"
+          } > sortie/notes.md
+          cat sortie/notes.md
+
+      - name: Garder le zip pour le job de publication
+        uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7.0.2
+        with:
+          name: sillonette
+          path: sortie/
+          if-no-files-found: error
+          retention-days: 7
+
+  publier:
+    needs: verifier
+    runs-on: ubuntu-24.04
+    timeout-minutes: 10
+    permissions:
+      contents: write
+    steps:
+      - name: Récupérer le zip vérifié
+        uses: actions/download-artifact@9000827ccba6bdab643e8b6fd33ac0654aef8333 # v8.0.2
+        with:
+          name: sillonette
+          path: sortie
+
+      - name: Créer la Release
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          version="${GITHUB_REF_NAME#v}"
+          # Pas --prerelease : la page releases/latest (lien du site) ignore les préversions.
+          gh release create "$GITHUB_REF_NAME" "sortie/sillonette-$version.zip" \
+            --repo "$GITHUB_REPOSITORY" --verify-tag --latest \
+            --title "Sillonette $version (bêta)" --notes-file sortie/notes.md

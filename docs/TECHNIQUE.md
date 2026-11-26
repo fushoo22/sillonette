@@ -112,7 +112,7 @@ Droits complets pour le détenteur du mot de passe (clé de stream comprise) ; �
 pas de TLS ; pas de contrôle d'origine ; pas de limite d'essais ; pas d'authentification du serveur ;
 événement envoyé à toutes les sources Navigateur ; mot de passe en clair chez OBS. Seule parade externe
 pour le réseau : le pare-feu du système (bloquer les connexions entrantes vers OBS depuis le réseau ;
-ce PC n'a besoin que de 127.0.0.1). Non testé sous Windows.
+ce PC n'a besoin que de 127.0.0.1). Effet réel d'un refus dans le pare-feu de Windows : pas encore vérifié.
 
 ## Données
 
@@ -136,11 +136,16 @@ ce PC n'a besoin que de 127.0.0.1). Non testé sous Windows.
   le worker s'endort ; le pouls de l'onglet qui joue (20 s) le réveille et il se reconnecte. Un onglet **en pause**
   ne pulse pas : après un redémarrage d'OBS, il réapparaît à la reprise de la lecture.
 - Firefox : extension temporaire (non signée) ; l'event page peut aussi être suspendue.
-- Windows : non testé ici (chemins `http://absolute/C:/…` gérés par obs-browser d'après ses sources).
+- Windows : essayé avec succès par l'auteur avec un vrai OBS (versions de Windows, d'OBS et du navigateur
+  non relevées) ; aucun test automatique sous Windows. Chemins `http://absolute/C:/…` gérés par obs-browser
+  d'après ses sources.
 - L'événement va à toutes les sources Navigateur d'OBS (alertes, chat tiers…) : elles peuvent lire le titre.
 
-## Avant une version stable
+## État : bêta
 
-Essai sous Windows avec un vrai OBS (30 à 33), pare-feu compris ; plusieurs heures de live sans
-problème (service worker) ; signature Firefox ; éventuellement publication dans les boutiques
+Fait : tests unitaires et de bout en bout (Chromium, Firefox, faux OBS), essai court avec un vrai
+OBS 33 sous Linux (`test/obs-reel/essai.mjs`), essai réussi par l'auteur sous Windows avec un vrai OBS.
+
+Avant une version stable : plusieurs heures de live sans problème (service worker) ; refus d'OBS dans le
+pare-feu de Windows vérifié ; signature Firefox ; éventuellement publication dans les boutiques
 d'extensions.

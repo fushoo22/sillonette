@@ -27,7 +27,7 @@ function manifest(target) {
     manifest_version: 3,
     name: "Sillonette",
     short_name: "Sillonette",
-    description: "Affiche dans OBS le morceau joué sur YouTube Music, sans serveur (WebSocket d'OBS sur ce PC). En développement.",
+    description: "Affiche dans OBS le morceau joué sur YouTube Music, sans serveur (WebSocket d'OBS sur ce PC). Version bêta.",
     version,
     icons: { 16: "icons/icon-16.png", 32: "icons/icon-32.png", 48: "icons/icon-48.png", 128: "icons/icon-128.png" },
     permissions: ["storage"],

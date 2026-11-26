@@ -17,6 +17,8 @@
     "lint:firefox": "npm --prefix tools/web-ext ci && tools/web-ext/node_modules/.bin/web-ext lint --self-hosted=false -s dist/firefox",
     "test": "node --test \"test/unit/*.test.mjs\"",
     "e2e": "node --test --test-concurrency=1 --test-timeout=240000 --test-force-exit --test-reporter=tap \"test/e2e/*.e2e.mjs\"",
+    "test:ci": "node --test --test-force-exit --test-reporter=tap \"test/unit/*.test.mjs\"",
+    "e2e:chromium": "node --test --test-concurrency=1 --test-timeout=240000 --test-force-exit --test-reporter=tap test/e2e/chromium.e2e.mjs",
     "check": "npm run lint && npm test && npm run lint:firefox && npm run e2e"
   },
   "devDependencies": {

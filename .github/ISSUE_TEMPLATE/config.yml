@@ -1,0 +1,8 @@
+blank_issues_enabled: false
+contact_links:
+  - name: Faille de sécurité / Security issue
+    url: https://fushoo.fr/mentions-legales/
+    about: "Ne la décris pas ici, tout est public. Contacte fushoo en message privé (rubrique Contact). / Do not describe it here: everything is public. Contact fushoo privately (Contact section)."
+  - name: Mode d'emploi / Install guide
+    url: https://fushoo.fr/sillonette/installation/
+    about: "Installation, mise à jour et dépannage pas à pas. / Step-by-step install, update and troubleshooting."

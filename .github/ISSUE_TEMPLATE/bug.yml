@@ -1,0 +1,42 @@
+name: Signaler un bug / Report a bug
+description: Quelque chose ne marche pas comme prévu. / Something does not work as expected.
+labels: ["bug"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        **Tout ce que tu écris ici est PUBLIC**, visible par n'importe qui sur Internet.
+        N'y mets **jamais** : le mot de passe WebSocket d'OBS, ta clé de stream, une capture ou un journal (log) qui les montre, ni d'information personnelle (vrai nom, adresse e-mail, adresse IP…).
+        Une faille de sécurité ne se décrit pas ici : voir « Faille de sécurité » dans la liste précédente.
+
+        *Everything here is PUBLIC. Never post your OBS WebSocket password, your stream key, a screenshot or log showing them, or personal information. English is fine.*
+  - type: checkboxes
+    id: public
+    attributes:
+      label: Avant d'envoyer / Before sending
+      options:
+        - label: "J'ai compris que tout est public et je n'ai mis ni mot de passe OBS, ni clé de stream, ni information personnelle. / I understand this is public and I posted no OBS password, stream key or personal information."
+          required: true
+  - type: textarea
+    id: probleme
+    attributes:
+      label: Ce qui se passe / What happens
+      description: Ce que tu as fait, ce que tu attendais, ce qui s'est passé. / What you did, what you expected, what happened.
+    validations:
+      required: true
+  - type: input
+    id: message
+    attributes:
+      label: Message de la popup ou code de l'overlay / Popup message or overlay code
+      description: Par exemple « OBS introuvable… » ou E10. / For example "OBS introuvable…" or E10.
+  - type: input
+    id: version
+    attributes:
+      label: Version de Sillonette / Sillonette version
+      description: Visible sur la page des extensions du navigateur. / Shown on the browser's extensions page.
+      placeholder: "0.1.2"
+  - type: input
+    id: environnement
+    attributes:
+      label: Système, navigateur, OBS / System, browser, OBS
+      placeholder: "Windows 11, Chrome 140, OBS 31"

@@ -1,0 +1,24 @@
+name: Proposer une idée ou donner un avis / Idea or feedback
+description: Une idée, une remarque, ce qui te plaît ou pas. / An idea, a remark, what you like or not.
+labels: ["enhancement"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        **Tout ce que tu écris ici est PUBLIC**, visible par n'importe qui sur Internet.
+        N'y mets **jamais** : le mot de passe WebSocket d'OBS, ta clé de stream, une capture qui les montre, ni d'information personnelle.
+
+        *Everything here is PUBLIC. Never post your OBS WebSocket password, your stream key, a screenshot showing them, or personal information. English is fine.*
+  - type: checkboxes
+    id: public
+    attributes:
+      label: Avant d'envoyer / Before sending
+      options:
+        - label: "J'ai compris que tout est public et je n'ai mis ni mot de passe OBS, ni clé de stream, ni information personnelle. / I understand this is public and I posted no OBS password, stream key or personal information."
+          required: true
+  - type: textarea
+    id: avis
+    attributes:
+      label: Ton idée ou ton avis / Your idea or feedback
+    validations:
+      required: true
