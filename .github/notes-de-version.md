@@ -11,7 +11,7 @@ Mode d'emploi : `LISEZMOI.txt` dans le zip, ou https://fushoo.fr/sillonette/inst
 ## Avertissements, à lire avant d'installer
 
 - **Version bêta.** La 0.1.2 a été essayée avec succès par l'auteur sous Windows avec un vrai OBS ;
-  la 0.2.0 a été testée sous Linux seulement. **Pas encore testée pendant de longs lives** (plusieurs heures).
+  la 0.2.0 a été essayée et validée par l'auteur avant publication, et testée automatiquement sous Linux. **Pas encore testée pendant de longs lives** (plusieurs heures).
   Garde une solution de secours.
 - **Le mot de passe WebSocket d'OBS donne le contrôle total d'OBS**, clé de stream comprise.
   Ne le montre jamais à l'écran, ne le donne à personne. Copie-le avec le bouton « Copier » d'OBS
@@ -102,7 +102,9 @@ Ton mot de passe, ton skin et ta disposition restent enregistrés.
 - L'essai avec le vrai OBS a été fait avec l'interface en français et avant l'ajout de l'aperçu en
   direct ; l'anglais et l'aperçu en direct sont vérifiés par les tests automatiques (faux YouTube
   Music), pas avec le vrai site.
-- **Pas testé** : Windows, macOS, Edge, Opera ; longs lives (plusieurs heures).
+- Essai de l'auteur avant publication : validé (affichage, page de réglages ; il a aussi constaté
+  que l'overlay s'adapte quand la source OBS n'a pas la taille conseillée).
+- **Pas testé** : essais automatiques sous Windows ; macOS, Edge, Opera ; longs lives (plusieurs heures).
 
 ## Un avis, un bug ?
 
