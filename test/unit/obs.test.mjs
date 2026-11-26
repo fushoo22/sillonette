@@ -185,6 +185,17 @@ function newLink() {
   return { link, all, states, timers, ready: () => ready };
 }
 
+test("ObsLink: save again with the same settings tries again at once", async () => {
+  const t = fakeWs();
+  const link = new ObsLink({ WS: t.WS, setTimeout: () => 1, clearTimeout: () => {}, random: () => 0.5, onState: () => {}, onReady: () => {} });
+  link.configure(4455, "pw");
+  link.configure(4455, "pw");
+  assert.equal(t.all.length, 1, "unchanged and still connecting: nothing to do");
+  link.configure(4455, "pw", true);
+  assert.equal(t.all.length, 2, "forced: new connection");
+  assert.equal(t.all[0].readyState, 3, "the previous socket is closed");
+});
+
 test("ObsLink: OBS without a password -> connected, with a warning state", async () => {
   const t = newLink();
   t.link.configure(4455, "saved-but-unused");

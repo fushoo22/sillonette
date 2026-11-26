@@ -130,9 +130,10 @@ export class ObsLink {
     this.d.onState(s);
   }
 
-  /** (Re)connect with these settings. Port 0 = disconnected. */
-  configure(port: number, password: string): void {
-    if (port === this.port && password === this.password && this.ws) return;
+  /** (Re)connect with these settings. Port 0 = disconnected. force: try again now even if nothing
+   *  changed here (the user pressed "save": the password may have just been applied in OBS). */
+  configure(port: number, password: string, force = false): void {
+    if (!force && port === this.port && password === this.password && this.ws) return;
     this.port = validPort(port) ? port : 0;
     this.password = typeof password === "string" ? password : "";
     this.failures = 0;

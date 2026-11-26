@@ -110,6 +110,15 @@ api.runtime.onMessage.addListener((msg, from) => {
   if (from.id !== api.runtime.id) return false;
   const m = msg as { type?: unknown; track?: unknown };
   const tab = from.tab?.id;
+  // The popup's "save" button. Saving unchanged values fires no storage event, so without this a
+  // refused password would only be tried again a minute later. Never accepted from a tab.
+  if (m?.type === "sillonette-reconnect" && tab === undefined) {
+    void (async () => {
+      await ready;
+      const s = await settings();
+      link.configure(s.port, s.password, true);
+    })();
+  }
   if (m?.type === "track" && typeof tab === "number") {
     void (async () => {
       await ready;

@@ -79,7 +79,8 @@ $<HTMLFormElement>("obs").addEventListener("submit", async (e) => {
     return;
   }
   port.setCustomValidity("");
-  let pw = password.value;
+  // spaces around a pasted password are a copy mistake: OBS's own "copy" button gives none
+  let pw = password.value.trim();
   if (pw === "") {
     // no new password typed: keep the saved one, moved if the "remember" box changed
     const l = (await api.storage.local.get("obsPassword")).obsPassword;
@@ -101,6 +102,7 @@ $<HTMLFormElement>("obs").addEventListener("submit", async (e) => {
   }
   password.value = "";
   await load();
+  api.runtime.sendMessage({ type: "sillonette-reconnect" }).catch(() => undefined);
 });
 
 // Forget: the password leaves both storage areas; the background disconnects and, as OBS still asks
