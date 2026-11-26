@@ -42,3 +42,6 @@ label.check input { width: auto; margin: 0; padding: 0; flex: none; }
 .warn-box { padding: 6px 8px; border-left: 3px solid #e08a1e; background: rgba(224, 138, 30, 0.1); }
 .hint.warn { color: #9a5a0c; font-weight: 600; }
 button.wide { width: 100%; }
+.ui-lang { display: flex; gap: 4px; }
+.ui-lang button { padding: 2px 6px; font-size: 11px; min-width: 30px; }
+.ui-lang button[aria-pressed="true"] { background: var(--navy); border-color: var(--navy); color: #fff; }

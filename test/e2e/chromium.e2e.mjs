@@ -9,7 +9,7 @@ import { tmpdir } from "node:os";
 import { join } from "node:path";
 import { pathToFileURL } from "node:url";
 import { chromium } from "playwright-core";
-import { buildForTests, freePort, isolate, CHROMIUM, ROOT, OUT, sleep } from "./lib.mjs";
+import { buildForTests, freePort, isolate, CHROMIUM, ROOT, OUT, sleep, FRENCH_ENV } from "./lib.mjs";
 import { startFakeObs } from "./fake-obs.mjs";
 
 const PASSWORD = "mdp-essai-é😀-" + Math.random().toString(36).slice(2); // test-only password
@@ -33,7 +33,7 @@ before(async () => {
   profile = mkdtempSync(join(tmpdir(), "sillonette-e2e-"));
   const dir = join(dist, "chrome");
   ctx = await chromium.launchPersistentContext(profile, {
-    executablePath: CHROMIUM, headless: true, viewport: { width: 800, height: 200 }, locale: "fr-FR",
+    executablePath: CHROMIUM, headless: true, viewport: { width: 800, height: 200 }, locale: "fr-FR", env: FRENCH_ENV,
     args: [`--disable-extensions-except=${dir}`, `--load-extension=${dir}`, "--autoplay-policy=no-user-gesture-required", "--mute-audio"],
   });
   await isolate(ctx);

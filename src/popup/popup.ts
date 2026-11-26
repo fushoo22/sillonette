@@ -5,6 +5,7 @@
 import { api } from "../shared/api.ts";
 import { SKINS, normalizeTheme, sourceSize, withSkin, type Layout, type Theme } from "../shared/config.ts";
 import { DEFAULT_PORT, validPort, type ObsState } from "../background/obsws.ts";
+import { browserUiLang, loadUiLang, saveUiLang, SKIN_NAMES, statusKey, tr, translatePage, type UiKey, type UiLang } from "../shared/ui-text.ts";
 
 const $ = <T extends HTMLElement>(id: string) => document.getElementById(id) as T;
 const port = $<HTMLInputElement>("port");
@@ -18,37 +19,38 @@ let shortWarning = false;
 const skin = $<HTMLSelectElement>("skin");
 const layout = $<HTMLSelectElement>("layout");
 
-const TEXT: Record<ObsState, [string, string]> = {
-  off: ["idle", "Pas de port configuré."],
-  connecting: ["warn", "Connexion à OBS…"],
-  ok: ["ok", "Connecté à OBS."],
-  open: ["warn", "Connecté, mais OBS n'exige AUCUN mot de passe : tout appareil du réseau peut le piloter. Dans OBS : Outils → Paramètres du serveur WebSocket → « Utiliser l'authentification »."],
-  needpass: ["error", "OBS demande son mot de passe WebSocket : colle-le ci-dessous."],
-  auth: ["error", "Mot de passe refusé par OBS : recopie-le (OBS → Outils → Paramètres du serveur WebSocket → Afficher les informations de connexion)."],
-  kicked: ["error", "OBS a fermé la connexion de l'extension (bouton « Expulser » ?). Nouvel essai dans une minute."],
-  rpc: ["error", "Serveur WebSocket d'OBS incompatible : il faut OBS 28 ou plus récent."],
-  unreachable: ["error", "OBS introuvable : OBS est-il ouvert, avec le serveur WebSocket activé (Outils → Paramètres du serveur WebSocket) ?"],
-  noplugin: ["error", "Cet OBS n'a pas le plugin « Navigateur » (obs-browser)."],
-  error: ["error", "Erreur de connexion à OBS."],
+const LEVEL: Record<ObsState, string> = {
+  off: "idle", connecting: "warn", ok: "ok", open: "warn", needpass: "error", auth: "error",
+  kicked: "error", rpc: "error", unreachable: "error", noplugin: "error", error: "error",
 };
-const SKIN_NAMES: Record<string, string> = { studio: "Studio", neon: "Néon", vinyle: "Vinyle", retro: "Rétro", arcade: "Arcade", lofi: "Lofi" };
-for (const id of Object.keys(SKINS)) skin.add(new Option(SKIN_NAMES[id] ?? id, id));
+let lang: UiLang = "fr";
+let lastStatus: unknown;
+let lastTheme: Theme | null = null;
+const t = (k: UiKey, v?: Record<string, string | number>) => tr(lang, k, v);
+function fillSkins(): void {
+  const v = skin.value;
+  skin.replaceChildren(...Object.keys(SKINS).map((id) => new Option(SKIN_NAMES[lang][id] ?? id, id)));
+  if (v) skin.value = v;
+}
 
 function renderStatus(st: unknown): void {
+  lastStatus = st;
   const s = (st ?? {}) as { obs?: ObsState; conflicts?: number };
-  const [level, text] = TEXT[s.obs ?? "connecting"] ?? TEXT.error;
+  const state: ObsState = s.obs && s.obs in LEVEL ? s.obs : s.obs ? "error" : "connecting";
+  const level = LEVEL[state], text = t(statusKey(state));
   $("dot").className = "dot " + level;
   $("dot").setAttribute("aria-label", text);
   $("status").textContent = text;
   $("conflict").hidden = !((s.conflicts ?? 0) > 0);
 }
 
-/** Same fallback language as the background. */
-const uiLang = api.i18n.getUILanguage().toLowerCase().startsWith("fr") ? "fr" : "en";
+/** Fallback language of the overlay (setting "lg" not chosen yet): the browser's, as in the background. */
+const uiLang = browserUiLang();
 
-function renderSize(t: Theme): void {
-  const { w, h } = sourceSize(t);
-  $("size").textContent = `Taille conseillée de la source OBS : ${w} × ${h}`;
+function renderSize(th: Theme): void {
+  lastTheme = th;
+  const { w, h } = sourceSize(th);
+  $("size").textContent = t("sizeHint", { w, h });
 }
 
 async function load(): Promise<void> {
@@ -59,16 +61,14 @@ async function load(): Promise<void> {
   port.value = String(validPort(s.obsPort) ? s.obsPort : DEFAULT_PORT);
   remember.checked = !kept || saved;
   const hint = $("pwHint");
-  hint.textContent = saved ? "Un mot de passe est enregistré sur ce PC. Laisse vide pour le garder."
-    : kept ? "Un mot de passe est en mémoire jusqu'à la fermeture du navigateur. Laisse vide pour le garder."
-    : "Aucun mot de passe enregistré.";
-  if (shortWarning) hint.textContent += " Attention : mot de passe court. OBS ne limite pas les essais, un appareil du réseau peut le deviner : garde plutôt celui généré par OBS.";
+  hint.textContent = t(saved ? "pwSaved" : kept ? "pwKept" : "pwNone");
+  if (shortWarning) hint.textContent += " " + t("pwShort");
   hint.classList.toggle("warn", shortWarning);
   $<HTMLButtonElement>("forget").disabled = !saved && !kept;
-  const t = normalizeTheme(s.theme, uiLang);
-  skin.value = t.sk;
-  layout.value = t.ly;
-  renderSize(t);
+  const th = normalizeTheme(s.theme, uiLang);
+  skin.value = th.sk;
+  layout.value = th.ly;
+  renderSize(th);
   renderStatus((await (session ?? api.storage.local).get("obsStatus")).obsStatus);
 }
 
@@ -76,7 +76,7 @@ $<HTMLFormElement>("obs").addEventListener("submit", async (e) => {
   e.preventDefault();
   const p = Number(port.value);
   if (!validPort(p)) {
-    port.setCustomValidity("1 à 65535");
+    port.setCustomValidity(t("portRange"));
     port.reportValidity();
     return;
   }
@@ -87,7 +87,7 @@ $<HTMLFormElement>("obs").addEventListener("submit", async (e) => {
   const masked = /^[•●∙·⬤*]+$/.test(pw);
   $("pwError").hidden = !masked;
   if (masked) {
-    $("pwError").textContent = "Tu as collé les points qui masquent le mot de passe, pas le mot de passe. Dans OBS, utilise le bouton « Copier ». Rien n'a été modifié.";
+    $("pwError").textContent = t("pwMasked");
     password.value = "";
     return;
   }
@@ -128,8 +128,8 @@ $("forget").addEventListener("click", async () => {
 /** Skin or layout changed here: the other settings of the options page are kept (another skin brings
  *  its own colours, fonts and shapes, as on the options page). */
 async function saveTheme(): Promise<void> {
-  const t = normalizeTheme((await api.storage.local.get("theme")).theme, uiLang);
-  const theme = { ...(skin.value === t.sk ? t : withSkin(t, skin.value)), ly: layout.value as Layout };
+  const cur = normalizeTheme((await api.storage.local.get("theme")).theme, uiLang);
+  const theme = { ...(skin.value === cur.sk ? cur : withSkin(cur, skin.value)), ly: layout.value as Layout };
   await api.storage.local.set({ theme: normalizeTheme(theme, uiLang) });
   renderSize(theme);
 }
@@ -143,4 +143,24 @@ api.storage.onChanged.addListener((changes) => {
   if (changes.obsStatus) renderStatus(changes.obsStatus.newValue);
 });
 
-void load();
+/** Interface language (FR/EN buttons, remembered); the overlay's own language is not touched. */
+function applyLang(l: UiLang): void {
+  lang = l;
+  translatePage(document, lang);
+  fillSkins();
+  if (lastTheme) renderSize(lastTheme);
+  renderStatus(lastStatus);
+  if (!$("pwError").hidden) $("pwError").textContent = t("pwMasked");
+}
+for (const b of document.querySelectorAll<HTMLButtonElement>("button[data-ui-lang]")) {
+  b.addEventListener("click", () => {
+    const l: UiLang = b.dataset.uiLang === "en" ? "en" : "fr";
+    applyLang(l);
+    void saveUiLang(l).then(load);
+  });
+}
+
+void loadUiLang().then((l) => {
+  applyLang(l);
+  return load();
+});

@@ -53,9 +53,16 @@ thème normalisé) : n'importe quel client obs-websocket peut émettre le même 
   réécrit plus le thème avec le skin et la disposition seuls.
 - **Aperçu** : copie de l'overlay dans l'extension (`apercu/`, même `overlay.js`, même CSS ; les polices y
   sont des fichiers car la CSP des pages d'extension refuse les polices `data:`). Sa propre CSP n'autorise
-  que les fichiers de l'extension (pas d'image distante, pas de réseau). Il tourne en mode démo
+  que les fichiers de l'extension et les images des hôtes des pochettes (pas de réseau). En mode démo
   (`#demo=1&s=…`) : la page change seulement le fragment, et l'overlay en démo applique le nouveau
   fragment sans se recharger (`hashchange`). Contrôlé par `scripts/check-manifest.mjs`.
+- **Aperçu « En direct »** : la page calcule le même événement que le service d'arrière-plan
+  (`src/background/build-event.ts`, à partir de l'état partagé entre onglets dans `storage.session` et
+  des réglages de la page) et le remet à l'overlay de l'aperçu (`apercu.html?direct`, sans mode démo) par
+  `dispatchEvent` dans la page, toutes les 2 s et à chaque changement. Rien n'est envoyé à OBS par la
+  page ; marche sans OBS. Pour la vraie pochette, la CSP des pages de l'extension et celle de l'aperçu
+  ajoutent `img-src` vers les seuls hôtes des pochettes (`DEFAULT_ART_HOSTS`, déjà vérifiés sur chaque
+  adresse). Contrôlé par `scripts/check-manifest.mjs`.
 - Contraste : `src/shared/contrast.ts` (WCAG 2.1, pire cas sur scène noire et blanche, seuil 4,5:1).
 
 ## Comportement
@@ -153,7 +160,7 @@ ce PC n'a besoin que de 127.0.0.1). Effet réel d'un refus dans le pare-feu de W
 - **Lues** dans l'onglet YouTube Music (`src/content`) : titre, artiste, album, adresse de la pochette,
   durée, position, vitesse de lecture, publicité ou non. Rien d'autre (pas de compte, pas d'historique).
 - **Gardées dans le navigateur** (stockage de l'extension) : port, mot de passe d'OBS (`storage.local`
-  ou `storage.session`), réglages d'apparence de l'overlay (skin, disposition, couleurs… : `storage.local`) ; en mémoire de session : état des onglets et de la connexion.
+  ou `storage.session`), réglages d'apparence de l'overlay (skin, disposition, couleurs… : `storage.local`), langue de l'interface choisie (`uiLang`) ; en mémoire de session : état des onglets et de la connexion.
 - **Envoyées** : seulement à OBS, sur `ws://127.0.0.1` (CSP de l'extension). Pas de statistiques, pas de
   compte, pas de mise à jour automatique.
 - **Réseau de l'overlay** : il charge la pochette directement chez Google (`lh3.googleusercontent.com`,
@@ -166,7 +173,7 @@ ce PC n'a besoin que de 127.0.0.1). Effet réel d'un refus dans le pare-feu de W
 - Réglages communs à toutes les sources Sillonette d'OBS (l'événement va à toutes) : pas de réglages par
   scène.
 
-- Interface de l'extension (popup, page de réglages) en français uniquement ; l'overlay s'affiche en français ou en anglais (réglage « Langue de l'overlay »).
+- Interface de l'extension (popup, page de réglages) en français et en anglais (`src/shared/ui-text.ts`) : langue du navigateur par défaut (`i18n.getUILanguage`), boutons FR / EN gardés dans `storage.local` (`uiLang`), indépendants de la langue de l'overlay (`lg`). Description du manifeste par `_locales/{fr,en}`.
 
 - Service worker Chrome : gardé en vie par le trafic WebSocket (Chrome ≥ 116) tant qu'OBS est connecté ;
   non prouvé sur de longues durées (les tests attachent DevTools, ce qui le garde en vie). Si OBS est fermé,

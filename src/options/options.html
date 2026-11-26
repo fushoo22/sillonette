@@ -11,106 +11,116 @@
 <header class="top">
   <span class="logo" aria-hidden="true"></span>
   <p class="brand">Sillonette</p>
-  <h1>Personnaliser l'overlay</h1>
+  <h1 data-i18n="optH1">Personnaliser l'overlay</h1>
+  <div class="ui-lang" role="group" data-i18n-label="uiLang" aria-label="Langue de l'interface">
+    <button type="button" data-ui-lang="fr" lang="fr" aria-pressed="true">FR</button>
+    <button type="button" data-ui-lang="en" lang="en" aria-pressed="false">EN</button>
+  </div>
 </header>
-<p class="intro">Chaque réglage est enregistré tout de suite dans ce navigateur. Si Sillonette est connecté à OBS, l'overlay change dans OBS en quelques secondes. L'aperçu ci-dessous utilise de faux morceaux.</p>
+<p class="intro" data-i18n="optIntro">Chaque réglage est enregistré tout de suite dans ce navigateur. Si Sillonette est connecté à OBS, l'overlay change dans OBS en quelques secondes. L'aperçu montre de faux morceaux, ou ta musique en direct.</p>
 
 <main class="layout">
   <section class="preview" aria-labelledby="previewTitle">
-    <h2 id="previewTitle">Aperçu</h2>
+    <h2 id="previewTitle" data-i18n="preview">Aperçu</h2>
     <fieldset class="inline">
-      <legend>Fond de l'aperçu</legend>
-      <label><input type="radio" name="scene" value="dark" checked> Sombre</label>
-      <label><input type="radio" name="scene" value="light"> Clair</label>
+      <legend data-i18n="previewMode">Contenu de l'aperçu</legend>
+      <label><input type="radio" name="mode" value="demo" checked> <span data-i18n="modeDemo">Démo (faux morceaux)</span></label>
+      <label><input type="radio" name="mode" value="live"> <span data-i18n="modeLive">En direct (ta musique)</span></label>
     </fieldset>
-    <div id="stage" class="stage dark"><iframe id="frame" title="Aperçu de l'overlay, avec de faux morceaux" tabindex="-1"></iframe></div>
-    <p class="size">Taille conseillée de la source OBS : <strong id="size">800 × 200</strong></p>
+    <fieldset class="inline">
+      <legend data-i18n="scene">Fond de l'aperçu</legend>
+      <label><input type="radio" name="scene" value="dark" checked> <span data-i18n="sceneDark">Sombre</span></label>
+      <label><input type="radio" name="scene" value="light"> <span data-i18n="sceneLight">Clair</span></label>
+    </fieldset>
+    <div id="stage" class="stage dark"><iframe id="frame" data-i18n-title="frameTitle" title="Aperçu de l'overlay" tabindex="-1"></iframe></div>
+    <p class="size"><span data-i18n="size">Taille conseillée de la source OBS :</span> <strong id="size">800 × 200</strong></p>
+    <p id="liveHint" class="hint" role="status"></p>
     <p id="contrast" class="contrast" role="status"></p>
     <p id="saved" class="hint" role="status"></p>
-    <p class="hint">Après une mise à jour de Sillonette, remplace aussi le dossier « overlay » utilisé par OBS : un ancien overlay ignore les nouveaux réglages.</p>
+    <p class="hint" data-i18n="updateHint">Après une mise à jour de Sillonette, remplace aussi le dossier « overlay » utilisé par OBS : un ancien overlay ignore les nouveaux réglages.</p>
   </section>
 
   <form id="form" class="settings" novalidate>
     <fieldset>
-      <legend>Apparence</legend>
-      <div class="field"><label for="sk">Skin</label><select id="sk" name="sk"></select></div>
+      <legend data-i18n="gAppearance">Apparence</legend>
+      <div class="field"><label for="sk" data-i18n="skin">Skin</label><select id="sk" name="sk"></select></div>
       <fieldset class="inline">
-        <legend>Disposition</legend>
-        <label><input type="radio" name="ly" value="h"> Horizontale</label>
-        <label><input type="radio" name="ly" value="c"> Compacte (une ligne)</label>
-        <label><input type="radio" name="ly" value="v"> Carte verticale</label>
+        <legend data-i18n="layout">Disposition</legend>
+        <label><input type="radio" name="ly" value="h"> <span data-i18n="lyH">Horizontale</span></label>
+        <label><input type="radio" name="ly" value="c"> <span data-i18n="lyCLong">Compacte (une ligne)</span></label>
+        <label><input type="radio" name="ly" value="v"> <span data-i18n="lyV">Carte verticale</span></label>
       </fieldset>
       <div class="colors">
-        <div class="field"><label for="ac">Couleur d'accent</label><input type="color" id="ac" name="ac"></div>
-        <div class="field"><label for="tx">Couleur du texte</label><input type="color" id="tx" name="tx"></div>
-        <div class="field"><label for="bg">Couleur du fond</label><input type="color" id="bg" name="bg"></div>
+        <div class="field"><label for="ac" data-i18n="accent">Couleur d'accent</label><input type="color" id="ac" name="ac"></div>
+        <div class="field"><label for="tx" data-i18n="text">Couleur du texte</label><input type="color" id="tx" name="tx"></div>
+        <div class="field"><label for="bg" data-i18n="background">Couleur du fond</label><input type="color" id="bg" name="bg"></div>
       </div>
-      <div class="field"><label for="ba">Opacité du fond <output for="ba" id="baOut"></output></label><input type="range" id="ba" name="ba" min="0" max="100" step="1"></div>
-      <div class="field"><label for="rd">Arrondi des coins <output for="rd" id="rdOut"></output> <span class="unused" hidden>(non utilisé par ce skin)</span></label><input type="range" id="rd" name="rd" min="0" max="48" step="1"></div>
-      <div class="field"><label for="as">Forme de la pochette <span class="unused" hidden>(non utilisé par ce skin)</span></label>
-        <select id="as" name="as"><option value="square">Carrée</option><option value="rounded">Arrondie</option><option value="round">Ronde</option></select></div>
-      <div class="field"><label for="sd">Ombre</label>
-        <select id="sd" name="sd"><option value="0">Aucune</option><option value="1">Légère</option><option value="2">Forte</option></select></div>
+      <div class="field"><label for="ba"><span data-i18n="opacity">Opacité du fond</span> <output for="ba" id="baOut"></output></label><input type="range" id="ba" name="ba" min="0" max="100" step="1"></div>
+      <div class="field"><label for="rd"><span data-i18n="radius">Arrondi des coins</span> <output for="rd" id="rdOut"></output> <span class="unused" hidden data-i18n="unused">(non utilisé par ce skin)</span></label><input type="range" id="rd" name="rd" min="0" max="48" step="1"></div>
+      <div class="field"><label for="as"><span data-i18n="artShape">Forme de la pochette</span> <span class="unused" hidden data-i18n="unused">(non utilisé par ce skin)</span></label>
+        <select id="as" name="as"><option value="square" data-i18n="asSquare">Carrée</option><option value="rounded" data-i18n="asRounded">Arrondie</option><option value="round" data-i18n="asRound">Ronde</option></select></div>
+      <div class="field"><label for="sd" data-i18n="shadow">Ombre</label>
+        <select id="sd" name="sd"><option value="0" data-i18n="sd0">Aucune</option><option value="1" data-i18n="sd1">Légère</option><option value="2" data-i18n="sd2">Forte</option></select></div>
     </fieldset>
 
     <fieldset>
-      <legend>Texte</legend>
-      <div class="field"><label for="ft">Police du titre</label><select id="ft" name="ft"></select></div>
-      <div class="field"><label for="sc">Taille <output for="sc" id="scOut"></output></label><input type="range" id="sc" name="sc" min="50" max="200" step="5"></div>
-      <label class="check"><input type="checkbox" id="mq" name="mq"> Faire défiler les titres trop longs</label>
+      <legend data-i18n="gText">Texte</legend>
+      <div class="field"><label for="ft" data-i18n="font">Police du titre</label><select id="ft" name="ft"></select></div>
+      <div class="field"><label for="sc"><span data-i18n="scale">Taille</span> <output for="sc" id="scOut"></output></label><input type="range" id="sc" name="sc" min="50" max="200" step="5"></div>
+      <label class="check"><input type="checkbox" id="mq" name="mq"> <span data-i18n="marquee">Faire défiler les titres trop longs</span></label>
     </fieldset>
 
     <fieldset>
-      <legend>Contenu affiché</legend>
-      <label class="check"><input type="checkbox" name="sh" value="art"> Pochette</label>
-      <label class="check"><input type="checkbox" name="sh" value="artist"> Artiste</label>
-      <label class="check"><input type="checkbox" name="sh" value="album"> Album</label>
-      <label class="check"><input type="checkbox" name="sh" value="prog"> Barre de progression</label>
-      <label class="check"><input type="checkbox" name="sh" value="time"> Temps écoulé et durée</label>
-      <label class="check" id="mascotRow"><input type="checkbox" name="sh" value="mascot"> Mascotte</label>
+      <legend data-i18n="gContent">Contenu affiché</legend>
+      <label class="check"><input type="checkbox" name="sh" value="art"> <span data-i18n="showArt">Pochette</span></label>
+      <label class="check"><input type="checkbox" name="sh" value="artist"> <span data-i18n="showArtist">Artiste</span></label>
+      <label class="check"><input type="checkbox" name="sh" value="album"> <span data-i18n="showAlbum">Album</span></label>
+      <label class="check"><input type="checkbox" name="sh" value="prog"> <span data-i18n="showProg">Barre de progression</span></label>
+      <label class="check"><input type="checkbox" name="sh" value="time"> <span data-i18n="showTime">Temps écoulé et durée</span></label>
+      <label class="check" id="mascotRow"><input type="checkbox" name="sh" value="mascot"> <span data-i18n="showMascot">Mascotte</span></label>
     </fieldset>
 
     <fieldset>
-      <legend>Animation</legend>
-      <div class="field"><label for="an">Apparition</label>
-        <select id="an" name="an"><option value="fade">Fondu</option><option value="slide">Glissement</option><option value="pop">Pop</option><option value="none">Aucune</option></select></div>
-      <div class="field"><label for="tc">Changement de morceau</label>
-        <select id="tc" name="tc"><option value="auto">Comme l'apparition</option><option value="fade">Fondu</option><option value="slide">Glissement</option><option value="none">Aucune</option></select></div>
-      <label class="check"><input type="checkbox" id="rm" name="rm"> Réduire les mouvements (aucune animation)</label>
+      <legend data-i18n="gAnim">Animation</legend>
+      <div class="field"><label for="an" data-i18n="entrance">Apparition</label>
+        <select id="an" name="an"><option value="fade" data-i18n="anFade">Fondu</option><option value="slide" data-i18n="anSlide">Glissement</option><option value="pop" data-i18n="anPop">Pop</option><option value="none" data-i18n="anNone">Aucune</option></select></div>
+      <div class="field"><label for="tc" data-i18n="change">Changement de morceau</label>
+        <select id="tc" name="tc"><option value="auto" data-i18n="tcAuto">Comme l'apparition</option><option value="fade" data-i18n="anFade">Fondu</option><option value="slide" data-i18n="anSlide">Glissement</option><option value="none" data-i18n="anNone">Aucune</option></select></div>
+      <label class="check"><input type="checkbox" id="rm" name="rm"> <span data-i18n="reduced">Réduire les mouvements (aucune animation)</span></label>
     </fieldset>
 
     <fieldset>
-      <legend>Comportement</legend>
+      <legend data-i18n="gBehaviour">Comportement</legend>
       <fieldset class="inline">
-        <legend>Quand montrer la carte</legend>
-        <label><input type="radio" name="vis" value="always"> Tout le temps</label>
-        <label><input type="radio" name="vis" value="brief"> Quelques secondes à chaque nouveau morceau</label>
+        <legend data-i18n="visWhen">Quand montrer la carte</legend>
+        <label><input type="radio" name="vis" value="always"> <span data-i18n="visAlways">Tout le temps</span></label>
+        <label><input type="radio" name="vis" value="brief"> <span data-i18n="visBrief">Quelques secondes à chaque nouveau morceau</span></label>
       </fieldset>
-      <div class="field"><label for="nt">Durée d'affichage (secondes, de 3 à 60)</label><input type="number" id="nt" name="nt" min="3" max="60" step="1" inputmode="numeric" aria-describedby="ntHint"></div>
-      <p id="ntHint" class="hint">La carte réapparaît au morceau suivant, pas quand tu relances après une pause. Un code d'erreur reste toujours visible.</p>
-      <div class="field"><label for="pa">En pause</label>
-        <select id="pa" name="pa"><option value="show">Afficher « En pause »</option><option value="dim">Griser</option><option value="hide">Masquer</option></select></div>
-      <div class="field"><label for="pt">Masquer après (secondes)</label><input type="number" id="pt" name="pt" min="0" max="600" step="1" inputmode="numeric"></div>
-      <div class="field"><label for="id">Sans musique</label>
-        <select id="id" name="id"><option value="hide">Masquer</option><option value="wait">Afficher « Sillonette en attente »</option></select></div>
+      <div class="field"><label for="nt" data-i18n="briefSecs">Durée d'affichage (secondes, de 3 à 60)</label><input type="number" id="nt" name="nt" min="3" max="60" step="1" inputmode="numeric" aria-describedby="ntHint"></div>
+      <p id="ntHint" class="hint" data-i18n="briefHint">La carte réapparaît au morceau suivant, pas quand tu relances après une pause. Un code d'erreur reste toujours visible.</p>
+      <div class="field"><label for="pa" data-i18n="paused">En pause</label>
+        <select id="pa" name="pa"><option value="show" data-i18n="paShow">Afficher « En pause »</option><option value="dim" data-i18n="paDim">Griser</option><option value="hide" data-i18n="paHide">Masquer</option></select></div>
+      <div class="field"><label for="pt" data-i18n="pauseDelay">Masquer après (secondes)</label><input type="number" id="pt" name="pt" min="0" max="600" step="1" inputmode="numeric"></div>
+      <div class="field"><label for="id" data-i18n="idle">Sans musique</label>
+        <select id="id" name="id"><option value="hide" data-i18n="idHide">Masquer</option><option value="wait" data-i18n="idWait">Afficher « Sillonette en attente »</option></select></div>
       <fieldset class="inline">
-        <legend>Alignement</legend>
-        <label><input type="radio" name="al" value="l"> À gauche</label>
-        <label><input type="radio" name="al" value="r"> À droite</label>
+        <legend data-i18n="align">Alignement</legend>
+        <label><input type="radio" name="al" value="l"> <span data-i18n="alL">À gauche</span></label>
+        <label><input type="radio" name="al" value="r"> <span data-i18n="alR">À droite</span></label>
       </fieldset>
-      <div class="field"><label for="lg">Langue de l'overlay</label>
+      <div class="field"><label for="lg" data-i18n="overlayLang">Langue de l'overlay</label>
         <select id="lg" name="lg"><option value="fr" lang="fr">Français</option><option value="en" lang="en">English</option></select></div>
-      <label class="check"><input type="checkbox" id="er" name="er"> Afficher les codes d'erreur (E10) sur l'overlay</label>
+      <label class="check"><input type="checkbox" id="er" name="er"> <span data-i18n="errors">Afficher les codes d'erreur (E10) sur l'overlay</span></label>
     </fieldset>
 
     <div class="row actions">
-      <button type="button" id="reset">Rétablir les réglages du skin</button>
+      <button type="button" id="reset" data-i18n="reset">Rétablir les réglages du skin</button>
     </div>
     <details>
-      <summary>Aller plus loin : le « CSS personnalisé » d'OBS</summary>
-      <p>Pour un réglage absent de cette page (titre en majuscules, contour du texte…), ouvre les propriétés de la source Navigateur dans OBS et écris des règles dans « CSS personnalisé ». Exemple :</p>
+      <summary data-i18n="cssSummary">Aller plus loin : le « CSS personnalisé » d'OBS</summary>
+      <p data-i18n="cssText1">Pour un réglage absent de cette page (titre en majuscules, contour du texte…), ouvre les propriétés de la source Navigateur dans OBS et écris des règles dans « CSS personnalisé », sous la ligne déjà présente. Exemple :</p>
       <pre><code>.sillonette .title { text-transform: uppercase; }</code></pre>
-      <p>Le mode d'emploi (LISEZMOI.txt) donne d'autres exemples. Ces règles restent dans OBS : Sillonette ne les voit pas.</p>
+      <p data-i18n="cssText2">Le mode d'emploi (LISEZMOI.txt) donne d'autres exemples. Ces règles restent dans OBS : Sillonette ne les voit pas.</p>
     </details>
   </form>
 </main>

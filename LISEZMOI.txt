@@ -26,6 +26,7 @@ Contenu du zip
   extension-chrome\   l'extension (Chrome, Edge, Opera)
   overlay\            l'overlay a charger dans OBS (sillonette-overlay.html)
   LISEZMOI.txt        ce fichier
+  README-EN.txt       resume en anglais de ce fichier (English summary)
 
 
 1. Extraire le zip
@@ -86,7 +87,8 @@ d. Epingle l'extension "Sillonette" (icone puzzle -> epingle).
 
 4. Relier l'extension a OBS
 ---------------------------
-a. Clique sur l'icone Sillonette (un petit disque).
+a. Clique sur l'icone Sillonette (un petit disque). La fenetre suit la langue du navigateur ;
+   les boutons FR / EN en haut la changent (choix garde).
 b. Port WebSocket d'OBS : 4455 (sauf si tu l'as change dans OBS).
 c. Mot de passe : colle le mot de passe copie a l'etape 2e.
    Laisse cochee "Le garder apres la fermeture du navigateur" si tu veux que ca marche tout seul
@@ -134,7 +136,9 @@ a. Clique sur l'icone Sillonette, puis "Personnaliser...". Une page s'ouvre dans
 b. Regle ce que tu veux : couleurs, opacite du fond, arrondi, forme de la pochette, ombre, police du
    titre, taille, elements affiches (pochette, artiste, album, barre, temps), animations, comportement
    en pause et sans musique, alignement a gauche ou a droite, langue de l'overlay.
-   L'apercu en haut montre le resultat avec de faux morceaux. Chaque reglage est enregistre tout de
+   L'apercu en haut montre le resultat : "Demo (faux morceaux)", ou "En direct (ta musique)" pour voir
+   le morceau que Sillonette envoie a OBS en ce moment (seulement dans la page, meme si OBS n'est pas
+   connecte ; la pochette vient de Google, comme dans OBS). Chaque reglage est enregistre tout de
    suite dans le navigateur, et l'overlay change dans OBS en quelques secondes (si Sillonette est
    connecte a OBS).
 c. Si tu changes la taille ou la disposition, mets la source OBS a la "Taille conseillee" indiquee

@@ -4,11 +4,11 @@
 // No server, no other network access (the manifest's CSP only allows ws://127.0.0.1).
 import { api } from "../shared/api.ts";
 import type { TrackState } from "../content/types.ts";
-import { encodeTheme, normalizeTheme } from "../shared/config.ts";
-import { EVENT_NAME, type OverlayEvent } from "../shared/event.ts";
-import { cleanLease, emptyLease, removeTab, report, view, type Lease } from "./lease.ts";
+import { normalizeTheme } from "../shared/config.ts";
+import { EVENT_NAME } from "../shared/event.ts";
+import { buildEvent } from "./build-event.ts";
+import { cleanLease, emptyLease, removeTab, report, type Lease } from "./lease.ts";
 import { DEFAULT_PORT, ObsLink, validPort, type ObsState } from "./obsws.ts";
-import { trackEvent } from "./track.ts";
 
 /** Every RESEND_MS the current state goes out again: a browser source that was (re)loaded, or an OBS
  *  started later, is in sync within this delay. It also keeps the Chrome service worker alive
@@ -77,17 +77,10 @@ function withLease(fn: (l: Lease) => Lease): Promise<Lease> {
 
 async function push(): Promise<void> {
   const now = Date.now();
-  const lease = cleanLease((await session.get("lease")).lease);
-  const v = view(lease, now);
   const { theme } = await settings();
-  const ev: OverlayEvent = {
-    v: 1,
-    np: v.shown ? trackEvent(v.shown.track, v.shown.at, now) : { v: 1, state: "idle", now },
-    theme: encodeTheme(normalizeTheme(theme, lang)),
-    err: v.conflicts > 0 ? "E10" : "",
-  };
-  if (v.conflicts !== conflicts) {
-    conflicts = v.conflicts;
+  const { ev, conflicts: c } = buildEvent((await session.get("lease")).lease, normalizeTheme(theme, lang), now);
+  if (c !== conflicts) {
+    conflicts = c;
     await setStatus(link.current, conflicts);
   }
   link.emit(EVENT_NAME, ev);

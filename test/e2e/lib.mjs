@@ -44,3 +44,7 @@ export async function isolate(context) {
     return route.abort();
   });
 }
+
+/** Browser language of the extension (chrome.i18n.getUILanguage follows the environment on Linux, not
+ *  the "locale" option): French tests pin French, so that they pass on English machines too. */
+export const FRENCH_ENV = { ...process.env, LANG: "fr_FR.UTF-8", LANGUAGE: "fr_FR", LC_ALL: "fr_FR.UTF-8" };

@@ -9,6 +9,10 @@ import { join } from "node:path";
 import { buildForTests, freePort, ROOT, sleep } from "./lib.mjs";
 import { launchFirefox } from "./marionette.mjs";
 import { startFakeObs } from "./fake-obs.mjs";
+import { UI } from "../../src/shared/ui-text.ts";
+
+// The popup speaks the language of this Firefox (French or English): both are accepted.
+const CONNECTED = [UI.fr.st_ok, UI.en.st_ok];
 
 const UUID = "4b1d9a10-5c2e-4f7a-8e3b-2a6c9d0e1f21";
 const ID = "sillonette@fushoo.fr";
@@ -34,12 +38,12 @@ async function run(extDir) {
     const popup = await serial(() => ff.openTab(`moz-extension://${UUID}/popup.html`));
     await serial(() => ff.evalIn(popup, `document.getElementById("port").value = "${port}"; document.getElementById("password").value = ${JSON.stringify(PASSWORD)}; document.getElementById("save").click()`));
     let status = "";
-    for (let i = 0; i < 40 && status !== "Connecté à OBS."; i++) {
+    for (let i = 0; i < 40 && !CONNECTED.includes(status); i++) {
       await sleep(250);
       status = await serial(() => ff.evalIn(popup, `return document.getElementById("status").textContent`));
     }
     const result = { status, connections: obs.log.connections, requests: obs.log.requests.length };
-    if (status === "Connecté à OBS.") {
+    if (CONNECTED.includes(status)) {
       // The overlay itself always runs in OBS (Chromium/CEF), never in Firefox: check what Firefox sends.
       const yt = await serial(() => ff.openTab(`http://127.0.0.1:${site.address().port}/watch`));
       await serial(() => ff.evalIn(yt, `setTrack("Morceau Firefox", "Artiste FF"); play()`));
@@ -77,7 +81,7 @@ async function run(extDir) {
 test("Firefox: extension (event page) -> ws://127.0.0.1 -> fake OBS", async () => {
   const r = await run(join(dist, "firefox"));
   console.log("firefox:", JSON.stringify(r));
-  assert.equal(r.status, "Connecté à OBS.");
+  assert.ok(CONNECTED.includes(r.status), r.status);
   assert.equal(r.sent, true);
   assert.equal(r.onlyEmit, true);
   assert.equal(r.optionsPreview, true, "options page preview works in Firefox");
@@ -90,5 +94,5 @@ test("Firefox: without the CSP override, what happens to ws://127.0.0.1", async 
   writeFileSync(join(dist, "firefox/manifest.json"), JSON.stringify(m, null, 2));
   const r = await run(join(dist, "firefox"));
   console.log("firefox, default MV3 CSP:", JSON.stringify(r));
-  assert.notEqual(r.status, "Connecté à OBS.", "if this starts passing, Firefox stopped upgrading ws:// and the override may go");
+  assert.ok(!CONNECTED.includes(r.status), "if this starts passing, Firefox stopped upgrading ws:// and the override may go");
 });

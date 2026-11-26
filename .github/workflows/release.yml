@@ -81,7 +81,7 @@ jobs:
           npm run zip
           zip="dist-zip/sillonette-$VERSION.zip"
           bsdtar -tf "$zip" > contenu.txt
-          for f in LISEZMOI.txt extension-chrome/manifest.json overlay/sillonette-overlay.html overlay/licences/LICENSE-Sillonette.txt; do
+          for f in LISEZMOI.txt README-EN.txt extension-chrome/manifest.json overlay/sillonette-overlay.html overlay/licences/LICENSE-Sillonette.txt; do
             grep -qxF "$f" contenu.txt || { echo "::error::$f manque dans le zip"; exit 1; }
           done
           mkdir -p sortie

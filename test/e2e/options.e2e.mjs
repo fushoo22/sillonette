@@ -3,6 +3,7 @@
 // existing "theme" field, "a few seconds at each new track", popup button and skin change, reset,
 // invalid or old saved settings, keyboard only, and an axe-core WCAG 2.1 AA audit.
 import { test, before, after } from "node:test";
+import { createServer } from "node:http";
 import assert from "node:assert/strict";
 import { mkdtempSync, readFileSync, rmSync } from "node:fs";
 import { createRequire } from "node:module";
@@ -10,13 +11,13 @@ import { tmpdir } from "node:os";
 import { join } from "node:path";
 import { pathToFileURL } from "node:url";
 import { chromium } from "playwright-core";
-import { buildForTests, freePort, isolate, CHROMIUM, ROOT, OUT, sleep } from "./lib.mjs";
+import { buildForTests, freePort, isolate, CHROMIUM, ROOT, OUT, sleep, FRENCH_ENV } from "./lib.mjs";
 import { startFakeObs } from "./fake-obs.mjs";
 import { decodeTheme } from "../../src/shared/config.ts";
 
 const AXE = readFileSync(createRequire(import.meta.url).resolve("axe-core/axe.min.js"), "utf8");
 const PASSWORD = "mdp-essai-" + Math.random().toString(36).slice(2); // test-only password
-let ctx, profile, extId, sw, obs, dist;
+let ctx, profile, extId, sw, obs, dist, site;
 const emitted = [];
 const overlays = new Set();
 const consoleErrors = [];
@@ -31,11 +32,14 @@ before(async () => {
       for (const p of overlays) p.evaluate(([n, j]) => window.dispatchEvent(new CustomEvent(n, { detail: JSON.parse(j) })), [name, json]).catch(() => undefined);
     },
   });
+  const html = readFileSync(join(ROOT, "test/e2e/fake-ytmusic.html"));
+  site = createServer((_, res) => { res.writeHead(200, { "Content-Type": "text/html" }); res.end(html); });
+  await new Promise((r) => site.listen(0, "127.0.0.1", r));
   profile = mkdtempSync(join(tmpdir(), "sillonette-e2e-options-"));
   const dir = join(dist, "chrome");
   ctx = await chromium.launchPersistentContext(profile, {
-    executablePath: CHROMIUM, headless: true, viewport: { width: 1280, height: 900 }, locale: "fr-FR",
-    args: [`--disable-extensions-except=${dir}`, `--load-extension=${dir}`, "--mute-audio"],
+    executablePath: CHROMIUM, headless: true, viewport: { width: 1280, height: 900 }, locale: "fr-FR", env: FRENCH_ENV,
+    args: [`--disable-extensions-except=${dir}`, `--load-extension=${dir}`, "--mute-audio", "--autoplay-policy=no-user-gesture-required"],
   });
   await isolate(ctx);
   await ctx.route((u) => u.protocol === "file:", (route) => route.continue());
@@ -49,6 +53,7 @@ before(async () => {
 after(async () => {
   await ctx?.close();
   await obs?.stop();
+  site?.close();
   if (profile) rmSync(profile, { recursive: true, force: true });
 });
 
@@ -84,6 +89,8 @@ test("options: live preview by the real overlay, saved at once, sent to OBS in t
   const page = await openOptions();
   const fr = frameOf(page);
   assert.ok(fr, "preview frame");
+  // the form shows the saved settings from the start (nothing saved yet: the Studio skin's)
+  assert.deepEqual(await page.evaluate(() => [document.getElementById("sk").value, document.getElementById("ac").value, ...[...document.querySelectorAll('input[name="sh"]:checked')].map((b) => b.value)]), ["studio", "#a3216b", "art", "artist", "prog"]);
   const fonts = await fr.evaluate(async () => { await document.fonts.ready; return [...document.fonts].filter((f) => f.status === "loaded").map((f) => f.family); });
   assert.ok(fonts.includes("Mochiy Pop One"), "preview fonts load from the extension: " + fonts);
   assert.match(await fr.textContent(".title > span"), /Nuage pêche|Ciel de beurre|Framboise/, "fictitious demo tracks");
@@ -259,4 +266,54 @@ test("options: keyboard only, visible focus, axe-core WCAG 2.1 AA", async () => 
   await page.close();
   const csp = consoleErrors.filter((e) => /Content Security Policy|Refused/.test(e));
   assert.deepEqual(csp, [], "no CSP error on the options page or in its preview");
+});
+
+test("options: live preview (the real track, E10 included, works without OBS, nothing more sent)", async () => {
+  await sw.evaluate(() => chrome.storage.local.set({ theme: { sk: "studio" } }));
+  const page = await openOptions();
+  const fr = () => frameOf(page);
+  const conns = obs.log.connections, reqs = obs.log.requests.length;
+  await page.check('input[name="mode"][value="live"]');
+  await page.waitForFunction(() => document.getElementById("frame").getAttribute("src").startsWith("apercu/apercu.html?direct#"));
+  await page.waitForFunction(() => document.getElementById("liveHint").textContent.startsWith("Aucune musique ne joue"), null, { timeout: 5000 });
+  assert.equal(await fr().evaluate(() => document.querySelector(".sillonette").classList.contains("is-visible")), false, "nothing plays: hidden");
+  const yt = await ctx.newPage();
+  await yt.goto(`http://127.0.0.1:${site.address().port}/watch`);
+  await yt.evaluate(() => { setTrack("Morceau en direct", "Artiste direct"); return play(); });
+  await page.waitForFunction(() => {
+    const d = document.getElementById("frame").contentDocument;
+    return d.querySelector(".title > span")?.textContent === "Morceau en direct" && d.querySelector(".sillonette").classList.contains("is-visible");
+  }, null, { timeout: 6000 });
+  assert.match(await page.textContent("#liveHint"), /^En direct : le morceau que Sillonette envoie à OBS/);
+  // the real cover, from a Google host (answered locally by the test): allowed by the CSPs
+  await page.waitForFunction(() => {
+    const img = document.getElementById("frame").contentDocument.querySelector(".art img");
+    return img.getAttribute("src").startsWith("https://lh3.googleusercontent.com/") && img.complete && img.naturalWidth > 0;
+  }, null, { timeout: 5000 });
+  // a setting changes the live preview at once
+  await page.fill("#ac", "#12ab34");
+  await page.waitForFunction(() => getComputedStyle(document.getElementById("frame").contentDocument.documentElement).getPropertyValue("--o-accent").trim() === "#12ab34", null, { timeout: 3000 });
+  // a second tab: E10 in the live preview, as in OBS
+  const yt2 = await ctx.newPage();
+  await yt2.goto(`http://127.0.0.1:${site.address().port}/watch`);
+  await yt2.evaluate(() => { setTrack("Second onglet", "Autre"); return play(); });
+  await page.waitForFunction(() => document.getElementById("frame").contentDocument.querySelector(".sillonette-err").dataset.code === "E10", null, { timeout: 6000 });
+  await yt2.close();
+  assert.equal(obs.log.connections, conns, "the page opened no connection to OBS");
+  assert.ok(obs.log.requests.slice(reqs).every((r) => r.requestData.requestType === "emit_event"), "only the usual emit_event");
+  await page.screenshot({ path: join(OUT, "options-direct.png"), fullPage: true });
+  // without OBS: the live preview keeps following the tab
+  await obs.stop();
+  await yt.evaluate(() => setTrack("Sans OBS", "Artiste direct"));
+  await page.waitForFunction(() => document.getElementById("frame").contentDocument.querySelector(".title > span")?.textContent === "Sans OBS", null, { timeout: 6000 });
+  await yt.evaluate(() => pause());
+  await page.waitForFunction(() => document.getElementById("frame").contentDocument.querySelector(".sillonette").dataset.state === "paused", null, { timeout: 6000 });
+  await yt.close();
+  await page.waitForFunction(() => document.getElementById("liveHint").textContent.startsWith("Aucune musique ne joue"), null, { timeout: 6000 });
+  // back to the demo
+  await page.check('input[name="mode"][value="demo"]');
+  await page.waitForFunction(() => /^(Nuage pêche|Ciel de beurre|Framboise)/.test(document.getElementById("frame").contentDocument?.querySelector(".title > span")?.textContent ?? ""), null, { timeout: 6000 });
+  assert.equal(await page.textContent("#liveHint"), "");
+  await page.close();
+  assert.deepEqual(consoleErrors.filter((e) => /Content Security Policy|Refused/.test(e)), [], "no CSP error");
 });

@@ -9,6 +9,9 @@ progression), **sans aucun serveur** : tout se passe sur ton PC.
 
 Sillonette est un projet indépendant et gratuit, **non affilié** à YouTube, à Google ni à l'OBS Project.
 
+*English:* the extension (popup and settings page) is in French and English, following the browser's
+language (FR / EN buttons to switch). Short English guide: [README-EN.txt](README-EN.txt).
+
 ## Télécharger
 
 Le zip est dans la page **[Releases](https://github.com/fushoo22/sillonette/releases/latest)** de ce
@@ -73,8 +76,8 @@ se met à jour tout seul.
 
 ## Personnaliser
 
-Popup Sillonette → **« Personnaliser… »** : une page avec un aperçu en direct (le vrai overlay, avec de
-faux morceaux) pour régler couleurs, opacité, police, taille, éléments affichés, animations,
+Popup Sillonette → **« Personnaliser… »** : une page avec un aperçu (le vrai overlay, avec de faux
+morceaux ou en direct avec ta musique) pour régler couleurs, opacité, police, taille, éléments affichés, animations,
 comportement en pause et sans musique, alignement, langue de l'overlay et codes d'erreur. Chaque
 réglage est enregistré dans le navigateur et arrive dans OBS en quelques secondes. Le mode
 **« Quelques secondes à chaque nouveau morceau »** montre la carte au changement de morceau (10 s par
@@ -115,6 +118,8 @@ ou `SILLONETTE_CHROMIUM=/chemin/vers/chrome`) et Firefox (`SILLONETTE_FIREFOX`).
 Publication : pousser une étiquette `v<version>` (la même que `package.json`) lance
 `.github/workflows/release.yml` : contrôles, tests unitaires, tests de bout en bout dans Chromium,
 construction du zip et création de la Release avec les notes de `.github/notes-de-version.md`.
+
+Textes de l'interface (français et anglais) : `src/shared/ui-text.ts`.
 
 Organisation : `src/content` (lecture de YouTube Music), `src/background` (partage entre onglets,
 client obs-websocket), `src/popup`, `src/options` (page de personnalisation), `src/overlay`, `src/skins`, `src/fonts`, `scripts` (construction,

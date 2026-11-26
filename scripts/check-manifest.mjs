@@ -11,7 +11,10 @@ const pkg = JSON.parse(readFileSync(join(root, "package.json"), "utf8"));
 const errors = [];
 const fail = (m) => errors.push(m);
 
-const CSP = "script-src 'self'; object-src 'self'; connect-src ws://127.0.0.1:*; default-src 'self'";
+import { DEFAULT_ART_HOSTS } from "../src/shared/types.ts";
+const ART = DEFAULT_ART_HOSTS.map((h) => "https://" + h).join(" ");
+// connect-src: only OBS on this PC; img-src: the covers' hosts (options page live preview), nothing else.
+const CSP = `script-src 'self'; object-src 'self'; connect-src ws://127.0.0.1:*; img-src 'self' ${ART}; default-src 'self'`;
 const ALLOWED_URLS = ["https://music.youtube.com", "https://lh3.googleusercontent.com", "https://i.ytimg.com", "https://yt3.ggpht.com"];
 
 for (const target of ["chrome", "firefox"]) {
@@ -21,12 +24,18 @@ for (const target of ["chrome", "firefox"]) {
   if (m.manifest_version !== 3) p("manifest_version must be 3");
   if (m.version !== pkg.version) p(`version ${m.version} != package.json ${pkg.version}`);
   if (m.name !== "Sillonette") p("name must be Sillonette");
+  if (m.default_locale !== "fr" || m.description !== "__MSG_extDescription__") p("description from _locales, default_locale fr");
+  for (const l of ["fr", "en"]) {
+    const msg = existsSync(join(dir, "_locales", l, "messages.json")) ? JSON.parse(readFileSync(join(dir, "_locales", l, "messages.json"), "utf8")) : {};
+    const d = msg.extDescription?.message;
+    if (typeof d !== "string" || d.length < 10 || d.length > 132 || Object.keys(msg).join() !== "extDescription") p(`_locales/${l}: extDescription (10-132 characters) only`);
+  }
   if (JSON.stringify(m.permissions) !== '["storage"]') p(`permissions must be exactly ["storage"]: ${JSON.stringify(m.permissions)}`);
   if (m.host_permissions || m.optional_permissions || m.optional_host_permissions) p("no host or optional permissions");
   if (m.key) p("no fixed key: the extension must never take the id of another one");
   const cs = m.content_scripts ?? [];
   if (cs.length !== 1 || JSON.stringify(cs[0].matches) !== '["https://music.youtube.com/*"]' || cs[0].all_frames) p("content script must only match https://music.youtube.com/* (top frame)");
-  if (m.content_security_policy?.extension_pages !== CSP) p("extension CSP must only allow ws://127.0.0.1");
+  if (m.content_security_policy?.extension_pages !== CSP) p("extension CSP must only allow ws://127.0.0.1 (and images from the covers' hosts)");
   if (m.externally_connectable || m.web_accessible_resources) p("no externally_connectable / web_accessible_resources");
   if (target === "chrome") {
     if (m.background?.service_worker !== "background.js" || m.background.scripts) p("chrome needs background.service_worker only");
@@ -40,7 +49,7 @@ for (const target of ["chrome", "firefox"]) {
   // preview copy of the overlay (options page): demo only, nothing outside the extension
   const ap = readFileSync(join(dir, "apercu/apercu.html"), "utf8");
   const apCsp = /http-equiv="Content-Security-Policy" content="([^"]+)"/.exec(ap)?.[1] ?? "";
-  if (apCsp !== "default-src 'none'; script-src 'self'; style-src 'self'; font-src 'self'; img-src 'self'; connect-src 'none'; base-uri 'none'; form-action 'none'") p("apercu: strict CSP (extension files only)");
+  if (apCsp !== `default-src 'none'; script-src 'self'; style-src 'self'; font-src 'self'; img-src 'self' ${ART}; connect-src 'none'; base-uri 'none'; form-action 'none'`) p("apercu: strict CSP (extension files and the covers' hosts only)");
   if (/<script(?![^>]*\bsrc=)[^>]*>/i.test(ap) || /\son\w+=/i.test(ap) || /\sstyle=/i.test(ap)) p("apercu: inline script/handler/style");
   if (/data:font/.test(readFileSync(join(dir, "apercu/overlay.css"), "utf8"))) p("apercu: fonts must be files (the extension CSP refuses data: fonts)");
   if (readFileSync(join(dir, "apercu/overlay.js"), "utf8") !== readFileSync(join(dist, "overlay/overlay.js"), "utf8")) p("apercu: overlay.js must be the overlay's own script");

@@ -37,7 +37,10 @@ Mode d'emploi : `LISEZMOI.txt` dans le zip, ou https://fushoo.fr/sillonette/inst
     sans musique (masquer ou « Sillonette en attente »), alignement à gauche ou à droite, langue de
     l'overlay (français ou anglais).
 
-  L'aperçu utilise le vrai overlay avec de faux morceaux. Chaque réglage est enregistré tout de suite
+  L'aperçu utilise le vrai overlay. Choisis **« Démo (faux morceaux) »** ou **« En direct (ta
+  musique) »** : en direct, tu vois le morceau que Sillonette envoie à OBS à ce moment-là (code E10
+  compris), seulement dans la page, même si OBS n'est pas connecté ; si rien ne joue, la page le dit.
+  La pochette vient alors des serveurs d'images de Google, comme dans OBS. Chaque réglage est enregistré tout de suite
   dans ton navigateur, et l'overlay change dans OBS en quelques secondes (si Sillonette est connecté).
   La page prévient si le texte risque d'être difficile à lire (contraste), et le bouton
   **« Rétablir les réglages du skin »** remet tout comme avant.
@@ -47,6 +50,11 @@ Mode d'emploi : `LISEZMOI.txt` dans le zip, ou https://fushoo.fr/sillonette/inst
   visible.
 - **Tu peux choisir d'afficher ou non les codes d'erreur (E10) à l'antenne.** Avant, le badge
   s'affichait toujours dans OBS.
+- **L'extension parle aussi anglais (English).** La popup (tous les messages, y compris les erreurs
+  et l'avertissement sur le mot de passe) et la page de réglages suivent la langue de ton navigateur :
+  français s'il est en français, anglais sinon. Les boutons **FR / EN** en haut changent la langue, et
+  ton choix est gardé. Cela ne change pas la langue de l'overlay (réglage « Langue de l'overlay »).
+  Le zip contient aussi `README-EN.txt`, un résumé en anglais du mode d'emploi.
 - **Pour aller plus loin : le « CSS personnalisé » d'OBS.** Le mode d'emploi (`LISEZMOI.txt`, partie 7)
   explique comment mettre le titre en majuscules ou ajouter un contour au texte, sans rien installer.
 
@@ -63,6 +71,8 @@ Mode d'emploi : `LISEZMOI.txt` dans le zip, ou https://fushoo.fr/sillonette/inst
   skin.
 - Rien de plus n'est envoyé à OBS (toujours le même message, avec les réglages dans le même champ), et
   l'extension ne demande **aucune permission en plus**. Les réglages restent dans ton navigateur.
+- Pour l'aperçu en direct, les pages de l'extension peuvent maintenant afficher des images venant des
+  mêmes serveurs Google que l'overlay (pochettes) ; rien d'autre n'est autorisé.
 - L'extension est un peu plus lourde (environ 0,5 Mo) : elle contient une copie de l'overlay et de ses
   polices pour l'aperçu.
 
@@ -78,15 +88,20 @@ Ton mot de passe, ton skin et ta disposition restent enregistrés.
 
 ## Ce qui a été testé, et ce qui ne l'a pas été
 
-- Testé sous Linux : 41 tests unitaires, 11 tests de bout en bout (Chromium et Firefox, faux OBS),
-  dont la page de réglages (aperçu, enregistrement, envoi à OBS, clavier seul, audit d'accessibilité
-  WCAG 2.1 AA, page en largeur de téléphone).
+- Testé sous Linux : 44 tests unitaires (dont la parité des textes français et anglais), 15 tests de
+  bout en bout (Chromium et Firefox, faux OBS), dont la page de réglages (aperçu, enregistrement, envoi
+  à OBS, clavier seul, audit d'accessibilité WCAG 2.1 AA en français et en anglais, page en largeur de
+  téléphone), l'aperçu en direct (vrai morceau, pochette, E10, sans OBS) et un navigateur en anglais
+  (popup, messages d'erreur, choix FR / EN gardé).
 - **Essai avec un vrai OBS 33 sous Linux** (configuration jetable, son coupé, aucun live) : réglages
   changés sur la page et appliqués dans OBS en moins d'une seconde ; mode « 4 secondes » (affiché au
   nouveau morceau, caché après, pas de retour à la reprise, badge E10 visible) ; source rechargée et
   OBS redémarré (réglages revenus seuls) ; 7 combinaisons skin / disposition / taille (50 à 200 %) sans
   débordement à la taille conseillée ; CSS personnalisé appliqué. 23 points vérifiés sur 23.
 - La page de réglages a aussi été essayée dans Firefox (module temporaire) : aperçu et envoi à OBS.
+- L'essai avec le vrai OBS a été fait avec l'interface en français et avant l'ajout de l'aperçu en
+  direct ; l'anglais et l'aperçu en direct sont vérifiés par les tests automatiques (faux YouTube
+  Music), pas avec le vrai site.
 - **Pas testé** : Windows, macOS, Edge, Opera ; longs lives (plusieurs heures).
 
 ## Un avis, un bug ?

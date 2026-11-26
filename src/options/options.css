@@ -122,3 +122,6 @@ code { font: 0.9rem ui-monospace, monospace; }
 @media (prefers-reduced-motion: reduce) {
   * { scroll-behavior: auto !important; transition: none !important; animation: none !important; }
 }
+.ui-lang { margin-left: auto; display: flex; gap: 0.3rem; }
+.ui-lang button { min-width: 2.75rem; }
+.ui-lang button[aria-pressed="true"] { background: var(--navy); border-color: var(--navy); color: #ffffff; }

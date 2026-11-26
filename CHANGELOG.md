@@ -17,6 +17,12 @@ Nouveautés : la personnalisation de l'overlay.
   morceau, « Réduire les mouvements », comportement en pause, sans musique, alignement, langue de
   l'overlay. Chaque réglage est enregistré tout de suite dans le navigateur et arrive dans OBS en
   quelques secondes.
+- **Aperçu « Démo » ou « En direct »** : en démo, de faux morceaux ; en direct, le morceau que
+  l'extension envoie à OBS à ce moment-là (même état, E10 compris), affiché seulement dans la page,
+  même si OBS n'est pas connecté. Rien de plus n'est envoyé à OBS. La page dit quand aucune musique
+  ne joue. Pour afficher la vraie pochette, les pages de l'extension ont le droit de charger des
+  images depuis les mêmes serveurs Google que l'overlay (règle de sécurité CSP élargie à ces seules
+  images ; aucune permission en plus).
 - **Alerte de contraste** : la page prévient si le texte risque d'être difficile à lire.
 - **Bouton « Rétablir les réglages du skin »**.
 - **Nouveau mode « Quelques secondes à chaque nouveau morceau »** (10 s par défaut, de 3 à 60 s) : la
@@ -26,6 +32,12 @@ Nouveautés : la personnalisation de l'overlay.
   dans OBS.
 - Mode d'emploi du **« CSS personnalisé » d'OBS** pour les cas avancés (majuscules, contour du texte…)
   dans `LISEZMOI.txt`.
+- **L'extension parle aussi anglais** : popup (tous les messages d'état et d'erreur, aides,
+  avertissement sur le mot de passe) et page de réglages. Elle suit la langue du navigateur (français
+  si le navigateur est en français, anglais sinon) ; les boutons **FR / EN** la changent, et le choix
+  est gardé. Cela ne change pas la langue de l'overlay (réglage à part). La description de
+  l'extension s'affiche aussi dans les deux langues. Nouveau fichier `README-EN.txt` dans le zip :
+  un résumé en anglais du mode d'emploi (`LISEZMOI.txt` reste la référence, en français).
 
 Modifications :
 

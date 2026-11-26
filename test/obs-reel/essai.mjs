@@ -10,7 +10,7 @@ import { createServer } from "node:http";
 import { mkdirSync, mkdtempSync, readFileSync, rmSync, writeFileSync } from "node:fs";
 import { join } from "node:path";
 import { chromium } from "playwright-core";
-import { buildForTests, CHROMIUM, ROOT, isolate, sleep } from "../e2e/lib.mjs";
+import { buildForTests, CHROMIUM, ROOT, isolate, sleep, FRENCH_ENV } from "../e2e/lib.mjs";
 
 const [WORK, OUT] = process.argv.slice(2);
 if (!WORK || !OUT) throw new Error("usage: essai.mjs WORK OUT");
@@ -166,7 +166,7 @@ try {
   profile = mkdtempSync(join(WORK, "chromium-"));
   const dir = join(dist, "chrome");
   ctx = await chromium.launchPersistentContext(profile, {
-    executablePath: CHROMIUM, headless: true, locale: "fr-FR",
+    executablePath: CHROMIUM, headless: true, locale: "fr-FR", env: FRENCH_ENV,
     args: [`--disable-extensions-except=${dir}`, `--load-extension=${dir}`, "--autoplay-policy=no-user-gesture-required", "--mute-audio"],
   });
   await isolate(ctx);

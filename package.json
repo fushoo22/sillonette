@@ -18,7 +18,7 @@
     "test": "node --test \"test/unit/*.test.mjs\"",
     "e2e": "node --test --test-concurrency=1 --test-timeout=240000 --test-force-exit --test-reporter=tap \"test/e2e/*.e2e.mjs\"",
     "test:ci": "node --test --test-force-exit --test-reporter=tap \"test/unit/*.test.mjs\"",
-    "e2e:chromium": "node --test --test-concurrency=1 --test-timeout=240000 --test-force-exit --test-reporter=tap test/e2e/chromium.e2e.mjs test/e2e/overlay.e2e.mjs test/e2e/options.e2e.mjs",
+    "e2e:chromium": "node --test --test-concurrency=1 --test-timeout=240000 --test-force-exit --test-reporter=tap test/e2e/chromium.e2e.mjs test/e2e/overlay.e2e.mjs test/e2e/options.e2e.mjs test/e2e/langue.e2e.mjs",
     "check": "npm run lint && npm test && npm run lint:firefox && npm run e2e"
   },
   "devDependencies": {

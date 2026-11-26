@@ -8,22 +8,27 @@ import {
   withSkin, type Lang, type Theme,
 } from "../shared/config.ts";
 import { themeContrast } from "../shared/contrast.ts";
+import { EVENT_NAME } from "../shared/event.ts";
+import { buildEvent } from "../background/build-event.ts";
+import { browserUiLang, loadUiLang, saveUiLang, SKIN_NAMES, tr, translatePage, type UiKey, type UiLang } from "../shared/ui-text.ts";
 
 const $ = <T extends HTMLElement>(id: string) => document.getElementById(id) as T;
 const form = $<HTMLFormElement>("form");
 const frame = $<HTMLIFrameElement>("frame");
 const stage = $("stage");
 
-export const SKIN_NAMES: Record<string, string> = { studio: "Studio", neon: "Néon", vinyle: "Vinyle", retro: "Rétro", arcade: "Arcade", lofi: "Lofi" };
 export const FONT_NAMES: Record<string, string> = {
   mochiy: "Mochiy Pop One", nunito: "Nunito", inter: "Inter", serif: "Fraunces", grotesk: "Space Grotesk",
   pixel: "Pixelify Sans", mono: "Space Mono", hand: "Caveat",
 };
 const PARTS = ["art", "artist", "album", "prog", "time", "mascot"] as const;
-/** Same fallback language as the background (without a choice, the overlay follows the browser). */
-const uiLang: Lang = api.i18n.getUILanguage().toLowerCase().startsWith("fr") ? "fr" : "en";
+/** Overlay language when none is chosen yet: the browser's, as in the background. */
+const fallbackLang: Lang = browserUiLang();
+/** Language of this page (FR/EN buttons, remembered): never changes the overlay's own "lg". */
+let lang: UiLang = fallbackLang;
+const t = (k: UiKey, v?: Record<string, string | number>) => tr(lang, k, v);
 
-let theme: Theme = normalizeTheme({}, uiLang);
+let theme: Theme = normalizeTheme({}, fallbackLang);
 let saveTimer: ReturnType<typeof setTimeout> | undefined;
 
 function field<T extends HTMLElement>(name: string): T {
@@ -33,7 +38,7 @@ function setRadio(name: string, value: string): void {
   for (const r of form.querySelectorAll<HTMLInputElement>(`input[type=radio][name="${name}"]`)) r.checked = r.value === value;
 }
 function radio(name: string): string {
-  return form.querySelector<HTMLInputElement>(`input[type=radio][name="${name}"]:checked`)?.value ?? "";
+  return document.querySelector<HTMLInputElement>(`input[type=radio][name="${name}"]:checked`)?.value ?? "";
 }
 
 /** Theme -> form controls. */
@@ -92,11 +97,9 @@ function render(): void {
   const size = sourceSize(theme);
   $("size").textContent = size.w + " × " + size.h + " px";
   const c = themeContrast(theme);
-  const r = (Math.floor(c.min * 10) / 10).toLocaleString("fr-FR");
+  const r = (Math.floor(c.min * 10) / 10).toLocaleString(lang === "fr" ? "fr-FR" : "en-GB");
   const el = $("contrast");
-  el.textContent = (c.ok ? `Contraste du texte : ${r}:1 (suffisant).`
-    : `Contraste insuffisant : ${r}:1 (minimum conseillé 4,5:1). Le texte risque d'être difficile à lire à l'antenne.`)
-    + (theme.ba < 50 ? " Le fond est transparent : la lisibilité dépend de ta scène." : "");
+  el.textContent = t(c.ok ? "contrastOk" : "contrastLow", { r }) + (theme.ba < 50 ? " " + t("contrastScene") : "");
   el.classList.toggle("low", !c.ok);
   fitPreview();
   preview();
@@ -111,23 +114,52 @@ function fitPreview(): void {
   stage.style.height = Math.ceil(size.h * k) + "px";
 }
 
-/** The first call loads the preview; later ones only change its fragment (the overlay applies it live). */
+/** Preview content: "demo" (made-up tracks) or "live" (what the extension sends to OBS right now). */
+let mode: "demo" | "live" = "demo";
+let liveTimer: ReturnType<typeof setInterval> | undefined;
+/** Same storage area as the background's state shared between tabs. */
+const session = api.storage.session ?? api.storage.local;
+
+/** Demo: the settings travel in the fragment, a change only replaces it (applied without reloading).
+ *  Live: another address (the overlay then takes its settings from the events), fed by liveEvent(). */
 function preview(): void {
-  const src = "apercu/apercu.html#demo=1&s=" + encodeTheme(theme);
-  if (frame.getAttribute("src") === null) frame.setAttribute("src", src);
-  else frame.contentWindow?.location.replace(new URL(src, location.href).href);
+  const base = mode === "live" ? "apercu/apercu.html?direct" : "apercu/apercu.html";
+  const src = base + "#" + (mode === "demo" ? "demo=1&" : "") + "s=" + encodeTheme(theme);
+  const current = frame.getAttribute("src");
+  if (current === null || current.split("#")[0] !== base) frame.setAttribute("src", src);
+  else if (mode === "demo") frame.contentWindow?.location.replace(new URL(src, location.href).href);
+  else void liveEvent();
+}
+
+/** Live preview: the very event the background sends to OBS (same tab state, E10 included, same
+ *  settings), handed to the preview frame only. Nothing is sent anywhere; works without OBS. */
+async function liveEvent(): Promise<void> {
+  if (mode !== "live") return;
+  const { ev } = buildEvent((await session.get("lease")).lease, theme, Date.now());
+  const w = frame.contentWindow as (Window & typeof globalThis) | null;
+  if (mode !== "live" || !w || w.location.search !== "?direct") return;
+  w.dispatchEvent(new w.CustomEvent(EVENT_NAME, { detail: JSON.parse(JSON.stringify(ev)) }));
+  $("liveHint").textContent = t(ev.np.state === "idle" ? "liveIdle" : "liveOn");
+}
+
+function setMode(m: "demo" | "live"): void {
+  mode = m;
+  clearInterval(liveTimer);
+  $("liveHint").textContent = "";
+  if (m === "live") liveTimer = setInterval(() => void liveEvent(), 2000);
+  preview();
 }
 
 /** Last settings written by this page: the storage event they cause is not a change made elsewhere. */
 let written = "";
 
-function save(now: boolean, done = "Réglages enregistrés dans ce navigateur."): void {
+function save(now: boolean, done: UiKey = "saved"): void {
   clearTimeout(saveTimer);
   const go = () => {
     written = JSON.stringify(theme);
     void api.storage.local.set({ theme }).then(
-      () => { $("saved").textContent = done; },
-      () => { $("saved").textContent = "Enregistrement impossible : recharge la page et réessaie."; },
+      () => { $("saved").textContent = t(done); },
+      () => { $("saved").textContent = t("saveFailed"); },
     );
   };
   if (now) go();
@@ -138,6 +170,10 @@ function onChange(ev: Event): void {
   const target = ev.target as HTMLInputElement;
   if (target.name === "scene") {
     stage.className = "stage " + radio("scene");
+    return;
+  }
+  if (target.name === "mode") {
+    if (ev.type === "change") setMode(radio("mode") === "live" ? "live" : "demo");
     return;
   }
   if (target.id === "sk") {
@@ -153,37 +189,66 @@ function onChange(ev: Event): void {
   save(ev.type === "change");
 }
 
+/** The form has been filled from the saved settings at least once. */
+let loaded = false;
+
 async function load(): Promise<void> {
   const s = await api.storage.local.get("theme");
-  const t = normalizeTheme(s.theme, uiLang);
-  if (JSON.stringify(t) === JSON.stringify(theme) && frame.getAttribute("src") !== null) return;
+  const t = normalizeTheme(s.theme, fallbackLang);
+  if (loaded && JSON.stringify(t) === JSON.stringify(theme)) return;
+  loaded = true;
   theme = t;
   writeForm(theme);
   render();
 }
 
-function boot(): void {
+function setLang(l: UiLang): void {
+  lang = l;
+  translatePage(document, lang);
+  document.title = t("optTitle");
   const sk = $<HTMLSelectElement>("sk");
-  sk.append(...Object.keys(SKINS).map((id) => new Option(SKIN_NAMES[id] ?? id, id)));
+  sk.replaceChildren(...Object.keys(SKINS).map((id) => new Option(SKIN_NAMES[lang][id] ?? id, id)));
+  sk.value = theme.sk;
+  $("saved").textContent = "";
+  if (loaded) render(); // before the first load, load() renders
+  if (mode === "live") void liveEvent();
+}
+
+function boot(): void {
+  for (const b of document.querySelectorAll<HTMLButtonElement>("button[data-ui-lang]")) {
+    b.addEventListener("click", () => {
+      const l: UiLang = b.dataset.uiLang === "en" ? "en" : "fr";
+      setLang(l);
+      void saveUiLang(l);
+    });
+  }
   $<HTMLSelectElement>("ft").append(...Object.keys(FONTS).map((id) => new Option(FONT_NAMES[id] ?? id, id)));
   form.addEventListener("input", onChange);
   form.addEventListener("change", onChange);
-  for (const el of document.querySelectorAll<HTMLInputElement>('input[name="scene"]')) el.addEventListener("change", onChange);
+  for (const el of document.querySelectorAll<HTMLInputElement>('input[name="scene"], input[name="mode"]')) el.addEventListener("change", onChange);
+  frame.addEventListener("load", () => void liveEvent()); // live: first event as soon as the overlay is there
   form.addEventListener("submit", (e) => e.preventDefault());
   $("reset").addEventListener("click", () => {
     theme = skinDefaults(theme.sk, theme.lg);
     writeForm(theme);
     render();
-    save(true, "Réglages du skin rétablis et enregistrés.");
+    save(true, "resetDone");
   });
   window.addEventListener("resize", fitPreview);
   // changed elsewhere (the popup's skin or layout): follow
   api.storage.onChanged.addListener((changes, area) => {
-    if (area !== "local" || !changes.theme) return;
-    if (JSON.stringify(normalizeTheme(changes.theme.newValue, uiLang)) === written) return;
+    if ((area === "session" || area === "local") && changes.lease) void liveEvent(); // a tab reported something
+    if (area !== "local") return;
+    const ul = changes.uiLang?.newValue;
+    if ((ul === "fr" || ul === "en") && ul !== lang) setLang(ul); // chosen in the popup
+    if (!changes.theme) return;
+    if (JSON.stringify(normalizeTheme(changes.theme.newValue, fallbackLang)) === written) return;
     void load();
   });
-  void load();
+  void loadUiLang().then((l) => {
+    setLang(l);
+    return load();
+  });
 }
 
 boot();

@@ -14,20 +14,29 @@ const e2eMatch = process.env.SILLONETTE_E2E_MATCH || "";
 const outRoot = process.env.SILLONETTE_OUT || join(root, "dist");
 if (e2eMatch && !/^http:\/\/(127\.0\.0\.1|localhost)\/\*$/.test(e2eMatch)) throw new Error("SILLONETTE_E2E_MATCH must be http://127.0.0.1/*");
 
+/** Description of the extension in the browser's extensions page (at most 132 characters). */
+export const DESCRIPTIONS = {
+  fr: "Affiche dans OBS le morceau joué sur YouTube Music, sans serveur (WebSocket d'OBS sur ce PC). Version bêta.",
+  en: "Shows the YouTube Music track in OBS, without any server (OBS WebSocket on this PC). Beta version.",
+};
+
 /** Firefox add-on id (never change it once published: it is the add-on's identity). */
 export const GECKO_ID = "sillonette@fushoo.fr";
 
 // Extension pages (service worker / event page, popup) may only open WebSockets to 127.0.0.1.
 // Firefox MV3 adds "upgrade-insecure-requests" to its default CSP (ws:// would become wss://):
 // an explicit CSP replaces that default.
-const CSP = "script-src 'self'; object-src 'self'; connect-src ws://127.0.0.1:*; default-src 'self'";
+// img-src: the options page's live preview shows the real cover, from the same Google hosts as the
+// overlay (src/shared/types.ts DEFAULT_ART_HOSTS, also checked on every artwork address).
+const CSP = "script-src 'self'; object-src 'self'; connect-src ws://127.0.0.1:*; img-src 'self' " + DEFAULT_ART_HOSTS.map((h) => "https://" + h).join(" ") + "; default-src 'self'";
 
 function manifest(target) {
   const m = {
     manifest_version: 3,
     name: "Sillonette",
     short_name: "Sillonette",
-    description: "Affiche dans OBS le morceau joué sur YouTube Music, sans serveur (WebSocket d'OBS sur ce PC). Version bêta.",
+    description: "__MSG_extDescription__", // _locales/{fr,en}: the browser shows its own language
+    default_locale: "fr",
     version,
     icons: { 16: "icons/icon-16.png", 32: "icons/icon-32.png", 48: "icons/icon-48.png", 128: "icons/icon-128.png" },
     permissions: ["storage"],
@@ -61,6 +70,10 @@ for (const target of ["chrome", "firefox"]) {
   cpSync(join(root, "icons"), join(out, "icons"), { recursive: true });
   cpSync(join(root, "LICENSE"), join(out, "LICENSE"));
   writeFileSync(join(out, "manifest.json"), JSON.stringify(manifest(target), null, 2) + "\n");
+  for (const [l, text] of Object.entries(DESCRIPTIONS)) {
+    mkdirSync(join(out, "_locales", l), { recursive: true });
+    writeFileSync(join(out, "_locales", l, "messages.json"), JSON.stringify({ extDescription: { message: text } }, null, 2) + "\n");
+  }
 }
 
 // Overlay: one folder, opened as a local file. Chromium refuses @font-face over file:// (CORS, origin
@@ -90,10 +103,10 @@ cpSync(join(src, "overlay/demo"), join(o, "demo"), { recursive: true });
 mkdirSync(join(o, "licences"), { recursive: true });
 for (const f of readdirSync(join(src, "fonts")).filter((f) => f.endsWith(".txt"))) cpSync(join(src, "fonts", f), join(o, "licences", f));
 cpSync(join(root, "LICENSE"), join(o, "licences", "LICENSE-Sillonette.txt"));
-// Copy of the overlay inside the extension, for the live preview of the options page (demo mode,
-// fictitious tracks, local images only). Same script and stylesheets; the fonts are plain files there
+// Copy of the overlay inside the extension, for the preview of the options page (demo mode with
+// fictitious tracks and local images, or live: the real cover from the allowed Google hosts). Same script and stylesheets; the fonts are plain files there
 // (the extension pages' CSP refuses data: fonts), and its own CSP allows nothing outside the extension.
-const PREVIEW_CSP = "default-src 'none'; script-src 'self'; style-src 'self'; font-src 'self'; img-src 'self'; connect-src 'none'; base-uri 'none'; form-action 'none'";
+const PREVIEW_CSP = `default-src 'none'; script-src 'self'; style-src 'self'; font-src 'self'; img-src 'self' ${ART.join(" ")}; connect-src 'none'; base-uri 'none'; form-action 'none'`;
 const previewCss = (await transform(readFileSync(join(src, "overlay/overlay.css"), "utf8"), { loader: "css", minify: true, target: TARGET })).code;
 for (const target of ["chrome", "firefox"]) {
   const a = join(outRoot, target, "apercu");
